@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.3 — 2026-10-15
+- **Activate in the chart**: paste the key into the license card and click Activate - no F7 needed. The account number can be selected and copied; the top-right corner shows the days left (or "lifetime").
+- **Analytics** is one scrolling page: overview, equity curve, metrics, risk and groups with larger rows.
+- **Panel settings** split into General / Trading / Hotkeys; **hotkeys are recorded** - click the field and press the combination (Ctrl+Shift+letter works best).
+- Open lists and menus close when you click elsewhere; buttons and rows share one hover highlight.
+- Version shown in the panel settings and the license card (EA properties show 1.03).
+- Installer: detects portable MetaTrader 5, reports each terminal, writes `install-log.txt`, and explains when the zip was not extracted. Template updated (no volume bars, chart zoom as on the author's chart).
+- macOS: the order panel stops at the price scale.
+
 ## 1.0.2 — 2026-10-14
 - Order panel: **maximise / restore** (header button or double-click); maximised Analytics shows overview, equity curve, metrics, risk and groups on one screen. The ticket steps aside while maximised and otherwise stays above the open panel instead of covering it.
 - Hiding the order ticket keeps the order panel and the toolbar; the extra "Order" button is gone (reopen with 「交易面板 / Ticket」).
