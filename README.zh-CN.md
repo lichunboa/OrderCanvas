@@ -8,7 +8,7 @@
 
 [English](README.md) · **中文**
 
-[官网与购买](https://devspace-ntpa.tail545cd.ts.net/oc/shop) · [安装教程](docs/INSTALL.md) · [全部功能](docs/FEATURES.zh-CN.md) · [更新日志](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
+[官网与购买](https://devspace-ntpa.tail545cd.ts.net/oc/shop) · [下载](https://github.com/lichunboa/OrderCanvas/releases/latest) · [安装教程](docs/INSTALL.md) · [全部功能](docs/FEATURES.zh-CN.md) · [更新日志](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
 
 </div>
 
@@ -82,6 +82,12 @@ MT5 执行很稳，但手动下单和管理很慢：每次下单都弹窗、手�
 - **适配屏幕精度**：文字和布局随屏幕 DPI 缩放，界面字体按系统自动选择（Windows 微软雅黑 UI、macOS 苹方），96 DPI 的 Windows 和 Retina 的 Mac 显示一致。
 - **安全默认值**：真实账户首次使用弹出风险确认；平仓、反手默认二次确认。
 - **测试**：领域逻辑有单元和契约测试；在 Windows 和 macOS 的策略测试器里用黄金、外汇、指数、加密货币和各种报价模型跑过，包括可视化模式。
+
+## 下载
+
+**[⬇ 下载最新版本（OrderCanvas.zip）](https://github.com/lichunboa/OrderCanvas/releases/latest)** · [全部历史版本](https://github.com/lichunboa/OrderCanvas/releases)
+
+安装包含程序、推荐图表模板和 Windows 一键安装程序。策略测试器里不需要授权码；在实盘或模拟图表上需要授权码（可免费试用 7 天）。
 
 ## 安装
 

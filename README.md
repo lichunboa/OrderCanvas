@@ -8,7 +8,7 @@ Preview every order on the chart before it is sent · drag order lines to modify
 
 **English** · [中文](README.zh-CN.md)
 
-[Website & purchase](https://devspace-ntpa.tail545cd.ts.net/oc/shop) · [Install guide](docs/INSTALL.md) · [All features](docs/FEATURES.md) · [Changelog](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
+[Website & purchase](https://devspace-ntpa.tail545cd.ts.net/oc/shop) · [Download](https://github.com/lichunboa/OrderCanvas/releases/latest) · [Install guide](docs/INSTALL.md) · [All features](docs/FEATURES.md) · [Changelog](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
 
 </div>
 
@@ -82,6 +82,12 @@ OrderCanvas is written in pure MQL5 - no DLLs, no external services, no network 
 - **DPI-aware.** Text and layout scale with the screen DPI and the interface font is chosen per platform (Microsoft YaHei UI on Windows, PingFang on macOS), so the panel looks the same on a 96-DPI Windows desktop and a Retina Mac.
 - **Safety defaults.** Live accounts show a one-time risk confirmation; close and reverse confirm by default.
 - **Tested.** Unit and contract tests for the domain logic, plus Strategy Tester runs on Windows and macOS across gold, FX, indices and crypto with every tick model - including visual mode.
+
+## Download
+
+**[⬇ Download the latest release (OrderCanvas.zip)](https://github.com/lichunboa/OrderCanvas/releases/latest)** · [All versions](https://github.com/lichunboa/OrderCanvas/releases)
+
+The package contains the program, the recommended chart template and a one-click Windows installer. It runs in the Strategy Tester without a key; on a live or demo chart it needs a license key (free 7-day trial available).
 
 ## Install
 
