@@ -29,7 +29,9 @@
 
 1. 打开任意图表 → 右键 → **模板 → OrderCanvas**：一次加载面板、推荐配色、EMA 20 和 ATR 14 副图（也可以直接把 OrderCanvas 从导航器拖到图表）；
 2. 勾选 **允许算法交易**，并确认 MT5 工具栏的「算法交易」按钮是绿色；
-3. 按 **F7 → 输入参数**，在 `LicenseKey` 里粘贴授权码，点确定。
+3. 图表中间会出现授权卡片：把授权码粘贴进输入框（Ctrl+V），点 **激活**。也可以按 **F7 → 输入参数 → `LicenseKey`** 粘贴。
+
+安装没反应？先确认已经把压缩包**完整解压**到一个文件夹再双击 `Install.bat`；安装结果会写在同一文件夹的 `install-log.txt` 里，可以发给卖家。
 
 模板只是起点：配色、周期、指标都可以随意改，改完右键 → 模板 → 保存模板即可。ATR 副图可以拖动分隔线调高度，不需要时直接删掉，之后不会再自动加回来。面板默认每次加载会套用深色配色，想完全用自己的配色，把输入参数 `MatchTradingViewChartStyle` 设为 `false`。
 
@@ -50,4 +52,4 @@
 
 1. Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot): `/start` → choose a plan → send your MT5 account number → pay the USDT (TRC20) amount shown (2 decimals; the cents identify your order) → key and `OrderCanvas.zip` arrive automatically. `/mykeys` shows your current keys.
 2. Unzip `OrderCanvas.zip` and double-click `Install.bat` (Windows) - or copy `OrderCanvas.ex5` to `MQL5\Experts` and `OrderCanvas.tpl` to `MQL5\Profiles\Templates` (Mac / manual).
-3. Restart MT5, right-click a chart → Templates → OrderCanvas (panel, colours, EMA 20 and a resizable ATR 14 pane; a portable MT5 installs with `install.ps1 -Target <folder>`), allow algo trading, F7 → Inputs → `LicenseKey`, paste, OK. Each computer asks only once.
+3. Restart MT5, right-click a chart → Templates → OrderCanvas (panel, colours, EMA 20 and a resizable ATR 14 pane; a portable MT5 installs with `install.ps1 -Target <folder>`), allow algo trading, paste the key into the license card and click Activate (or F7 → Inputs → `LicenseKey`). Each computer asks only once. If nothing happens, make sure the zip was fully extracted first; the result is written to `install-log.txt`.
