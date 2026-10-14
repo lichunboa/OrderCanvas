@@ -36,7 +36,7 @@ OrderCanvas is a chart-trading panel for MetaTrader 5 (an Expert Advisor in the 
 |---|---|
 | In-panel editing | Click an order line to edit SL, TP, break-even and quantity (less = partial close, more = add with the same protection) |
 | Staged take-profit | Up to 3 extra TP levels per position with their own share; executed by the EA, kept across restarts, shown as dashed lines with × |
-| Order panel | Positions / Orders / History / Account / Analytics; sort by symbol, time, P&L; totals; history today / 7 / 30 days; resizable; close all; hover highlights the lines |
+| Order panel | Positions / Orders / History / Account / Analytics; sort by symbol, time, P&L; totals; history today / 7 / 30 days; resizable, **maximise** with the header button or a double-click (Analytics then shows overview, curve, metrics, risk and groups on one screen); collapsed header keeps balance / equity / floating / free margin; stays when the ticket is hidden; close all for this symbol or all symbols; hover highlights the lines |
 | Analytics | Net P&L, win rate, profit factor, average win / loss, maximum drawdown, equity curve |
 
 ## 4. Shortcuts
