@@ -91,7 +91,7 @@ MT5 执行很稳，但手动下单和管理很慢：每次下单都弹窗、手�
 
 ## 安装
 
-下载 `OrderCanvas.zip`，解压后双击 **`Install.bat`**（Windows），程序和推荐图表模板会装进这台电脑上所有的 MT5。重启 MT5，图表右键 → 模板 → **OrderCanvas**，再按 **F7** → 输入参数 → `LicenseKey` 粘贴授权码。
+下载 `OrderCanvas.zip`，解压后双击 **`Install.bat`**（Windows），程序和推荐图表模板会装进这台电脑上所有的 MT5。重启 MT5，图表右键 → 模板 → **OrderCanvas**，在图表上弹出的授权卡片里粘贴授权码，点 **激活**（也可以 F7 → 输入参数 → `LicenseKey`）。
 Mac / 手动安装和每一步说明：[docs/INSTALL.md](docs/INSTALL.md)。
 
 ## 授权与价格
