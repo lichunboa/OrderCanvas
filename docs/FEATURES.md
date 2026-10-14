@@ -1,65 +1,68 @@
-# OrderCanvas 产品功能清单
+# OrderCanvas — feature list
 
-OrderCanvas 是 MetaTrader 5 的图表交易面板（EA，“工具”类）：把 TradingView 式的下单、订单线和持仓管理搬到 MT5 图表上。
+**English** · [中文](FEATURES.zh-CN.md)
 
-## 1. 交易面板（下单票据）
+OrderCanvas is a chart-trading panel for MetaTrader 5 (an Expert Advisor in the *Utilities* category): order entry, order lines and position management in the style of modern trading platforms, directly on the MT5 chart.
 
-| 功能 | 说明 |
+## 1. Order ticket
+
+| Feature | Details |
 |---|---|
-| 订单类型 | 市价、限价、止损、停损限价；挂单支持 GTC / 当日 / 指定到期时间（带日历） |
-| 数量的 5 种算法 | 手数、保证金金额、余额百分比、风险金额、风险百分比（按止损距离反算手数）；可切换等价显示 |
-| 止盈止损 | 可分别开关；单位可选 tick、价格、%价格、点数、风险/回报金额、余额百分比；显示盈亏比 |
-| 信息框 | 交易额、刻度值、所需保证金，货币后缀为灰色小字 |
-| 一键交易 | 标题栏「一键交易 开/关」。开启后点卖出/买入报价直接按当前设置市价成交，底部按钮变为「一键平仓 · N」；关闭时底部按钮为「创建订单」 |
-| 收起模式 | 普通模式：方向、类型、数量、提交。一键模式：实时报价大按钮、数量、一键平仓 |
-| 订单预设 | 保存类型、价格偏移、止盈止损、有效期，最多 5 个 |
-| 面板布局 | 可拖动、浮动/停靠，宽 360–715 px 自适应，短窗口自动滚动 |
+| Order types | Market, Limit, Stop, Stop-Limit; pending expiry GTC / today / specific time (calendar) |
+| Five sizing modes | Lots, margin, % of balance, risk in money, risk in % (lots derived from the stop distance); equivalent value shown alongside |
+| Take-profit / stop-loss | Independently switchable; in ticks, price, % of price, pips, money or % of balance; reward:risk shown |
+| Broker data | Trade value, tick value, required margin with the account currency |
+| One-click trading | Header toggle; quotes become instant market buttons and the bottom action becomes *Close all · N* |
+| Compact mode | Normal: side, type, size, submit. One-click: large live quotes, size, close all |
+| Presets | Type, price offset, protection and expiry - up to five |
+| Layout | Draggable, floating or docked, 360–715 px responsive width, scrolls on short windows |
 
-## 2. 图表订单线
+## 2. Order lines on the chart
 
-| 功能 | 说明 |
+| Feature | Details |
 |---|---|
-| 草稿预览 | 下单前先在图上显示入场、止盈、止损草稿线（浅色虚线），确认后才发送 |
-| 拖动改价 | 拖动入场线、止盈线、止损线修改价格；订单类型标签上下拖动也能调整价格；下单前后都能拖 |
-| 拉出止盈止损 | 从订单线上的 TP / SL 按钮拖出新的保护线 |
-| 连接线 | 同一笔订单的几条线之间有连接线；鼠标悬停时高亮整组 |
-| 下单前后样式 | 草稿浅色点线，已成交 / 工作中的实线 |
-| 持仓线操作 | `[数量 | 盈亏 | 保 | 半 | 反 | ×]`：保本（可计入手续费、隔夜利息、滑点缓冲）、按比例部分平仓（25/33/50/67/75%）、反手、平仓 |
-| 确认方式 | 平仓 / 部分平仓 / 反手默认确认，确认框出现在点击位置旁边；设置里可关闭确认 |
-| 价格轴标记 | 每条订单线在价格轴上有对应价格标签 |
+| Draft preview | Entry / TP / SL drawn as light dashed draft lines first; sent only after confirmation |
+| Drag to modify | Drag entry, TP and SL lines - also by dragging the label - before and after sending |
+| Pull out protection | Drag a new TP / SL out of an order line's TP / SL handle |
+| Connectors | Lines of one order are linked; hovering highlights the group |
+| Draft vs live style | Drafts dotted and light, working orders / positions solid |
+| Position-line actions | `[size | P&L | BE | ½ | Reverse | ×]`: break-even (commission, swap, slippage buffer), partial close 25/33/50/67/75 %, reverse, close |
+| Confirmations | Close / partial / reverse confirm by default, right next to the pointer; can be turned off |
+| Price-axis markers | Every order line has a price tag next to the axis |
 
-## 3. 持仓与订单管理
+## 3. Position and order management
 
-| 功能 | 说明 |
+| Feature | Details |
 |---|---|
-| 面板内修改 | 点击订单线进入面板内编辑：止损、止盈、移至保本、数量（减少 = 部分平仓，增加 = 按相同止损止盈加仓） |
-| 分批止盈 | 每个持仓最多 3 个额外止盈价位，各自设定平仓比例；由 EA 在价格到达时执行（EA 需保持运行），终端重启后保留；图上显示为虚线并带 × 删除 |
-| 订单面板（底部） | 持仓 / 订单 / 历史 / 账户四页；按品种、时间、盈亏排序；合计手数和浮动盈亏；历史可选今天 / 7 天 / 30 天；可调高度；一键全部平仓；悬停某行时图上对应订单线高亮 |
-| 账户管理 | 本 EA 魔术号范围内的持仓 / 挂单数量、取消记录 |
+| In-panel editing | Click an order line to edit SL, TP, break-even and quantity (less = partial close, more = add with the same protection) |
+| Staged take-profit | Up to 3 extra TP levels per position with their own share; executed by the EA, kept across restarts, shown as dashed lines with × |
+| Order panel | Positions / Orders / History / Account / Analytics; sort by symbol, time, P&L; totals; history today / 7 / 30 days; resizable; close all; hover highlights the lines |
+| Analytics | Net P&L, win rate, profit factor, average win / loss, maximum drawdown, equity curve |
 
-## 4. 快捷操作
+## 4. Shortcuts
 
-| 功能 | 说明 |
+| Feature | Details |
 |---|---|
-| 快捷键 | Ctrl+Shift+字母：一键买入、一键卖出、一键平仓、一键保本、部分平仓、收起/展开；每项可绑定或不绑定；全局开关；冷却时间 0–5000 ms |
-| 一键平仓 | 只平本品种、本魔术号的持仓，保留挂单 |
+| Hotkeys | Ctrl+Shift+letter: buy, sell, close, break-even, partial close, collapse; each bindable; global switch; cooldown 0–5000 ms |
+| Close all | Closes this symbol's positions with the panel's magic number; pending orders are kept |
 
-## 5. 图表与品种
+## 5. Chart and symbols
 
-| 功能 | 说明 |
+| Feature | Details |
 |---|---|
-| 品种搜索 | 按类别和交易所分组、自选星标、键盘上下选择，搜索按精确 > 前缀 > 包含 > 描述排序 |
-| 图表操作 | 滚轮缩放、空白处拖动平移、纵轴自由缩放；深色图表样式；K 线收盘倒计时 |
-| 内置指标 | EMA20、ATR14（MT5 自带指标，可在参数里关闭） |
+| Symbol search | Grouped by category and exchange, favourites, keyboard navigation; exact > prefix > contains > description ranking |
+| Chart workflow | Wheel zoom, drag to pan, free vertical scale, dark style, candle countdown |
+| Indicators | EMA 20, ATR 14 (built-in MT5 indicators, can be switched off) |
 
-## 6. 安全与兼容
+## 6. Safety and compatibility
 
-| 功能 | 说明 |
+| Feature | Details |
 |---|---|
-| 账户类型 | 对冲、净额、交易所账户都支持（净额账户的部分平仓用反向成交实现） |
-| 真实账户 | 首次加载弹出风险确认，确认前面板只读；可选「仅允许模拟账户」 |
-| 魔术号隔离 | 只管理本 EA 魔术号的订单（可设置），其他订单只读显示 |
-| 精确票据 | 所有修改、平仓都绑定具体订单号、账户、品种，界面变化后的旧点击不会作用到别的订单 |
-| 语言 | 中文 / English / 跟随终端 |
-| 性能 | 拖动每帧约 1.3 ms，悬停 0.5 ms（EA 侧实测） |
-| 授权 | 授权码绑定 MT5 账户号码，离线校验；策略测试器免授权 |
+| Account types | Hedging, netting and exchange accounts (netting partial close via an opposite deal) |
+| Live accounts | One-time risk confirmation; panel is read-only until confirmed; optional *demo only* |
+| Magic-number isolation | Manages only its own magic number by default; other orders shown read-only |
+| Exact tickets | Every modify / close is bound to ticket, account and symbol; stale clicks are rejected |
+| Language | English / 中文 / follow the terminal |
+| Display | DPI-aware text and layout; interface font chosen per platform |
+| Performance | ~1.3 ms per drag frame, 0.5 ms per hover (EA side) |
+| License | Key bound to the MT5 account number, verified offline; the Strategy Tester needs no key |

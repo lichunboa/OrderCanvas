@@ -2,55 +2,105 @@
 
 # OrderCanvas
 
-**MetaTrader 5 图表交易面板 · Chart trading panel for MT5**
+**A modern chart-trading panel for MetaTrader 5**
 
-在图上预览订单再发送、拖动订单线改价、持仓线一键保本 / 部分平仓、订单面板与交易分析。
-Preview orders on the chart, drag order lines, one-click break-even / partial close, order panel and trade analytics.
+Preview every order on the chart before it is sent · drag order lines to modify · break-even, partial close and reverse right on the position line · built-in trade analytics
 
-[官网 / 购买 Website](https://devspace-ntpa.tail545cd.ts.net/oc/shop) · [安装 Install](docs/INSTALL.md) · [功能 Features](docs/FEATURES.md) · [更新 Changelog](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
+**English** · [中文](README.zh-CN.md)
+
+[Website & purchase](https://devspace-ntpa.tail545cd.ts.net/oc/shop) · [Install guide](docs/INSTALL.md) · [All features](docs/FEATURES.md) · [Changelog](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
 
 </div>
 
 ![OrderCanvas](images/panel.png)
 
-## 截图 · Screenshots
+## Why OrderCanvas
 
-| | |
+MetaTrader 5 is a great execution platform, but placing and managing trades by hand is slow: a dialog for every order, lot sizes worked out on a calculator, protection edited through right-click menus. OrderCanvas moves the whole workflow onto the chart.
+
+| Without | With OrderCanvas |
 |---|---|
-| ![](images/orderlines.png) 订单线：持仓（保 / 半 / 反 / ×）、止盈止损、限价草稿 | ![](images/chip-draft.png) 下单前的草稿订单线 |
-| ![](images/ticket-limit.png) 下单票据（限价单） | ![](images/oneclick.png) 一键交易 |
-| ![](images/history.png) 历史成交 | ![](images/symbols.png) 品种搜索 |
+| A modal dialog for every order; lot size by hand | Pick a side - draft entry / TP / SL lines appear, **lots are sized from the stop distance** |
+| Right-click → Modify → type prices | **Drag the order line**; pull a new TP / SL out of any order line |
+| Break-even or half close needs mental math | **BE / ½ / Reverse / ×** buttons on the position line |
+| Fat-finger orders | **Preview before sending**; confirmations appear next to the cursor |
+| P&L analysis means exporting a report | **Analytics tab**: net P&L, win rate, profit factor, drawdown, equity curve |
 
-![Analysis](images/analysis.png)
+## Core features
 
-## 主要功能 · Highlights
+### 1. Draft preview before sending
+Choose Buy or Sell and the order is drawn on the chart first - entry, take-profit and stop-loss as light dashed lines with their quantity, type and expected P&L. Drag any of them, then confirm. Nothing reaches the broker until you do.
 
-- 草稿预览：入场 / 止盈 / 止损先画在图上，确认才发送 · Draft preview before sending
-- 拖动订单线改价，从订单线拉出新的止盈止损 · Draggable order lines
-- 持仓线：保本（可计手续费 / 隔夜利息）、部分平仓、反手、平仓 · Position-line actions
-- 5 种算手数方式、4 种订单类型、挂单有效期 · Risk sizing, all order types, expiry
-- 一键交易、分批止盈、快捷键、订单预设、品种搜索、K 线倒计时 · One-click, staged TP, hotkeys, presets
-- 订单面板 + 交易分析（净盈亏、胜率、利润因子、回撤、资金曲线）· Order panel + analytics
-- 中文 / English · Windows & Mac · 对冲 / 净额账户 · hedging & netting
+<p align="center"><img src="images/chip-draft.png" width="49%"> <img src="images/chip-protection.png" width="49%"></p>
 
-完整列表见 [docs/FEATURES.md](docs/FEATURES.md)。
+### 2. Draggable order lines and position-line actions
+Every position, pending order, TP and SL is a live line you can drag. Drag a TP/SL handle out of an order line to add protection. The position label carries its own actions:
 
-## 安装 · Install
+- **BE** - move the stop to break-even, optionally covering commission, swap and a slippage buffer (configurable in ticks)
+- **½** - partial close by a preset share (25 / 33 / 50 / 67 / 75 %)
+- **Reverse** and **×** close - both confirmed next to the pointer by default
 
-下载 `OrderCanvas.zip` → 解压 → Windows 双击 `Install.bat`（自动装进所有 MT5，含推荐图表模板）→ 重启 MT5 → 图表右键 → 模板 → OrderCanvas → `F7` → `LicenseKey` 粘贴授权码。
-详细步骤（含 Mac / 手动安装）：[docs/INSTALL.md](docs/INSTALL.md)。
+![Order lines](images/orderlines.png)
 
-Download `OrderCanvas.zip`, unzip, run `Install.bat` (Windows), restart MT5, right-click a chart → Templates → OrderCanvas, then F7 → `LicenseKey`.
+### 3. Professional order ticket
+- Market, Limit, Stop and Stop-Limit orders; expiry GTC / today / specific time (with a calendar)
+- **Five sizing modes**: lots, margin, % of balance, risk in money, risk in % - the lot size follows the stop distance
+- TP / SL in ticks, price, % of price, pips, money or % of balance; reward:risk shown live
+- Trade value, tick value and required margin from the broker, with the account currency
+- Up to five saved order presets (type, offset, protection, expiry)
 
-## 授权 · License
+<p align="center"><img src="images/ticket-limit.png" width="38%"> <img src="images/oneclick.png" width="38%"></p>
 
-- 免费试用 7 天；月付 19 / 年付 69 / 永久 89 USDT，每个授权 2 个 MT5 账户 —— 在 [官网](https://devspace-ntpa.tail545cd.ts.net/oc/shop) 或 [Telegram](https://t.me/OrderCanvasbot) 获取。
-- 授权码绑定 MT5 账户号码、离线校验；MT5 策略测试器里免授权，可先回测体验。
-- Free 7-day trial; 19 / 69 / 89 USDT (month / year / lifetime), 2 MT5 accounts. The Strategy Tester runs without a key.
+### 4. One-click trading
+Turn on *1-click* in the ticket header: the Sell / Buy quotes become instant market buttons and the bottom action becomes *Close all* for this symbol (right-hand screenshot above).
 
-## 风险提示 · Risk
+### 5. Order panel and trade analytics
+A dock under the chart with **Positions, Orders, History, Account and Analytics**. History shows open/close times, holding time, commission, swap and net P&L. Analytics puts net P&L, win rate, profit factor, average win/loss, maximum drawdown and the equity curve on one screen. Hovering a row highlights its lines on the chart.
 
-外汇、贵金属和差价合约交易风险很高。OrderCanvas 是交易操作工具，不提供交易信号或投资建议。
-Trading leveraged products carries a high risk of loss. OrderCanvas is a trading tool, not investment advice.
+![History](images/history.png)
+![Analytics](images/analysis.png)
 
-© 2026 OrderCanvas · [LICENSE](LICENSE)
+## More
+
+- **Staged take-profit** - up to three extra TP levels per position, each closing its share automatically; kept across terminal restarts
+- **Hotkeys** - Ctrl+Shift+letter for buy, sell, close, break-even, partial close and collapse, with a configurable cooldown
+- **Symbol search** grouped by category and exchange, favourites, keyboard navigation
+- **Chart workflow** - wheel zoom, drag to pan, free vertical scale, candle countdown, dark theme, EMA 20 / ATR 14
+- **Interface** in English or Chinese (follows the terminal by default)
+- **Accounts** - hedging, netting and exchange accounts (netting partial closes use an opposite deal)
+
+<p align="center"><img src="images/symbols.png" width="60%"></p>
+
+## Under the hood
+
+OrderCanvas is written in pure MQL5 - no DLLs, no external services, no network access.
+
+- **Broker-authoritative state.** Chart lines are rebuilt from the terminal's positions and orders after every trade transaction; the panel never keeps a shadow copy that could drift from what the broker holds.
+- **Exact identity for every action.** A modify, close or reverse is bound to the ticket, account, symbol and magic number it was created for; a click that arrives after the book has changed is rejected instead of acting on another order.
+- **Only its own orders.** By default the panel manages orders with its own magic number and leaves other EAs and manual trades alone.
+- **Fast rendering.** The ticket is drawn on a Canvas with dirty-region scheduling; order-line labels are rounded Canvas skins over native click targets. Measured on the EA side: about 1.3 ms per drag frame and 0.5 ms per hover.
+- **DPI-aware.** Text and layout scale with the screen DPI and the interface font is chosen per platform (Microsoft YaHei UI on Windows, PingFang on macOS), so the panel looks the same on a 96-DPI Windows desktop and a Retina Mac.
+- **Safety defaults.** Live accounts show a one-time risk confirmation; close and reverse confirm by default.
+- **Tested.** Unit and contract tests for the domain logic, plus Strategy Tester runs on Windows and macOS across gold, FX, indices and crypto with every tick model - including visual mode.
+
+## Install
+
+Download `OrderCanvas.zip`, unzip it and double-click **`Install.bat`** (Windows) - it installs the program and the recommended chart template into every MetaTrader 5 on the PC. Restart MT5, right-click a chart → *Templates* → **OrderCanvas**, then press **F7** → *Inputs* → `LicenseKey` and paste your key.
+macOS / manual install and screenshots of each step: [docs/INSTALL.md](docs/INSTALL.md).
+
+## License & pricing
+
+| Plan | Price | Accounts |
+|---|---|---|
+| Free trial | 0 · 7 days | 1 |
+| Monthly | 19 USDT | 2 |
+| Yearly | 69 USDT | 2 |
+| Lifetime | 89 USDT | 2, including updates |
+
+Buy on the [website](https://devspace-ntpa.tail545cd.ts.net/oc/shop) or in Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot). Payment is USDT (TRC20); every order has unique cents (e.g. 19.37) so the payment is matched and the key delivered automatically. Keys are bound to the MT5 account number and verified offline. The **Strategy Tester runs every feature without a key** - try it before you buy. Invite a friend and get 15 days for every paid referral.
+
+## Risk notice
+
+Trading foreign exchange, metals and CFDs on margin carries a high level of risk and may not be suitable for all investors. OrderCanvas is a trading tool; it provides no signals and no investment advice. Practise on a demo account first.
+
+© 2026 OrderCanvas. All rights reserved. See [LICENSE](LICENSE).
