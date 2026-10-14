@@ -18,6 +18,8 @@
 2. 双击 `Install.bat`：自动把程序（`OrderCanvas.ex5`）和推荐图表模板（`OrderCanvas.tpl`）装进这台电脑上**所有**的 MT5，并显示装到了哪几个；
 3. 重启 MT5（或在 **导航器 → EA 交易** 上右键 **刷新**）。
 
+便携版 MT5（装在单独文件夹、用 `/portable` 启动的）：在解压目录里打开 PowerShell，运行 `.\install.ps1 -Target D:\你的MT5文件夹`。
+
 **Mac / 手动**
 1. MT5 菜单 **文件 → 打开数据文件夹**；
 2. `OrderCanvas.ex5` 复制到 `MQL5\Experts`，`OrderCanvas.tpl` 复制到 `MQL5\Profiles\Templates`；
@@ -25,11 +27,11 @@
 
 ## 3. 加载并激活
 
-1. 打开任意图表 → 右键 → **模板 → OrderCanvas**：自动加载面板和推荐配色（也可以直接把 OrderCanvas 从导航器拖到图表）；
+1. 打开任意图表 → 右键 → **模板 → OrderCanvas**：一次加载面板、推荐配色、EMA 20 和 ATR 14 副图（也可以直接把 OrderCanvas 从导航器拖到图表）；
 2. 勾选 **允许算法交易**，并确认 MT5 工具栏的「算法交易」按钮是绿色；
 3. 按 **F7 → 输入参数**，在 `LicenseKey` 里粘贴授权码，点确定。
 
-模板只是起点：配色、周期、指标都可以随意改，改完右键 → 模板 → 保存模板即可。面板默认每次加载会套用深色配色，想完全用自己的配色，把输入参数 `MatchTradingViewChartStyle` 设为 `false`。
+模板只是起点：配色、周期、指标都可以随意改，改完右键 → 模板 → 保存模板即可。ATR 副图可以拖动分隔线调高度，不需要时直接删掉，之后不会再自动加回来。面板默认每次加载会套用深色配色，想完全用自己的配色，把输入参数 `MatchTradingViewChartStyle` 设为 `false`。
 
 激活成功后面板立即出现。同一台电脑上输入一次后会自动记住，其他图表和重启 MT5 都不用再输。
 
@@ -48,4 +50,4 @@
 
 1. Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot): `/start` → choose a plan → send your MT5 account number → pay the USDT (TRC20) amount shown (2 decimals; the cents identify your order) → key and `OrderCanvas.zip` arrive automatically. `/mykeys` shows your current keys.
 2. Unzip `OrderCanvas.zip` and double-click `Install.bat` (Windows) - or copy `OrderCanvas.ex5` to `MQL5\Experts` and `OrderCanvas.tpl` to `MQL5\Profiles\Templates` (Mac / manual).
-3. Restart MT5, right-click a chart → Templates → OrderCanvas, allow algo trading, F7 → Inputs → `LicenseKey`, paste, OK. Each computer asks only once.
+3. Restart MT5, right-click a chart → Templates → OrderCanvas (panel, colours, EMA 20 and a resizable ATR 14 pane; a portable MT5 installs with `install.ps1 -Target <folder>`), allow algo trading, F7 → Inputs → `LicenseKey`, paste, OK. Each computer asks only once.
