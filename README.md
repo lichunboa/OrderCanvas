@@ -91,7 +91,7 @@ The package contains the program, the recommended chart template and a one-click
 
 ## Install
 
-Download `OrderCanvas.zip`, unzip it and double-click **`Install.bat`** (Windows) - it installs the program and the recommended chart template into every MetaTrader 5 on the PC. Restart MT5, right-click a chart → *Templates* → **OrderCanvas**, then press **F7** → *Inputs* → `LicenseKey` and paste your key.
+Download `OrderCanvas.zip`, unzip it and double-click **`Install.bat`** (Windows) - it installs the program and the recommended chart template into every MetaTrader 5 on the PC. Restart MT5, right-click a chart → *Templates* → **OrderCanvas**, then paste your key into the license card on the chart and click **Activate** (or F7 → *Inputs* → `LicenseKey`).
 macOS / manual install and screenshots of each step: [docs/INSTALL.md](docs/INSTALL.md).
 
 ## License & pricing
