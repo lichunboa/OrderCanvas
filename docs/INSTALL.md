@@ -6,22 +6,30 @@
 
 1. 发送 `/start`，选择 **免费试用** 或付费方案；
 2. 发送你的 **MT5 账户号码**（纯数字，在 MT5 窗口标题栏或「导航器 → 账户」里能看到）；
-3. 付费方案按提示转账 **精确金额** 的 USDT（**TRC20** 网络），到账后自动收到授权码和 `OrderCanvas.ex5`；
+3. 付费方案按页面金额转 USDT（**TRC20** 网络，两位小数，例如 19.37；小数尾数用来自动识别订单，交易所扣了整数手续费也能识别），到账后自动收到授权码和安装包 `OrderCanvas.zip`；
 4. 随时发送 `/mykeys` 取回最新授权码（续期后授权码会更新）。
 
 > 一个授权最多绑定 2 个 MT5 账户（如模拟 + 真实）；每个账户各要一个授权码，可以用逗号分隔一起粘贴。
 
 ## 2. 安装
 
-1. 打开 MT5，菜单 **文件 → 打开数据文件夹**；
-2. 进入 `MQL5\Experts`，把 `OrderCanvas.ex5` 复制进去；
-3. 回到 MT5，在 **导航器 → EA 交易** 上右键 **刷新**，就能看到 OrderCanvas。
+**Windows（推荐，一键）**
+1. 解压 `OrderCanvas.zip`；
+2. 双击 `Install.bat`：自动把程序（`OrderCanvas.ex5`）和推荐图表模板（`OrderCanvas.tpl`）装进这台电脑上**所有**的 MT5，并显示装到了哪几个；
+3. 重启 MT5（或在 **导航器 → EA 交易** 上右键 **刷新**）。
+
+**Mac / 手动**
+1. MT5 菜单 **文件 → 打开数据文件夹**；
+2. `OrderCanvas.ex5` 复制到 `MQL5\Experts`，`OrderCanvas.tpl` 复制到 `MQL5\Profiles\Templates`；
+3. 重启 MT5。
 
 ## 3. 加载并激活
 
-1. 把 OrderCanvas 拖到任意图表（推荐 XAUUSD / EURUSD 等常用品种）；
-2. 在弹出的窗口里勾选 **允许算法交易**；
-3. 切到 **输入参数**，在 `LicenseKey` 里粘贴授权码，点确定。
+1. 打开任意图表 → 右键 → **模板 → OrderCanvas**：自动加载面板和推荐配色（也可以直接把 OrderCanvas 从导航器拖到图表）；
+2. 勾选 **允许算法交易**，并确认 MT5 工具栏的「算法交易」按钮是绿色；
+3. 按 **F7 → 输入参数**，在 `LicenseKey` 里粘贴授权码，点确定。
+
+模板只是起点：配色、周期、指标都可以随意改，改完右键 → 模板 → 保存模板即可。面板默认每次加载会套用深色配色，想完全用自己的配色，把输入参数 `MatchTradingViewChartStyle` 设为 `false`。
 
 激活成功后面板立即出现。同一台电脑上输入一次后会自动记住，其他图表和重启 MT5 都不用再输。
 
@@ -38,6 +46,6 @@
 
 ## English
 
-1. Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot): `/start` → choose a plan → send your MT5 account number → pay the exact USDT (TRC20) amount → key and `OrderCanvas.ex5` arrive automatically. `/mykeys` shows your current keys.
-2. MT5 **File → Open Data Folder → MQL5\Experts**, copy `OrderCanvas.ex5`, refresh the Navigator.
-3. Drag OrderCanvas onto a chart, allow algo trading, **Inputs → LicenseKey**, paste, OK. Each computer asks only once.
+1. Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot): `/start` → choose a plan → send your MT5 account number → pay the USDT (TRC20) amount shown (2 decimals; the cents identify your order) → key and `OrderCanvas.zip` arrive automatically. `/mykeys` shows your current keys.
+2. Unzip `OrderCanvas.zip` and double-click `Install.bat` (Windows) - or copy `OrderCanvas.ex5` to `MQL5\Experts` and `OrderCanvas.tpl` to `MQL5\Profiles\Templates` (Mac / manual).
+3. Restart MT5, right-click a chart → Templates → OrderCanvas, allow algo trading, F7 → Inputs → `LicenseKey`, paste, OK. Each computer asks only once.
