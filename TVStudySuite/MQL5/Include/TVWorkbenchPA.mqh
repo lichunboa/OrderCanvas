@@ -13,7 +13,7 @@ input bool PA_BodyExceptWick=true;
 input int PA_ChartEMALength=20;
 input int PA_ThirdEMALength=260;
 input ENUM_TIMEFRAMES PA_ThirdEMATimeframe=PERIOD_M5;
-input bool PA_PreviousValues=true; // Current Owner: D1 low / high / low, chart based, all.
+input bool PA_PreviousValues=false; // Current Owner: D1 low / high / low, chart based, all.
 input bool PA_UseOO=true;
 input bool PA_UseII=true;
 input bool PA_UseIOI=true;
@@ -87,7 +87,7 @@ double PA_SourceValue(const datetime t,const double c,const bool realtime)
  return index>0?PA_sourceEMA[index-1]+2.0/(PA_ThirdEMALength+1)*(c-PA_sourceEMA[index-1]):EMPTY_VALUE;
 }
 void PA_Notify(const datetime t,const string event)
-{string message=_Symbol+" "+EnumToString(_Period)+" "+TimeToString(t)+" PAIO: "+event;Alert(message);if(PA_AlertNotifications)SendNotification(message);}
+{string message=_Symbol+" "+EnumToString(_Period)+" "+TimeToString(t)+" PAIO: "+event;StudyToast(message);if(PA_AlertNotifications)SendNotification(message);}
 int PA_Init()
 {
  if(PA_ChartEMALength<1 || PA_ThirdEMALength<1 || PA_RetainedBars<10 || PA_ChartEMAWidth<1 || PA_ChartEMAWidth>5 || PA_ThirdEMAWidth<1 || PA_ThirdEMAWidth>5 || PA_PVHighWidth<1 || PA_PVHighWidth>5 || PA_PVLowWidth<1 || PA_PVLowWidth>5)return INIT_PARAMETERS_INCORRECT;

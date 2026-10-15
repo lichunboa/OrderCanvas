@@ -124,7 +124,7 @@ Features traders usually compare when choosing an MT5 trade panel, and where Ord
 | ATR trailing stop | ✅ closed bars, tighten only |
 | Partial close / staged take-profit | ✅ 25-75 %, up to 3 extra TP levels |
 | One-click trading, close symbol / close all | ✅ |
-| Hotkeys, single-key buy / sell, set entry / SL / TP at the mouse price | ✅ typed bindings with an on-chart receipt |
+| Hotkeys, single-key buy / sell, click-to-place orders and stops at the mouse | ✅ typed bindings, follow-the-pointer mode, on-chart receipt |
 | Max spread / max risk per trade | ✅ |
 | Pending orders with expiry, order presets | ✅ GTC / day / date, 5 presets |
 | Trade history and performance analytics in the chart | ✅ |
@@ -134,7 +134,8 @@ Features traders usually compare when choosing an MT5 trade panel, and where Ord
 ## More
 
 - **Staged take-profit** - up to three extra TP levels per position, each closing its share automatically; kept across terminal restarts
-- **Hotkeys** - type any key or combination (B, Shift+S, Ctrl+Shift+X, F2) for buy, sell, close, break-even, partial close, collapse, set entry / SL / TP at the mouse price and switch market / limit / stop; every press shows a short receipt on the chart; off by default, configurable cooldown
+- **Hotkeys** - type any key or combination (B, Shift+S, Ctrl+Shift+X, F2): buy / sell at market, close, break-even, partial close, collapse; **follow the pointer** - Shift+B / Shift+S place a Buy / Sell where you click (Limit or Stop by position), Shift+L / Shift+P move the stop loss / take profit with the mouse; Shift+T cycles the order type. Every press shows a short receipt; the toolbar switch turns them on / off (off by default)
+- **Price box** at the right end of each order line: click to type a price, drag to move the line
 - **Symbol search** grouped by category and exchange, favourites, keyboard navigation
 - **Chart workflow** - wheel zoom, drag to pan, free vertical scale, candle countdown, dark theme, EMA 20 / ATR 14, a visible chart-shift handle on dark grids
 - **Interface** in English or Chinese (follows the terminal by default)

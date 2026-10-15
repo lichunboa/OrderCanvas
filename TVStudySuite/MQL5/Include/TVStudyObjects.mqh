@@ -93,6 +93,57 @@ void StudyPrune(const string studyNamespace,const datetime oldest)
  bool removed=false;for(int i=ArraySize(studyKeys)-1;i>=0;i--)if(StringFind(studyKeys[i],studyNamespace)==0 && studyTimes[i]<oldest){ObjectDelete(0,studyKeys[i]);ArrayRemove(studyKeys,i,1);ArrayRemove(studyTimes,i,1);ArrayRemove(studyPaint,i,1);removed=true;}
  if(removed)StudyReindex();
 }
+// Owner 2026-10-15: signal alerts appear as a small toast in the chart's top-right
+// corner (sound + journal line kept) instead of MetaTrader's Alert window, which
+// takes the focus and covers the chart while trading. Toasts expire after 12 s.
+#ifdef TV_STUDY_HOST_TEST
+#ifndef STUDY_TOAST_HOST_SINK
+#define STUDY_TOAST_HOST_SINK(m)
+#endif
+void StudyToast(const string message){STUDY_TOAST_HOST_SINK(message);}
+void StudyToastTick(){}
+void StudyToastClear(){}
+#else
+#define STUDY_TOAST_MAX 3
+string studyToastText[STUDY_TOAST_MAX];ulong studyToastUntil[STUDY_TOAST_MAX];bool studyToastMade[STUDY_TOAST_MAX];
+string StudyToastName(const int i){return "TVST_TOAST_"+IntegerToString(i);}
+void StudyToastPaint()
+{
+ const double k=MathMax(1.0,TerminalInfoInteger(TERMINAL_SCREEN_DPI)/96.0);
+ const int w=(int)MathRound(330*k),h=(int)MathRound(30*k),gap=(int)MathRound(6*k);
+ for(int i=0;i<STUDY_TOAST_MAX;i++)
+ {
+  const string n=StudyToastName(i);
+  if(studyToastText[i]==""){if(studyToastMade[i]){ObjectDelete(0,n);studyToastMade[i]=false;}continue;}
+  if(!studyToastMade[i])
+  {
+   studyToastMade[i]=ObjectCreate(0,n,OBJ_EDIT,0,0,0);if(!studyToastMade[i])continue;
+   ObjectSetInteger(0,n,OBJPROP_CORNER,CORNER_RIGHT_UPPER);ObjectSetInteger(0,n,OBJPROP_READONLY,true);
+   ObjectSetInteger(0,n,OBJPROP_SELECTABLE,false);ObjectSetInteger(0,n,OBJPROP_HIDDEN,true);ObjectSetInteger(0,n,OBJPROP_ZORDER,90);
+   ObjectSetInteger(0,n,OBJPROP_BGCOLOR,C'30,34,45');ObjectSetInteger(0,n,OBJPROP_BORDER_COLOR,C'41,98,255');ObjectSetInteger(0,n,OBJPROP_COLOR,C'219,219,219');
+   ObjectSetInteger(0,n,OBJPROP_FONTSIZE,9);ObjectSetString(0,n,OBJPROP_FONT,"Microsoft YaHei UI");ObjectSetInteger(0,n,OBJPROP_ALIGN,ALIGN_LEFT);
+   ObjectSetInteger(0,n,OBJPROP_XSIZE,w);ObjectSetInteger(0,n,OBJPROP_YSIZE,h);ObjectSetInteger(0,n,OBJPROP_XDISTANCE,w+(int)MathRound(10*k));
+  }
+  ObjectSetInteger(0,n,OBJPROP_YDISTANCE,(int)MathRound(36*k)+i*(h+gap));
+  ObjectSetString(0,n,OBJPROP_TEXT," "+studyToastText[i]);ObjectSetString(0,n,OBJPROP_TOOLTIP,studyToastText[i]);
+ }
+ ChartRedraw();
+}
+void StudyToast(const string message)
+{
+ Print("[ALERT] ",message);PlaySound("alert.wav");
+ for(int i=STUDY_TOAST_MAX-1;i>0;i--){studyToastText[i]=studyToastText[i-1];studyToastUntil[i]=studyToastUntil[i-1];}
+ studyToastText[0]=message;studyToastUntil[0]=GetTickCount64()+12000;StudyToastPaint();
+}
+void StudyToastTick()
+{
+ const ulong now=GetTickCount64();bool changed=false;
+ for(int i=STUDY_TOAST_MAX-1;i>=0;i--)if(studyToastText[i]!="" && now>=studyToastUntil[i])
+ {for(int j=i;j<STUDY_TOAST_MAX-1;j++){studyToastText[j]=studyToastText[j+1];studyToastUntil[j]=studyToastUntil[j+1];}studyToastText[STUDY_TOAST_MAX-1]="";changed=true;}
+ if(changed)StudyToastPaint();
+}
+void StudyToastClear(){for(int i=0;i<STUDY_TOAST_MAX;i++){studyToastText[i]="";if(studyToastMade[i])ObjectDelete(0,StudyToastName(i));studyToastMade[i]=false;}}
+#endif
 color StudyBlend(const color ink,const double opacity)
 {return (color)((int)(((int)ink&255)*opacity+15*(1-opacity))|((int)((((int)ink>>8)&255)*opacity+15*(1-opacity))<<8)|((int)((((int)ink>>16)&255)*opacity+15*(1-opacity))<<16));}
 #endif

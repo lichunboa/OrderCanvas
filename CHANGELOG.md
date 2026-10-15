@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.6 — 2026-10-15
+- **Follow the pointer (hotkeys)**: `Shift+B` / `Shift+S` - a Buy / Sell order follows the mouse (Limit on the favourable side of the price, Stop beyond) and a click on the chart places it with the ticket's size and exits. `Shift+L` / `Shift+P` - the stop loss / take profit follows the mouse; with no draft they act on the newest position or pending order of this symbol and Magic, and the click modifies it. `Shift+E` moves the draft entry. Esc or the same key cancels; nothing is sent before the click.
+- **Order type cycle**: `Shift+T` steps through the order types ticked in Settings → Hotkeys (Market / Limit / Stop by default; Stop Limit optional). `Ctrl+Alt+L / P / M` still pick one directly.
+- **Price box on order lines**: click it to type a price (Enter applies, Esc cancels); press and drag it to move the line - dragging no longer activates an input box. Live orders go through the same review card as a drag.
+- **Hotkeys switch in the toolbar**: 「快捷键 开 / 关」 sits in the toolbar strip next to 「交易面板」; its tooltip lists every binding.
+- **Ticket on the left**: the docked ticket opens at the top-left under the toolbar, so the latest bars and the price scale stay visible (drag it anywhere; double-click the header to dock it again).
+- **Signal alerts no longer pop up a window**: workbench alerts (patterns, H1/H2/L1/L2) appear as a small note in the chart's top-right corner with the alert sound; license reminders show in the toolbar badge instead of a popup.
+- **Settings dialog**: centred on the chart and movable by its title; larger, higher-contrast text.
+- Language: switching between Auto / 中文 / English in the settings now takes effect at once.
+- One EMA on the chart: the plain MA(20) is removed when the workbench draws its (blue) chart EMA.
+- Previous-day high/low lines are off by default (also once for existing settings); turn them on in Settings → General.
+- Hotkeys from versions before 1.0.4 that were saved as "none" now get the current defaults once.
+
 ## 1.0.5 — 2026-10-15
 - **Auto protection (off by default, Settings → Trading)**: auto break-even when a position reaches +0.5R / +1R / +1.5R / +2R (fees included; R = the stop distance at opening, kept across terminal restarts), then optional **ATR trailing** on closed bars (ATR(14) × 1.0-3.0, tighten only). Only positions with this panel's Magic number.
 - **Risk caps (off by default)**: max spread per symbol (ticks) and max risk per trade (% of equity). When a cap is exceeded the submit button explains why and nothing is sent. The submit button also shows the trade's risk in money and %.

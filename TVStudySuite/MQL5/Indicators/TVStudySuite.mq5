@@ -2,7 +2,7 @@
 // Unified native workbench. Original module attribution: Indicators/THIRD_PARTY.md.
 #property strict
 #property copyright "Price Action Workbench; MPL-2.0 source acknowledgements in THIRD_PARTY.md"
-#property version "1.05" // = OrderCanvas OC_VERSION 1.0.5
+#property version "1.06" // = OrderCanvas OC_VERSION 1.0.6
 #property indicator_chart_window
 #property indicator_buffers 6
 #property indicator_plots 5
@@ -53,11 +53,13 @@ int OnInit()
  const string prefixes[]={PA_prefix,BC_prefix,SE_prefix};const string roots[]={"TVST_PAIO_","TVST_BC_","TVST_SE_"};
  for(int i=0;i<3;i++)GlobalVariableSet("TVST.Workbench.Active."+IntegerToString(ChartID())+"."+IntegerToString(i),(double)StringToInteger(StringSubstr(prefixes[i],StringLen(roots[i]))));
  IndicatorSetString(INDICATOR_SHORTNAME,TV_WORKBENCH_NAME);
+ EventSetTimer(1); // expires signal toasts (StudyToastTick)
  PlotIndexSetInteger(0,PLOT_DRAW_TYPE,EnablePriceAction && PA_ShowChartEMA?DRAW_LINE:DRAW_NONE);
  PlotIndexSetInteger(1,PLOT_DRAW_TYPE,EnablePriceAction && PA_ShowThirdEMA?DRAW_LINE:DRAW_NONE);
  return INIT_SUCCEEDED;
 }
-void OnDeinit(const int reason){PrintFormat("[STUDY_CACHE] commands=%I64u skipped=%I64u",studyCacheCommands,studyCacheSkips);PA_Deinit(reason);BC_Deinit(reason);SE_Deinit(reason);StudyReset();}
+void OnTimer(){StudyToastTick();}
+void OnDeinit(const int reason){EventKillTimer();StudyToastClear();PrintFormat("[STUDY_CACHE] commands=%I64u skipped=%I64u",studyCacheCommands,studyCacheSkips);PA_Deinit(reason);BC_Deinit(reason);SE_Deinit(reason);StudyReset();}
 void EmptyModuleBuffer(double &buffer[],const int n,const int prev)
 {for(int i=prev>0 && prev<=n?MathMax(0,prev-1):0;i<n;i++)buffer[i]=EMPTY_VALUE;}
 int OnCalculate(const int n,const int prev,const datetime &time[],const double &open[],const double &high[],const double &low[],const double &close[],const long &tick_volume[],const long &volume[],const int &spread[])

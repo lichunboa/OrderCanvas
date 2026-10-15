@@ -45,7 +45,8 @@ OrderCanvas is a chart-trading panel for MetaTrader 5 (an Expert Advisor in the 
 
 | Feature | Details |
 |---|---|
-| Hotkeys | Typed in the settings - single keys (`B`, `S`) or combinations (`Shift+S`, `Ctrl+Shift+X`, `F2`): buy, sell, close, break-even, partial close, collapse; set the draft entry / SL / TP at the mouse price (`Shift+E` / `Shift+S` / `Shift+P`); switch to limit / stop / market (`Ctrl+Alt+L` / `P` / `M`); each press shows a receipt on the chart; off by default (defaults as listed once enabled); bindings apply to every chart of the terminal; works with Chinese / Japanese / Korean input methods; cooldown 0–5000 ms |
+| Hotkeys | Typed in the settings - single keys (`B`, `S`) or combinations (`Shift+S`, `Ctrl+Shift+X`, `F2`): buy, sell, close, break-even, partial close, collapse; **follow the pointer**: `Shift+B` / `Shift+S` place a Buy / Sell where you click (Limit or Stop by position), `Shift+L` / `Shift+P` move the stop loss / take profit (draft, or the newest position / order), `Shift+E` the draft entry; `Shift+T` cycles the ticked order types, `Ctrl+Alt+L` / `P` / `M` pick one; each press shows a receipt; toolbar switch (off by default) with the bindings in its tooltip; works with Chinese / Japanese / Korean input methods; cooldown 0–5000 ms |
+| Price box | Right end of each order line: click to type a price (Enter / Esc), drag to move the line |
 | Close all | Closes this symbol's positions with the panel's magic number; pending orders are kept |
 
 ## 5. Chart and symbols
