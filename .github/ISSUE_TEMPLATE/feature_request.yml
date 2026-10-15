@@ -1,0 +1,31 @@
+name: Improvement proposal / 改进建议
+description: Propose a focused change to an explicitly open-source module or its documentation
+title: "[Enhancement] "
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Component
+      options:
+        - OpenUtilities
+        - TVStudySuite
+        - Documentation and examples
+        - Test coverage and community tooling
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Which problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Proposed behavior and API
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: References, licenses and tests (optional)
