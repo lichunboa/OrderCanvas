@@ -7,7 +7,7 @@ OrderCanvas 采用 **开源基础模块 + 商业闭源交易面板** 的模式�
 | 组成部分 | 许可证 | 当前公开内容 |
 |---|---|---|
 | `TVStudySuite/` 价格行为指标工作台 | **MPL-2.0** | 已开放移植后的源代码和许可、原作者致谢；基于第三方开源 TradingView 指标 |
-| `OpenUtilities/` 通用工具 | **MIT** | 第一批开放预算换算手数、K 线倒计时及对应测试 |
+| `OpenUtilities/` 通用工具 | **MIT** | 已开放预算换算手数、K 线倒计时、有效期日历、垂直区域重叠判断及对应测试 |
 | `OrderCanvas.ex5` 商业面板、下单 UI、订单线、交易执行、授权校验 | **专有商业许可** | 仅发布编译成品，不开放这些模块的商业源代码 |
 | 未另行授权的截图及文档 | 参见仓库根 [LICENSE](../LICENSE) | 可公开浏览，但不自动等于 MIT/MPL |
 
@@ -15,7 +15,7 @@ OrderCanvas 采用 **开源基础模块 + 商业闭源交易面板** 的模式�
 
 TVStudySuite 移植了三个第三方开源指标：Price Action All In One、Al Brooks Second Entry、Al Brooks - Bar Count。具体作者、原始链接及说明见 [TVStudySuite/NOTICE.md](../TVStudySuite/NOTICE.md)。原作者对自己的创作保留著作权；OrderCanvas 对合法独立创作与改编的部分拥有相应权利。我们不是 TradingView、MetaQuotes 或原作者的官方产品。
 
-`OpenUtilities/` 则是从我们自己的 MQL5 项目中单独整理的、能脱离商业面板使用的小型基础函数；不包含商业交易执行和授权代码。
+`OpenUtilities/` 则是从我们自己的 MQL5 项目中单独整理的、能脱离商业面板使用的小型基础函数；不包含商业交易执行和授权代码。第二批仅开放日历／能力位校验和区域重叠判断；与之相邻的挂单提交逻辑及专有面板布局算法仍不公开。
 
 ## 商业使用与知识产权
 
