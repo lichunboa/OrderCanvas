@@ -26,7 +26,7 @@
 |---|---|
 | **安装并使用交易面板** | [功能介绍](docs/FEATURES.zh-CN.md) · [安装说明](docs/INSTALL.md) · [发布版本](https://github.com/lichunboa/OrderCanvas/releases) |
 | **学习或复用开源代码** | [开发者入门](docs/DEVELOPERS.zh-CN.md) · [MIT 基础工具](OpenUtilities/) · [MPL 指标源码](TVStudySuite/) |
-| **参与开发或反馈问题** | [仓库结构](docs/PROJECT_STRUCTURE.md) · [贡献指南](CONTRIBUTING.md) · [问题反馈](https://github.com/lichunboa/OrderCanvas/issues) · [安全报告](SECURITY.md) |
+| **参与开发或反馈问题** | [仓库结构](docs/PROJECT_STRUCTURE.md) · [贡献指南](CONTRIBUTING.md) · [问题反馈](https://github.com/lichunboa/OrderCanvas/issues) · [安全报告](SECURITY.md) · [社区与支持分流](docs/COMMUNITY.zh-CN.md) |
 
 **这是混合授权仓库：**核心 UI、交易执行和授权系统仍为闭源。[开源与商业许可说明](docs/OPEN_SOURCE.zh-CN.md)。
 
