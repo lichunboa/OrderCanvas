@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.7 — 2026-10-15
+- **Sharper text**: the ticket, the order panel (positions, orders, history, account, analytics), the settings dialog, the symbol search and the hotkey notes now draw their text with Windows' own ClearType renderer. The canvas renderer MetaTrader gives programs only does grey, unhinted smoothing, which is why small Chinese text looked soft; small text is also a little larger.
+- **Saving settings is fast again**: on macOS (Wine) a save could take ~10 s on a chart with many workbench drawings; it no longer scans every chart object (≈20 ms).
+- Fixed: after a terminal restart the chart could open at the oldest loaded bar instead of the latest one. The chart now follows new bars while the newest bar is in view - also after you drag back to the present, as on TradingView.
+- Order panel: text columns no longer touch the number column before them.
+
 ## 1.0.6 — 2026-10-15
 - **Follow the pointer (hotkeys)**: `Shift+B` / `Shift+S` - a Buy / Sell order follows the mouse (Limit on the favourable side of the price, Stop beyond) and a click on the chart places it with the ticket's size and exits. `Shift+L` / `Shift+P` - the stop loss / take profit follows the mouse; with no draft they act on the newest position or pending order of this symbol and Magic, and the click modifies it. `Shift+E` moves the draft entry. Esc or the same key cancels; nothing is sent before the click.
 - **Order type cycle**: `Shift+T` steps through the order types ticked in Settings → Hotkeys (Market / Limit / Stop by default; Stop Limit optional). `Ctrl+Alt+L / P / M` still pick one directly.
