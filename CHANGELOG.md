@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.4 — 2026-10-15
+- **Price-action workbench built in**: the TVStudySuite modules (moving averages & patterns, bar count, entry signals) now ship with OrderCanvas on every build, with their settings pages under *Settings → page selector*. The workbench is open source (MPL-2.0); its full source, license and notices are in the package (`TVStudySuite-source`) and in this repository (`TVStudySuite/`).
+- **Analytics redesigned** in a strategy-report style: KPI strip, larger equity + drawdown chart with axes and a hover card per trade, and chart cards - profit structure, win / loss donut, P&L distribution, long vs short, by weekday, holding time and close hour - followed by the performance / risk / symbol tables.
+- **Hotkeys are typed**: enter `B`, `Shift+S`, `Ctrl+Shift+X`, `F2`... Single letters are allowed. Defaults: Buy `B`, Sell `S`, Close `X`, Break-even `E`, Partial close `H`, Collapse ticket `T`; hotkeys are **off by default** (Panel settings → Hotkeys). Works with Chinese / Japanese / Korean input methods active. A single-letter binding turns off MetaTrader's type-to-switch-symbol box on that chart.
+- **Panel settings**: the page selector is a real button next to the title (all builds).
+- **License card**: an expired / other-account key keeps showing why it was refused; the toolbar shows the days left as whole days with the end date (a 30-day key shows 30).
+- Fixed: after closing the ticket with ×, 「交易面板 / Ticket」 could not reopen it.
+- Fixed (macOS): the order panel again reaches the price scale.
+- The chart-shift handle (the small triangle at the top of the chart) stays visible with a dark grid.
+- License badge moved into the toolbar row (the ticket no longer hides it).
+- One version everywhere: EA properties, panel, license card and the indicator show 1.0.4 / 1.04.
+- Template follows the author's current chart (zoom, tick volume, right margin, ATR pane height). Installer README: activate in the license card.
+
 ## 1.0.3 — 2026-10-15
 - **Activate in the chart**: paste the key into the license card and click Activate - no F7 needed. The account number can be selected and copied; the top-right corner shows the days left (or "lifetime").
 - **Analytics** is one scrolling page: overview, equity curve, metrics, risk and groups with larger rows.

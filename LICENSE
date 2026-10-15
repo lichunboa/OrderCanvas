@@ -7,6 +7,11 @@ licensee a non-exclusive, non-transferable right to use the program on the MetaT
 accounts named in the key, for the licensed period. Redistribution, resale, reverse engineering,
 decompilation or circumvention of the license check are not permitted.
 
+Exception - open-source components: the TVStudySuite price-action workbench (the files in the
+TVStudySuite/ folder, the bundled TVStudySuite.ex5 and the copy embedded in OrderCanvas.ex5) is
+licensed under the Mozilla Public License 2.0, not under this license. See TVStudySuite/NOTICE.md
+and TVStudySuite/LICENSE-MPL-2.0.txt. Nothing in this license restricts your rights under the MPL.
+
 The documentation and images in this repository may be shared unmodified with attribution.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. TRADING LEVERAGED PRODUCTS INVOLVES

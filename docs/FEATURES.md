@@ -36,14 +36,14 @@ OrderCanvas is a chart-trading panel for MetaTrader 5 (an Expert Advisor in the 
 |---|---|
 | In-panel editing | Click an order line to edit SL, TP, break-even and quantity (less = partial close, more = add with the same protection) |
 | Staged take-profit | Up to 3 extra TP levels per position with their own share; executed by the EA, kept across restarts, shown as dashed lines with × |
-| Order panel | Positions / Orders / History / Account / Analytics; sort by symbol, time, P&L; totals; history today / 7 / 30 days; resizable, **maximise** with the header button or a double-click (Analytics then shows overview, curve, metrics, risk and groups on one screen); collapsed header keeps balance / equity / floating / free margin; stays when the ticket is hidden; close all for this symbol or all symbols; hover highlights the lines |
-| Analytics | Net P&L, win rate, profit factor, average win / loss, maximum drawdown, equity curve |
+| Order panel | Positions / Orders / History / Account / Analytics; sort by symbol, time, P&L; totals; history today / 7 / 30 days; resizable, **maximise** with the header button or a double-click (Analytics then uses the whole chart); collapsed header keeps balance / equity / floating / free margin; stays when the ticket is hidden; close all for this symbol or all symbols; hover highlights the lines |
+| Analytics | Strategy-report layout: KPI strip (net P&L, max drawdown, trades, win rate, profit factor, costs); equity + drawdown chart with a hover card per trade; profit structure, win / loss donut, P&L distribution, long vs short, by weekday, holding time and close hour; performance (all / long / short), risk and per-symbol tables; today / 7 / 30 days / all, this symbol or all |
 
 ## 4. Shortcuts
 
 | Feature | Details |
 |---|---|
-| Hotkeys | Ctrl+Shift+letter: buy, sell, close, break-even, partial close, collapse; each bindable; global switch; cooldown 0–5000 ms |
+| Hotkeys | Typed in the settings - single keys (`B`, `S`) or combinations (`Shift+S`, `Ctrl+Shift+X`, `F2`): buy, sell, close, break-even, partial close, collapse; off by default (defaults B / S / X / E / H / T once enabled); works with Chinese / Japanese / Korean input methods; cooldown 0–5000 ms |
 | Close all | Closes this symbol's positions with the panel's magic number; pending orders are kept |
 
 ## 5. Chart and symbols
@@ -53,6 +53,7 @@ OrderCanvas is a chart-trading panel for MetaTrader 5 (an Expert Advisor in the 
 | Symbol search | Grouped by category and exchange, favourites, keyboard navigation; exact > prefix > contains > description ranking |
 | Chart workflow | Wheel zoom, drag to pan, free vertical scale, dark style, candle countdown |
 | Indicators | EMA 20, ATR 14 (built-in MT5 indicators, can be switched off) |
+| Price-action workbench | Built-in **TVStudySuite**: moving averages & patterns (gaps, inside/outside bars, previous-day high / low / close), bar count, H1/H2/L1/L2 entry signals; each module and style set in *Settings → page selector*. Open source (MPL-2.0) - source in [`TVStudySuite/`](../TVStudySuite) |
 
 ## 6. Safety and compatibility
 

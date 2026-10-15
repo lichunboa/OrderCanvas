@@ -4,7 +4,13 @@
 
 **MetaTrader 5 现代化图表交易面板**
 
-先在图上预览订单再发送 · 拖动订单线改价 · 持仓线一键保本 / 部分平仓 / 反手 · 内置交易分析
+先在图上预览订单再发送 · 拖动订单线改价 · 持仓线一键保本 / 部分平仓 / 反手 · 策略报告式交易分析 · 内置开源价格行为工作台
+
+[![Release](https://img.shields.io/github/v/release/lichunboa/OrderCanvas?label=release)](https://github.com/lichunboa/OrderCanvas/releases/latest)
+![Platform](https://img.shields.io/badge/MetaTrader-5-1f6feb)
+![OS](https://img.shields.io/badge/Windows%20%7C%20macOS-supported-555)
+![No DLL](https://img.shields.io/badge/DLL-none-2ea44f)
+[![Workbench](https://img.shields.io/badge/workbench-MPL--2.0-orange)](TVStudySuite)
 
 [English](README.md) · **中文**
 
@@ -13,6 +19,12 @@
 </div>
 
 ![OrderCanvas](images/panel.png)
+
+## 三步上手
+
+1. **[下载 `OrderCanvas.zip`](https://github.com/lichunboa/OrderCanvas/releases/latest)**，解压后双击 **`Install.bat`**。
+2. 重启 MT5，图表右键 → 模板 → **OrderCanvas**，打开「算法交易」。
+3. 在图表上的授权卡片里粘贴授权码，点 **激活**；也可以先在**策略测试器里免授权**体验全部功能。
 
 ## 为什么做 OrderCanvas
 
@@ -24,7 +36,14 @@ MT5 执行很稳，但手动下单和管理很慢：每次下单都弹窗、手�
 | 右键 → 修改 → 填数字 | **直接拖动订单线**，从订单线拉出新的止盈 / 止损 |
 | 保本、平一半要心算 | 持仓线上 **保 / 半 / 反 / ×** 一点即成 |
 | 手一抖下错单 | **下单前预览**，确认框就在鼠标旁边 |
-| 分析盈亏要导出报告 | **分析页**：净盈亏、胜率、利润因子、回撤、资金曲线 |
+| 分析盈亏要导出报告 | **分析页**：关键指标、资金曲线 + 回撤、盈亏分布、胜负、多空、按时段和星期的图表 |
+| 价格行为指标要另外找 | **内置工作台**：缺口、内包/外包、昨日高低点、K线计数、H1/H2/L1/L2 信号 |
+
+大多数 MT5 交易面板都能拖线、按止损算手数，OrderCanvas 也能；不同在那些一出错就亏钱的细节：
+
+- **确认前什么都不发。** 草稿先画在图上、可以拖，误点不会成交。
+- **每个操作都绑定它创建时的那张单**（订单号、账户、品种、魔术号）；单子变了就拒绝执行，不会打到别的单上。
+- **分析就在下单的地方**：可停靠的订单面板，历史 + 完整的策略报告式分析页，不用导出 HTML 报告。
 
 ## 核心功能
 
@@ -55,15 +74,26 @@ MT5 执行很稳，但手动下单和管理很慢：每次下单都弹窗、手�
 标题栏打开「一键交易」，卖价 / 买价变成直接成交按钮，底部按钮变为本品种「一键平仓」（上右图）。
 
 ### 5. 订单面板 + 交易分析
-图表下方的面板：**持仓 / 订单 / 历史 / 账户 / 分析**。历史含开平仓时间、持仓时长、手续费、库存费和净盈亏；分析页一屏看完净盈亏、胜率、利润因子、平均盈亏、最大回撤和资金曲线。悬停某行，图上对应订单线高亮。
+图表下方的面板：**持仓 / 订单 / 历史 / 账户 / 分析**。历史含开平仓时间、持仓时长、手续费、库存费和净盈亏，悬停某行图上对应订单线高亮。**分析页**像一份策略报告：顶部关键指标（净盈亏、最大回撤、交易数、胜率、利润因子、费用），资金曲线 + 回撤（悬停查看每笔），然后是盈亏结构、胜负比例、盈亏分布、多空对比、按星期、持有时长、按平仓小时的图表，以及绩效、风险、品种表。可选今天 / 7 天 / 30 天 / 全部、本品种或全部品种；最大化后占满整个图表。
 
 ![历史](images/history.png)
 ![分析](images/analysis.png)
 
+### 6. 价格行为工作台（内置、开源）
+OrderCanvas 自带 **TVStudySuite** 价格行为工作台，直接画在 MT5 图表上：
+
+- **均线与形态**：图表 EMA 和另一周期 EMA、开盘/影线/实体缺口、OO / II / IOI、昨日高低点和收盘价
+- **K线计数**：带时段过滤和特殊数字颜色的 K 线编号
+- **入场信号**：H1 / H2 / L1 / L2 二次入场标签，可选收盘提醒
+
+每个模块、颜色和大小都在「工作台设置 → 下拉选择页面」里设置。工作台是三个开源 TradingView 脚本的 MT5 移植，按 **MPL-2.0** 开源，完整源码、许可和来源说明见 [`TVStudySuite/`](TVStudySuite)；安装时也会作为独立指标放进「指标」，可以单独加到任意图表。
+
+![价格行为工作台](images/workbench.png)
+
 ## 更多
 
 - **分批止盈**：每个持仓最多 3 个额外止盈价位，到价自动按比例平仓，重启终端后保留
-- **快捷键**：Ctrl+Shift+字母 买 / 卖 / 平仓 / 保本 / 部分平仓 / 收起，可设冷却时间
+- **快捷键**：直接输入按键或组合（B、Shift+S、Ctrl+Shift+X、F2），用于买 / 卖 / 平仓 / 保本 / 部分平仓 / 收起；默认关闭，可设冷却时间
 - **品种搜索**：按类别和交易所分组、自选、键盘选择
 - **图表操作**：滚轮缩放、拖动平移、纵轴自由缩放、K 线倒计时、深色主题、EMA20 / ATR14
 - **界面** 中文 / English（默认跟随终端）
@@ -87,11 +117,11 @@ MT5 执行很稳，但手动下单和管理很慢：每次下单都弹窗、手�
 
 **[⬇ 下载最新版本（OrderCanvas.zip）](https://github.com/lichunboa/OrderCanvas/releases/latest)** · [全部历史版本](https://github.com/lichunboa/OrderCanvas/releases)
 
-安装包含程序、推荐图表模板和 Windows 一键安装程序。策略测试器里不需要授权码；在实盘或模拟图表上需要授权码（可免费试用 7 天）。
+安装包含程序、推荐图表模板、TVStudySuite 工作台（编译版 + MPL-2.0 源码）和 Windows 一键安装程序。策略测试器里不需要授权码；在实盘或模拟图表上需要授权码（可免费试用 7 天）。所有历史版本都保留在 [Releases](https://github.com/lichunboa/OrderCanvas/releases)。
 
 ## 安装
 
-下载 `OrderCanvas.zip`，解压后双击 **`Install.bat`**（Windows），程序和推荐图表模板会装进这台电脑上所有的 MT5。重启 MT5，图表右键 → 模板 → **OrderCanvas**，在图表上弹出的授权卡片里粘贴授权码，点 **激活**（也可以 F7 → 输入参数 → `LicenseKey`）。
+下载 `OrderCanvas.zip`，解压后双击 **`Install.bat`**（Windows），程序和推荐图表模板会装进这台电脑上所有的 MT5。重启 MT5，图表右键 → 模板 → **OrderCanvas**，在图表上弹出的授权卡片里粘贴授权码，点 **激活**（也可以 F7 → 输入参数 → `LicenseKey`）。之后工具栏会显示剩余天数和到期日。
 Mac / 手动安装和每一步说明：[docs/INSTALL.md](docs/INSTALL.md)。
 
 ## 授权与价格
@@ -105,8 +135,24 @@ Mac / 手动安装和每一步说明：[docs/INSTALL.md](docs/INSTALL.md)。
 
 在 [官网](https://devspace-ntpa.tail545cd.ts.net/oc/shop) 或 Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot) 购买。用 USDT（TRC20）付款，每个订单金额的小数尾数不同（如 19.37），到账后自动识别并发授权码。授权码绑定 MT5 账户号码、离线校验。**策略测试器里不需要授权码**，可以先回测体验。邀请好友付费购买，每单送你 15 天。
 
+## 常见问题
+
+**Mac 能用吗？** 能。Mac 版 MT5（Wine）和 Windows 都测试过，布局和字体按屏幕 DPI 自适应。
+
+**会动我其他 EA 或手动单吗？** 不会。默认只管理本面板魔术号的订单，其他持仓只读显示。
+
+**对冲还是净额账户？** 都支持，也支持交易所账户；净额账户部分平仓用反向成交。
+
+**能先试用吗？** 能。策略测试器里免授权使用全部功能；实盘/模拟账户可领 7 天免费授权。
+
+**会自动交易吗？** 不会。这是手动交易和分析工具，没有信号、不自动开仓；分批止盈和保本只在你设置后执行。
+
+**升级后授权码还能用吗？** 能。授权码绑定 MT5 账户号码，与版本无关，新版本直接覆盖安装。
+
 ## 风险提示
 
 保证金交易外汇、贵金属和差价合约风险很高，未必适合所有投资者。OrderCanvas 是交易操作工具，不提供交易信号或投资建议，请先在模拟账户练习。
 
-© 2026 OrderCanvas. 保留所有权利。见 [LICENSE](LICENSE)。
+OrderCanvas 是独立产品，与 MetaQuotes、TradingView 没有关联，也未获其背书。
+
+© 2026 OrderCanvas. 保留所有权利。见 [LICENSE](LICENSE)。TVStudySuite 工作台单独按 MPL-2.0 授权（[TVStudySuite/](TVStudySuite)）。
