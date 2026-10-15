@@ -1,0 +1,49 @@
+name: Bug report / 缺陷反馈
+description: Report a reproducible bug in an OSS utility or TVStudySuite
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not publish credentials, account identifiers, activation keys, private trading data or vulnerabilities. See SECURITY.md for security reports.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected component
+      options:
+        - OpenUtilities (MIT)
+        - TVStudySuite (MPL-2.0)
+        - Open-source docs and tests
+        - General commercial UI issue (non-sensitive only)
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed vs expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce (demo/fabricated data only)
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Version / OS / MT5 build / symbol
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs (optional)
+      description: Remove account, order, payment, license and other private details.
+  - type: checkboxes
+    id: safe
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed credentials and private trading/customer information.
+          required: true
