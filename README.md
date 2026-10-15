@@ -20,6 +20,16 @@ Preview every order on the chart before it is sent · drag order lines to modify
 
 ![OrderCanvas](images/panel.png)
 
+## Choose your path
+
+| I want to... | Start here |
+|---|---|
+| **Trade with OrderCanvas** | [Features](docs/FEATURES.md) · [Installation](docs/INSTALL.md) · [Releases](https://github.com/lichunboa/OrderCanvas/releases) |
+| **Reuse open MQL5 code** | [Developer guide](docs/DEVELOPERS.md) · [MIT utilities](OpenUtilities/) · [MPL indicator source](TVStudySuite/) |
+| **Contribute or report a bug** | [Repository map](docs/PROJECT_STRUCTURE.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/lichunboa/OrderCanvas/issues) · [Security](SECURITY.md) |
+
+**Mixed-license repository:** commercial UI and trade execution remain proprietary. [Open-source policy](docs/OPEN_SOURCE.md).
+
 ## Open source + commercial product
 
 **What you can build from source:** [OpenUtilities](OpenUtilities/) (MIT: independent MQL5 helpers for lot sizing, candle countdown, expiry dates, row overlap and pointer/wheel maths) and [TVStudySuite](TVStudySuite/) (MPL-2.0: price-action workbench source with original-author attribution). **What remains commercial:** the OrderCanvas chart-trading panel, order-execution/UI internals, and license verification. Publishing these open components does not open-source the commercial EX5 or its licensing system. [Licensing and attribution details](docs/OPEN_SOURCE.md) · [Contributing](CONTRIBUTING.md).
