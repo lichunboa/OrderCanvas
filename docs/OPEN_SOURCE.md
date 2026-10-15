@@ -7,7 +7,7 @@ OrderCanvas combines **an independently developed proprietary MT5 chart-trading 
 | Component | License | Source availability |
 |---|---|---|
 | `TVStudySuite/` price-action workbench, source and attribution | **MPL-2.0** | Complete covered-source files published in this repository; based on identified third-party open-source TradingView scripts |
-| `OpenUtilities/` standalone lot-sizing and candle-countdown tools | **MIT** | Source plus host-side tests published in this repository |
+| `OpenUtilities/` standalone utilities (lot sizing, candle countdown, expiry calendar, vertical interval overlap) | **MIT** | Source plus host-side tests published in this repository |
 | Commercial `OrderCanvas.ex5`, order ticket, chart drawing, trade execution, risk and order management, licensing | **Proprietary** | Binary distribution only; these source files are not published |
 | Product screenshots and documentation outside separately licensed subdirectories | Rights reserved; sharing terms in [root LICENSE](../LICENSE) | Public to read, not automatically MIT/MPL software |
 
@@ -15,7 +15,7 @@ OrderCanvas combines **an independently developed proprietary MT5 chart-trading 
 
 The TVStudySuite translation incorporates and adapts material from three third-party scripts. Their authors and original links appear in [TVStudySuite/NOTICE.md](../TVStudySuite/NOTICE.md), with the full [MPL-2.0 license](../TVStudySuite/LICENSE-MPL-2.0.txt). The original authors retain their respective copyrights; the OrderCanvas authors claim only their own lawful additions and adaptations. The original authors, TradingView and MetaQuotes do not endorse OrderCanvas.
 
-OpenUtilities is a curated, independently separable subset of OrderCanvas's MQL5 utility code. The code and accompanying tests were extracted from the project sources for reproducible reuse. It is *not* a publication of the commercial program's internals.
+OpenUtilities is a curated, independently separable subset of OrderCanvas's MQL5 utility code. Batch 2 contains only calendar/capability validation and generic row overlap; the proprietary pending-order validation path and panel-positioning algorithm were intentionally excluded. The code and accompanying tests were extracted from the project sources for reproducible reuse. It is *not* a publication of the commercial program's internals.
 
 ## Commercial use
 
