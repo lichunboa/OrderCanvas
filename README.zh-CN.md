@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/brand/logo-dark.png" alt="OrderCanvas for MT5 — approved OC logo" width="380">
+
 # OrderCanvas
 
 **MetaTrader 5 现代化图表交易面板**

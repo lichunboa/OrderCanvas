@@ -33,4 +33,6 @@ The only approved reference is the **second refined OrderCanvas visual identity 
 ## Engineering integration contract
 Keep the approved files in a **single canonical project-owned brand directory**, then copy/build derivatives for each consumer. Never create multiple independently maintained logo designs in separate H5, MT5 or GitHub worktrees. Preserve the source image SHA, asset file names and visible geometry.
 
-**Status note:** this file records the branding decision; it does not claim that PNGs have already been uploaded to this GitHub repository, that H5 has been deployed, or that external account avatars have been changed. Until asset transfer and live QA are complete, treat the destination updates as pending.
+**Repository assets now present:** original approved reference raster files at [assets/brand](../assets/brand). Both README files use `assets/brand/logo-dark.png` as the header image. These are the exact approved raster preview exports rather than AI-redesigned variants.
+
+**Deployment status:** GitHub repository asset import and README replacement are complete; H5 runtime deployment, GitHub repository social-preview setting, Telegram avatars, native MT5 binaries, and MQL5 listing images remain separate verifiable actions.
