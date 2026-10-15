@@ -13,7 +13,7 @@ OrderCanvas 采用 **开源基础模块 + 商业闭源交易面板** 的模式�
 
 ## 第三方来源
 
-TVStudySuite 移植了三个第三方开源指标：Price Action All In One、Al Brooks Second Entry、Al Brooks - Bar Count。具体作者、原始链接及说明见 [TVStudySuite/NOTICE.md](../TVStudySuite/NOTICE.md)。原作者对自己的创作保留著作权；OrderCanvas 对合法独立创作与改编的部分拥有相应权利。我们不是 TradingView、MetaQuotes 或原作者的官方产品。
+TVStudySuite 移植了三个第三方开源指标：Price Action All In One、Al Brooks Second Entry、Al Brooks - Bar Count。具体作者、原始链接及说明见 [TVStudySuite/NOTICE.md](../TVStudySuite/NOTICE.md)。**三个原始 Pine 脚本的精确源码许可证声明和版本尚待逐一核验**：目前确认的是原始页面公开源码，以及 TradingView 默认采用 MPL-2.0（原作者另选许可证的情况除外）。详情见 [逐模块第三方来源记录](../TVStudySuite/MQL5/Indicators/THIRD_PARTY.md)。原作者对自己的创作保留著作权；OrderCanvas 对合法独立创作与改编的部分拥有相应权利。我们不是 TradingView、MetaQuotes 或原作者的官方产品。
 
 `OpenUtilities/` 则是从我们自己的 MQL5 项目中单独整理的、能脱离商业面板使用的小型基础函数；不包含商业交易执行和授权代码。第二批仅开放日历／能力位校验和区域重叠判断；与之相邻的挂单提交逻辑及专有面板布局算法仍不公开。第三批仅开放价格轴位移与滚轮缩放的独立数学运算；鼠标捕获、手势归属、释放防误点、订单线拖动状态机、渲染器仍然闭源。
 
