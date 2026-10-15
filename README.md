@@ -22,7 +22,7 @@ Preview every order on the chart before it is sent · drag order lines to modify
 
 ## Open source + commercial product
 
-**What you can build from source:** [OpenUtilities](OpenUtilities/) (MIT: independent MQL5 helpers for lot sizing, candle countdown, expiry dates and row overlap) and [TVStudySuite](TVStudySuite/) (MPL-2.0: price-action workbench source with original-author attribution). **What remains commercial:** the OrderCanvas chart-trading panel, order-execution/UI internals, and license verification. Publishing these open components does not open-source the commercial EX5 or its licensing system. [Licensing and attribution details](docs/OPEN_SOURCE.md) · [Contributing](CONTRIBUTING.md).
+**What you can build from source:** [OpenUtilities](OpenUtilities/) (MIT: independent MQL5 helpers for lot sizing, candle countdown, expiry dates, row overlap and pointer/wheel maths) and [TVStudySuite](TVStudySuite/) (MPL-2.0: price-action workbench source with original-author attribution). **What remains commercial:** the OrderCanvas chart-trading panel, order-execution/UI internals, and license verification. Publishing these open components does not open-source the commercial EX5 or its licensing system. [Licensing and attribution details](docs/OPEN_SOURCE.md) · [Contributing](CONTRIBUTING.md).
 
 ## Quick start
 
