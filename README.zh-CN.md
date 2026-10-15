@@ -22,7 +22,7 @@
 
 ## 开源工具与商业交易面板
 
-**已公开的源代码：**[OpenUtilities](OpenUtilities/)（MIT：独立手数计算和 K 线倒计时工具）及 [TVStudySuite](TVStudySuite/)（MPL-2.0：价格行为指标工作台，保留原作者来源说明）。**仍为商业闭源：**OrderCanvas 图表交易面板、交易执行与 UI 内部实现、授权验证。开源上述工具不代表公开整个 EX5 或授权系统。查看 [开源范围、商业许可与第三方致谢](docs/OPEN_SOURCE.zh-CN.md) · [贡献指南](CONTRIBUTING.md)。
+**已公开的源代码：**[OpenUtilities](OpenUtilities/)（MIT：独立手数计算、K 线倒计时、有效期日历与区域重叠工具）及 [TVStudySuite](TVStudySuite/)（MPL-2.0：价格行为指标工作台，保留原作者来源说明）。**仍为商业闭源：**OrderCanvas 图表交易面板、交易执行与 UI 内部实现、授权验证。开源上述工具不代表公开整个 EX5 或授权系统。查看 [开源范围、商业许可与第三方致谢](docs/OPEN_SOURCE.zh-CN.md) · [贡献指南](CONTRIBUTING.md)。
 
 ## 三步上手
 
