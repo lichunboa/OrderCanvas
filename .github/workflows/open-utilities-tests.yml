@@ -1,0 +1,34 @@
+name: OpenUtilities portable tests
+
+on:
+  push:
+    paths:
+      - "OpenUtilities/**"
+      - ".github/workflows/open-utilities-tests.yml"
+  pull_request:
+    paths:
+      - "OpenUtilities/**"
+      - ".github/workflows/open-utilities-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  standalone-cpp:
+    name: Portable C++ tests
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and run public utility tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          for src in OpenUtilities/tests/*.cpp; do
+            echo "Testing ${src}"
+            c++ -std=c++17 -Wall -Wextra -Werror -O2 "$src" -o /tmp/ordercanvas-oss-test
+            /tmp/ordercanvas-oss-test
+          done
