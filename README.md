@@ -104,10 +104,37 @@ Each module, colour and size is set in *Settings → page selector*. The workben
 
 ![Price-action workbench](images/workbench.png)
 
+### 7. Risk caps and auto protection (off by default)
+- **Max spread** per symbol and **max risk per trade** (% of equity, from the stop distance): when a cap is exceeded the submit button says why and nothing is sent
+- **Auto break-even**: once a position is +0.5R / +1R / +1.5R / +2R in profit, its stop moves to break-even (fees included). R is the stop distance when the position was opened and is remembered across terminal restarts
+- **ATR trailing** after break-even: on each closed bar the stop follows close ∓ ATR(14) × 1.0-3.0 and only ever tightens
+- Both run while MT5 and this chart stay open (it is an EA, not a server-side stop) and act only on this panel's Magic number
+
+## Feature checklist
+
+Features traders usually compare when choosing an MT5 trade panel, and where OrderCanvas has them:
+
+| Feature | OrderCanvas |
+|---|---|
+| Lot size from risk % / risk amount / balance % / margin | ✅ ticket, follows the stop distance |
+| Drag entry / SL / TP lines; pull new SL / TP out of an order line | ✅ |
+| Preview before sending | ✅ draft lines, nothing is sent before you confirm |
+| One-click break-even (fees, swap, slippage buffer) | ✅ position line `BE` |
+| Auto break-even at a profit multiple | ✅ +0.5R to +2R |
+| ATR trailing stop | ✅ closed bars, tighten only |
+| Partial close / staged take-profit | ✅ 25-75 %, up to 3 extra TP levels |
+| One-click trading, close symbol / close all | ✅ |
+| Hotkeys, single-key buy / sell, set entry / SL / TP at the mouse price | ✅ typed bindings with an on-chart receipt |
+| Max spread / max risk per trade | ✅ |
+| Pending orders with expiry, order presets | ✅ GTC / day / date, 5 presets |
+| Trade history and performance analytics in the chart | ✅ |
+| Hedging, netting and exchange accounts | ✅ |
+| No DLL, no external service, works in the Strategy Tester | ✅ |
+
 ## More
 
 - **Staged take-profit** - up to three extra TP levels per position, each closing its share automatically; kept across terminal restarts
-- **Hotkeys** - type any key or combination (B, Shift+S, Ctrl+Shift+X, F2) for buy, sell, close, break-even, partial close and collapse; off by default, configurable cooldown
+- **Hotkeys** - type any key or combination (B, Shift+S, Ctrl+Shift+X, F2) for buy, sell, close, break-even, partial close, collapse, set entry / SL / TP at the mouse price and switch market / limit / stop; every press shows a short receipt on the chart; off by default, configurable cooldown
 - **Symbol search** grouped by category and exchange, favourites, keyboard navigation
 - **Chart workflow** - wheel zoom, drag to pan, free vertical scale, candle countdown, dark theme, EMA 20 / ATR 14, a visible chart-shift handle on dark grids
 - **Interface** in English or Chinese (follows the terminal by default)

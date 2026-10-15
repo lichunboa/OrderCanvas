@@ -38,12 +38,14 @@ OrderCanvas is a chart-trading panel for MetaTrader 5 (an Expert Advisor in the 
 | Staged take-profit | Up to 3 extra TP levels per position with their own share; executed by the EA, kept across restarts, shown as dashed lines with × |
 | Order panel | Positions / Orders / History / Account / Analytics; sort by symbol, time, P&L; totals; history today / 7 / 30 days; resizable, **maximise** with the header button or a double-click (Analytics then uses the whole chart); collapsed header keeps balance / equity / floating / free margin; stays when the ticket is hidden; close all for this symbol or all symbols; hover highlights the lines |
 | Analytics | Strategy-report layout: KPI strip (net P&L, max drawdown, trades, win rate, profit factor, costs); equity + drawdown chart with a hover card per trade; profit structure, win / loss donut, P&L distribution, long vs short, by weekday, holding time and close hour; performance (all / long / short), risk and per-symbol tables; today / 7 / 30 days / all, this symbol or all |
+| Auto protection | Off by default. Auto break-even at +0.5R / +1R / +1.5R / +2R (fees included; R = stop distance at opening, kept across restarts); then optional ATR trailing on closed bars (ATR(14) × 1.0–3.0, tighten only). Panel's Magic number only; needs MT5 and the chart open |
+| Risk caps | Off by default. Max spread per symbol (ticks) and max risk per trade (% of equity); a blocked order shows the reason on the submit button and is not sent |
 
 ## 4. Shortcuts
 
 | Feature | Details |
 |---|---|
-| Hotkeys | Typed in the settings - single keys (`B`, `S`) or combinations (`Shift+S`, `Ctrl+Shift+X`, `F2`): buy, sell, close, break-even, partial close, collapse; off by default (defaults B / S / X / E / H / T once enabled); works with Chinese / Japanese / Korean input methods; cooldown 0–5000 ms |
+| Hotkeys | Typed in the settings - single keys (`B`, `S`) or combinations (`Shift+S`, `Ctrl+Shift+X`, `F2`): buy, sell, close, break-even, partial close, collapse; set the draft entry / SL / TP at the mouse price (`Shift+E` / `Shift+S` / `Shift+P`); switch to limit / stop / market (`Ctrl+Alt+L` / `P` / `M`); each press shows a receipt on the chart; off by default (defaults as listed once enabled); bindings apply to every chart of the terminal; works with Chinese / Japanese / Korean input methods; cooldown 0–5000 ms |
 | Close all | Closes this symbol's positions with the panel's magic number; pending orders are kept |
 
 ## 5. Chart and symbols

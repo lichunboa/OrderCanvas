@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.5 — 2026-10-15
+- **Auto protection (off by default, Settings → Trading)**: auto break-even when a position reaches +0.5R / +1R / +1.5R / +2R (fees included; R = the stop distance at opening, kept across terminal restarts), then optional **ATR trailing** on closed bars (ATR(14) × 1.0-3.0, tighten only). Only positions with this panel's Magic number.
+- **Risk caps (off by default)**: max spread per symbol (ticks) and max risk per trade (% of equity). When a cap is exceeded the submit button explains why and nothing is sent. The submit button also shows the trade's risk in money and %.
+- **More hotkeys**: set the draft entry / SL / TP at the mouse price (`Shift+E` / `Shift+S` / `Shift+P`) and switch the ticket to limit / stop / market (`Ctrl+Alt+L` / `P` / `M`). Every press shows a short receipt on the chart (done, or why not). Hotkey bindings now apply to every chart of the terminal.
+- First start opens a Market **Buy draft** so the ticket is ready to use.
+- If MT5's **Algo Trading** is off, the submit button says so (and how to turn it on) instead of failing silently.
+- License days are counted on calendar days (UTC) everywhere - the panel, the shop page and the bot show the same number.
+- Fixed: settings drop-down lists open next to their field when the page is scrolled.
+
 ## 1.0.4 — 2026-10-15
 - **Price-action workbench built in**: the TVStudySuite modules (moving averages & patterns, bar count, entry signals) now ship with OrderCanvas on every build, with their settings pages under *Settings → page selector*. The workbench is open source (MPL-2.0); its full source, license and notices are in the package (`TVStudySuite-source`) and in this repository (`TVStudySuite/`).
 - **Analytics redesigned** in a strategy-report style: KPI strip, larger equity + drawdown chart with axes and a hover card per trade, and chart cards - profit structure, win / loss donut, P&L distribution, long vs short, by weekday, holding time and close hour - followed by the performance / risk / symbol tables.
