@@ -26,7 +26,7 @@ Preview every order on the chart before it is sent · drag order lines to modify
 |---|---|
 | **Trade with OrderCanvas** | [Features](docs/FEATURES.md) · [Installation](docs/INSTALL.md) · [Releases](https://github.com/lichunboa/OrderCanvas/releases) |
 | **Reuse open MQL5 code** | [Developer guide](docs/DEVELOPERS.md) · [MIT utilities](OpenUtilities/) · [MPL indicator source](TVStudySuite/) |
-| **Contribute or report a bug** | [Repository map](docs/PROJECT_STRUCTURE.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/lichunboa/OrderCanvas/issues) · [Security](SECURITY.md) |
+| **Contribute or report a bug** | [Repository map](docs/PROJECT_STRUCTURE.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/lichunboa/OrderCanvas/issues) · [Security](SECURITY.md) · [Community channels](docs/COMMUNITY.md) |
 
 **Mixed-license repository:** commercial UI and trade execution remain proprietary. [Open-source policy](docs/OPEN_SOURCE.md).
 
