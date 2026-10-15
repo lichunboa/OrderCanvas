@@ -19,6 +19,10 @@ Small, standalone **MQL5 utility functions**, released under the **MIT License**
 
 Copy the desired `.mqh` file into your MQL5 `Include` folder and include it in your own source. For budget sizing, the calling application must calculate the cost per lot using correct broker and symbol data; this utility does **not** calculate tick value, margin, or risk for you. A return value of `0` means no permissible volume was found. For the expiry helper, read the expiration capabilities from the correct MT5 symbol; this helper neither checks current server time nor submits orders. The row-overlap helper expects **positive heights** and does not perform window clipping. The pointer helpers operate on numbers supplied by the caller (including a price-per-pixel coefficient and the current chart zoom level); they do **not** derive broker prices, verify chart focus, listen for mouse events or implement safe order dragging. `TVPointerWheelSteps` mutates its caller-owned integer remainder; reset that accumulator when switching input devices or contexts.
 
+### MQL5 example (does not place trades)
+
+See [BudgetSizingDemo.mq5](examples/BudgetSizingDemo.mq5). Copy `TicketSizing.mqh` into the MT5 data folder's `MQL5/Include`, copy the example to `MQL5/Scripts`, then compile in MetaEditor and run it on a demo chart. It prints a calculated volume using manually supplied sample inputs, without sending any broker request. **Actual MetaEditor compilation of this example remains to be verified.**
+
 ### Running tests on macOS / Linux
 
 ```sh
