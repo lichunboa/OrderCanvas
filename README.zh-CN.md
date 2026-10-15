@@ -20,6 +20,16 @@
 
 ![OrderCanvas](images/panel.png)
 
+## 你想从哪里开始？
+
+| 目的 | 快速入口 |
+|---|---|
+| **安装并使用交易面板** | [功能介绍](docs/FEATURES.zh-CN.md) · [安装说明](docs/INSTALL.md) · [发布版本](https://github.com/lichunboa/OrderCanvas/releases) |
+| **学习或复用开源代码** | [开发者入门](docs/DEVELOPERS.zh-CN.md) · [MIT 基础工具](OpenUtilities/) · [MPL 指标源码](TVStudySuite/) |
+| **参与开发或反馈问题** | [仓库结构](docs/PROJECT_STRUCTURE.md) · [贡献指南](CONTRIBUTING.md) · [问题反馈](https://github.com/lichunboa/OrderCanvas/issues) · [安全报告](SECURITY.md) |
+
+**这是混合授权仓库：**核心 UI、交易执行和授权系统仍为闭源。[开源与商业许可说明](docs/OPEN_SOURCE.zh-CN.md)。
+
 ## 开源工具与商业交易面板
 
 **已公开的源代码：**[OpenUtilities](OpenUtilities/)（MIT：独立手数计算、K 线倒计时、有效期日历、区域重叠与鼠标／滚轮数学工具）及 [TVStudySuite](TVStudySuite/)（MPL-2.0：价格行为指标工作台，保留原作者来源说明）。**仍为商业闭源：**OrderCanvas 图表交易面板、交易执行与 UI 内部实现、授权验证。开源上述工具不代表公开整个 EX5 或授权系统。查看 [开源范围、商业许可与第三方致谢](docs/OPEN_SOURCE.zh-CN.md) · [贡献指南](CONTRIBUTING.md)。
