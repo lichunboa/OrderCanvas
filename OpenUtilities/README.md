@@ -4,7 +4,7 @@
 
 Small, standalone **MQL5 utility functions**, released under the **MIT License** to help the MetaTrader 5 developer community. They are taken from the OrderCanvas development source; this folder is not the source code of the commercial trading panel.
 
-## Available modules — batches 1, 2 and 3
+## Available modules — batches 1 to 4
 
 | Module | What it does | Code | Test |
 |---|---|---|---|
@@ -14,6 +14,8 @@ Small, standalone **MQL5 utility functions**, released under the **MIT License**
 | Vertical row overlap (batch 2) | Decide whether two positive-height vertical intervals overlap (touching edges do not overlap); no panel geometry, drag engine or UI rendering source | [TVOverlayRowIntervals.mqh](MQL5/Include/TVOverlayRowIntervals.mqh) | [overlay_rows.cpp](tests/overlay_rows.cpp) |
 | Pointer-to-price maths (batch 3) | Map vertical pointer movement to price deltas, panning and bounded exponential axis scaling | [TVPointerPriceMath.mqh](MQL5/Include/TVPointerPriceMath.mqh) | [pointer_price_math.cpp](tests/pointer_price_math.cpp) |
 | Wheel zoom maths (batch 3) | Clamp MT5 chart zoom levels and accumulate fractional wheel delta with reversal handling | [TVPointerWheelMath.mqh](MQL5/Include/TVPointerWheelMath.mqh) | [pointer_wheel_math.cpp](tests/pointer_wheel_math.cpp) |
+| Exit distance units (batch 4) | Convert a take-profit / stop-loss input between ticks, pips, an absolute price and % of price, in both directions and for both sides; money units are left to the caller | [TVExitUnitDomain.mqh](MQL5/Include/TVExitUnitDomain.mqh) | [exit_units.cpp](tests/exit_units.cpp) |
+| Trade statistics (batch 4) | Aggregate deals into closed trades (partial closes, reversals, close-by) and compute a strategy-report set: net / % / profit factor, drawdown, expectancy, Sharpe, streaks, long vs short, initial-stop risk and R, MAE use, buckets by symbol, weekday, hour and holding time | [TVTradeAnalytics.mqh](MQL5/Include/TVTradeAnalytics.mqh) | [trade_analytics.py](tests/trade_analytics.py) |
 
 ### Using the modules
 
@@ -32,6 +34,8 @@ c++ -std=c++17 -O2 tests/expiry_calendar.cpp -o /tmp/oc-expiry && /tmp/oc-expiry
 c++ -std=c++17 -O2 tests/overlay_rows.cpp -o /tmp/oc-overlap && /tmp/oc-overlap
 c++ -std=c++17 -O2 tests/pointer_price_math.cpp -o /tmp/oc-pointer-price && /tmp/oc-pointer-price
 c++ -std=c++17 -O2 tests/pointer_wheel_math.cpp -o /tmp/oc-pointer-wheel && /tmp/oc-pointer-wheel
+c++ -std=c++17 -O2 tests/exit_units.cpp -o /tmp/oc-exit-units && /tmp/oc-exit-units
+python3 tests/trade_analytics.py   # rewrites MQL5 dynamic arrays to std::vector, then compiles
 ```
 
 Tests use small host-language adapters to exercise the same pure function bodies; successful host tests do not replace compilation or broker-specific verification in MetaTrader 5.

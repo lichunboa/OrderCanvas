@@ -4,7 +4,7 @@
 
 这是从 OrderCanvas 工程中独立整理的 **MQL5 通用工具函数**，使用 **MIT 许可证**发布。它们不是商业交易面板的源代码，也不包含用户授权系统。
 
-## 第一至第三批已开放模块
+## 第一至第四批已开放模块
 
 | 模块 | 用途 | 源代码 | 测试 |
 |---|---|---|---|
@@ -14,6 +14,8 @@
 | 垂直区域重叠判断（第二批） | 判断两段**正高度**的 Y 轴区间是否重叠；边界刚好接触不算重叠，不含面板布局、拖拽和绘图实现 | [TVOverlayRowIntervals.mqh](MQL5/Include/TVOverlayRowIntervals.mqh) | [overlay_rows.cpp](tests/overlay_rows.cpp) |
 | 鼠标价格轴数学（第三批） | 把鼠标 Y 位移转换为价格变化、垂直平移和指数缩放系数 | [TVPointerPriceMath.mqh](MQL5/Include/TVPointerPriceMath.mqh) | [pointer_price_math.cpp](tests/pointer_price_math.cpp) |
 | 滚轮缩放数学（第三批） | 缩放级别限幅，以及滚轮残余增量累计、反向与多刻度处理 | [TVPointerWheelMath.mqh](MQL5/Include/TVPointerWheelMath.mqh) | [pointer_wheel_math.cpp](tests/pointer_wheel_math.cpp) |
+| 止盈止损距离单位（第四批） | 止盈 / 止损输入在 tick、点（pip）、绝对价格、价格百分比之间双向换算，区分买卖方向；金额单位由调用方按 tick 价值自行换算 | [TVExitUnitDomain.mqh](MQL5/Include/TVExitUnitDomain.mqh) | [exit_units.cpp](tests/exit_units.cpp) |
+| 交易统计（第四批） | 把成交记录合并为已平仓交易（含部分平仓、反手、对冲平仓），并计算策略报告指标：净盈亏 / 百分比 / 利润因子、回撤、期望值、夏普、连胜连亏、多空对比、初始止损风险与 R、最大浮亏（MAE），以及按品种、星期、小时、持仓时长分组 | [TVTradeAnalytics.mqh](MQL5/Include/TVTradeAnalytics.mqh) | [trade_analytics.py](tests/trade_analytics.py) |
 
 将需要的 `.mqh` 文件放到自己的 MQL5 `Include` 目录并引用即可。注意：预算手数计算的 **每手成本须由调用方结合品种和经纪商数据计算**；本函数本身不会估算保证金、滑点或真实最大亏损。返回 0 表示没有满足限制的手数。有效期工具只判断输入数据及能力位，不读取券商服务器当前时间，也不会下单；区间重叠工具要求传入正高度，不负责完整 UI 裁剪。鼠标相关函数只处理调用方提供的数字参数，不读取行情、处理鼠标焦点或执行安全拖单。滚轮的剩余增量由调用方持有并按需重置；不能据此把这些数学函数当成完整拖拽系统。
 

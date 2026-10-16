@@ -32,3 +32,11 @@ jobs:
             c++ -std=c++17 -Wall -Wextra -Werror -O2 "$src" -o /tmp/ordercanvas-oss-test
             /tmp/ordercanvas-oss-test
           done
+      - name: Run adapter tests (MQL5 array syntax rewritten for the host compiler)
+        shell: bash
+        run: |
+          set -euo pipefail
+          for t in OpenUtilities/tests/*.py; do
+            echo "Testing ${t}"
+            python3 "$t"
+          done
