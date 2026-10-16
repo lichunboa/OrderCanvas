@@ -65,7 +65,8 @@ int StudyEnsure(const string key,const datetime a,const ENUM_OBJECT type,const d
  studyCacheCommands++;bool created=type==OBJ_TEXT?ObjectCreate(0,key,type,0,a,p0):ObjectCreate(0,key,type,0,a,p0,b,p1);if(!created)return -1;
  studyPaint[index].created=true;studyPaint[index].time[0]=a;studyPaint[index].price[0]=p0;studyPaint[index].pointMask=1;
  if(type!=OBJ_TEXT){studyPaint[index].time[1]=b;studyPaint[index].price[1]=p1;studyPaint[index].pointMask=3;}
- ObjectSetInteger(0,key,OBJPROP_SELECTABLE,false);ObjectSetInteger(0,key,OBJPROP_HIDDEN,true);ObjectSetInteger(0,key,OBJPROP_BACK,true);ObjectSetString(0,key,OBJPROP_TOOLTIP,"\n");studyCacheCommands+=4;
+ // Labels (bar counts) in front of the grid; zones and lines stay behind the candles.
+ ObjectSetInteger(0,key,OBJPROP_SELECTABLE,false);ObjectSetInteger(0,key,OBJPROP_HIDDEN,true);ObjectSetInteger(0,key,OBJPROP_BACK,type!=OBJ_TEXT);ObjectSetString(0,key,OBJPROP_TOOLTIP,"\n");studyCacheCommands+=4;
  if(type==OBJ_TEXT){ObjectSetString(0,key,OBJPROP_FONT,"Arial");studyCacheCommands++;}
  if(type==OBJ_RECTANGLE){ObjectSetInteger(0,key,OBJPROP_FILL,true);studyCacheCommands++;}
  if(type==OBJ_TREND){ObjectSetInteger(0,key,OBJPROP_RAY_RIGHT,false);studyCacheCommands++;}
@@ -114,7 +115,8 @@ void StudyToastPaint()
  for(int i=0;i<STUDY_TOAST_MAX;i++)
  {
   const string n=StudyToastName(i);
-  if(studyToastText[i]==""){if(studyToastMade[i]){ObjectDelete(0,n);studyToastMade[i]=false;}continue;}
+  if(StringLen(studyToastText[i])==0){   // NULL until first use: == "" does not match NULL
+ if(studyToastMade[i]){ObjectDelete(0,n);studyToastMade[i]=false;}continue;}
   if(!studyToastMade[i])
   {
    studyToastMade[i]=ObjectCreate(0,n,OBJ_EDIT,0,0,0);if(!studyToastMade[i])continue;
@@ -144,6 +146,12 @@ void StudyToastTick()
 }
 void StudyToastClear(){for(int i=0;i<STUDY_TOAST_MAX;i++){studyToastText[i]="";if(studyToastMade[i])ObjectDelete(0,StudyToastName(i));studyToastMade[i]=false;}}
 #endif
+// Zone fills are opaque: blend them toward the chart background (dark or light theme), not a
+// fixed dark grey - on a white chart the old blend drew near-black boxes (Owner 2026-10-16).
+color studyChartBg=C'15,15,15';
 color StudyBlend(const color ink,const double opacity)
-{return (color)((int)(((int)ink&255)*opacity+15*(1-opacity))|((int)((((int)ink>>8)&255)*opacity+15*(1-opacity))<<8)|((int)((((int)ink>>16)&255)*opacity+15*(1-opacity))<<16));}
+{
+ const int br=(int)studyChartBg&255,bgr=((int)studyChartBg>>8)&255,bb=((int)studyChartBg>>16)&255;
+ return (color)((int)(((int)ink&255)*opacity+br*(1-opacity))|((int)((((int)ink>>8)&255)*opacity+bgr*(1-opacity))<<8)|((int)((((int)ink>>16)&255)*opacity+bb*(1-opacity))<<16));
+}
 #endif

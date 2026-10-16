@@ -2,7 +2,7 @@
 // Unified native workbench. Original module attribution: Indicators/THIRD_PARTY.md.
 #property strict
 #property copyright "Price Action Workbench; MPL-2.0 source acknowledgements in THIRD_PARTY.md"
-#property version "1.07" // = OrderCanvas OC_VERSION 1.0.7
+#property version "1.08" // = OrderCanvas OC_VERSION 1.0.8
 #property indicator_chart_window
 #property indicator_buffers 6
 #property indicator_plots 5
@@ -64,7 +64,10 @@ void EmptyModuleBuffer(double &buffer[],const int n,const int prev)
 {for(int i=prev>0 && prev<=n?MathMax(0,prev-1):0;i<n;i++)buffer[i]=EMPTY_VALUE;}
 int OnCalculate(const int n,const int prev,const datetime &time[],const double &open[],const double &high[],const double &low[],const double &close[],const long &tick_volume[],const long &volume[],const int &spread[])
 {
- if(n<3)return 0;ulong startUs=GetMicrosecondCount();if(prev==0)PrintFormat("[WORKBENCH_CALC] begin bars=%d",n);
+ if(n<3)return 0;
+ // The chart background decides the zone blend; a theme switch repaints everything once.
+ {static ulong checked=0;const ulong now=GetTickCount64();if(prev==0 || now-checked>2000){checked=now;const color bg=(color)ChartGetInteger(0,CHART_COLOR_BACKGROUND);if(bg!=studyChartBg){const bool repaint=prev>0;studyChartBg=bg;if(repaint)return 0;}}}
+ ulong startUs=GetMicrosecondCount();if(prev==0)PrintFormat("[WORKBENCH_CALC] begin bars=%d",n);
  if(EnablePriceAction){if(PA_Calculate(n,prev,time,open,high,low,close,tick_volume,volume,spread)==0)return 0;}
  else{EmptyModuleBuffer(PA_ema,n,prev);EmptyModuleBuffer(PA_mtf,n,prev);EmptyModuleBuffer(PA_emaCalc,n,prev);}
  if(prev==0)PrintFormat("[WORKBENCH_CALC] price_action_us=%I64u",GetMicrosecondCount()-startUs);

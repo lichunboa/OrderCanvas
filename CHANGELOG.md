@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.0.8 — 2026-10-17
+- **Second charts and multi-chart layouts**: the toolbar 「副图」 button opens real MetaTrader charts of this symbol (any timeframe, from this chart's template, order panel hidden) and arranges them in 8 layouts, including two on the left with this chart large on the right. 「原生停靠」 docks every chart back so MetaTrader's own Window → Tile (Alt+R) works; other OrderCanvas charts can follow this chart's symbol.
+- **Templates in the toolbar**: 「模板」 lists the factory OrderCanvas preset and your own templates - apply, replace, rename, remove; type a name and press Enter to save.
+- **Light theme and Auto**: one palette for the whole panel; Auto follows the chart background. Drawing colours that MetaTrader picks for dark charts switch to darker twins on a light chart.
+- **First-run guide**: six short steps, each with a try-it task, next to the ticket; reopen it from the toolbar.
+- **Actual risk per trade**: history and analytics show the largest floating loss of each trade (MAE) next to the planned stop risk, plus initial-stop risk, R statistics, trades without a stop and commission / swap totals. Positions show P&L at stop, R and distance to price; the account tab shows exposure, open-stop risk and a 30-day daily P&L chart.
+- **Live spread** after the toolbar (Settings, on by default).
+- **Custom values**: numeric trading settings offer 「自定义…」 to type any number.
+- **One-click trading** (or 「不再确认」) now also closes, cancels, partially closes and reverses at once from order lines and the order panel, with no confirmation dialog.
+- **Follow the pointer**: left click places, right click cancels (MetaTrader's chart menu stays closed); a cancel gives the ticket back its side and order type and clears the draft lines. Esc works with a Chinese input method. Success messages are gone - the line is the feedback; failures still show.
+- The chart follows new bars from where you left it (TradingView); a » button returns to the newest bar. Double-click on the price scale = auto scale.
+- The toolbar is folded to icons by default; the license badge is short (days left, details in the tooltip).
+- Faster: idle CPU use dropped from about 30 % to about 2 % in our tests (an object-cache overflow made every redraw synchronous); the 历史 tab no longer freezes while MetaTrader downloads tick history.
+- Fixed: switching timeframe could leave a black chart or scroll into the empty future.
+- Fixed: analytics % was meaningless for an account funded inside the selected range.
+- Fixed: confirmation dialogs could appear under order chips, and their frame could lag behind the text.
+- Fixed (light theme): the collapsed ticket's captions were white on white.
+- MQL5 Market build: English-only input captions, as the Market requires.
+
 ## 1.0.7 — 2026-10-15
 - **Sharper text**: the ticket, the order panel (positions, orders, history, account, analytics), the settings dialog, the symbol search and the hotkey notes now draw their text with Windows' own ClearType renderer. The canvas renderer MetaTrader gives programs only does grey, unhinted smoothing, which is why small Chinese text looked soft; small text is also a little larger.
 - **Saving settings is fast again**: on macOS (Wine) a save could take ~10 s on a chart with many workbench drawings; it no longer scans every chart object (≈20 ms).

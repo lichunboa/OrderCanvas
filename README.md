@@ -91,10 +91,10 @@ Every position, pending order, TP and SL is a live line you can drag. Drag a TP/
 <p align="center"><img src="images/ticket-limit.png" width="38%"> <img src="images/oneclick.png" width="38%"></p>
 
 ### 4. One-click trading
-Turn on *1-click* in the ticket header: the Sell / Buy quotes become instant market buttons and the bottom action becomes *Close all* for this symbol (right-hand screenshot above).
+Turn on *1-click* in the ticket header: the Sell / Buy quotes become instant market buttons and the bottom action becomes *Close all* for this symbol (right-hand screenshot above). With 1-click on, close, cancel, partial close and reverse from the order lines and the order panel act at once, without a confirmation.
 
 ### 5. Order panel and trade analytics
-A dock under the chart with **Positions, Orders, History, Account and Analytics**. History shows open/close times, holding time, commission, swap and net P&L; hovering a row highlights its lines on the chart. **Analytics** reads like a strategy report: a KPI strip (net P&L, max drawdown, trades, win rate, profit factor, costs), the equity curve with drawdown and a hover card per trade, then chart cards - profit structure, win / loss, P&L distribution, long vs short, by weekday, holding time and close hour - and the performance, risk and per-symbol tables. Today / 7 days / 30 days / all, this symbol or all symbols; maximise the panel to use the whole chart.
+A dock under the chart with **Positions, Orders, History, Account and Analytics**. History shows open/close times, holding time, commission, swap and net P&L; hovering a row highlights its lines on the chart. **Analytics** reads like a strategy report: a KPI strip (net P&L, max drawdown, trades, win rate, profit factor, costs), the equity curve with drawdown and a hover card per trade, then chart cards - profit structure, win / loss, P&L distribution, long vs short, by weekday, holding time and close hour - and the performance, risk and per-symbol tables. Today / 7 days / 30 days / all, this symbol or all symbols; maximise the panel to use the whole chart. Each closed trade also shows its **actual risk** - the largest floating loss while it was open (MAE) - next to the risk planned by its stop.
 
 ![History](images/history.png)
 ![Analytics](images/analysis.png)
@@ -130,7 +130,7 @@ Features traders usually compare when choosing an MT5 trade panel, and where Ord
 | ATR trailing stop | ✅ closed bars, tighten only |
 | Partial close / staged take-profit | ✅ 25-75 %, up to 3 extra TP levels |
 | One-click trading, close symbol / close all | ✅ |
-| Hotkeys, single-key buy / sell, click-to-place orders and stops at the mouse | ✅ typed bindings, follow-the-pointer mode, on-chart receipt |
+| Hotkeys, single-key buy / sell, click-to-place orders and stops at the mouse | ✅ typed bindings, follow-the-pointer mode |
 | Max spread / max risk per trade | ✅ |
 | Pending orders with expiry, order presets | ✅ GTC / day / date, 5 presets |
 | Trade history and performance analytics in the chart | ✅ |
@@ -140,10 +140,13 @@ Features traders usually compare when choosing an MT5 trade panel, and where Ord
 ## More
 
 - **Staged take-profit** - up to three extra TP levels per position, each closing its share automatically; kept across terminal restarts
-- **Hotkeys** - type any key or combination (B, Shift+S, Ctrl+Shift+X, F2): buy / sell at market, close, break-even, partial close, collapse; **follow the pointer** - Shift+B / Shift+S place a Buy / Sell where you click (Limit or Stop by position), Shift+L / Shift+P move the stop loss / take profit with the mouse; Shift+T cycles the order type. Every press shows a short receipt; the toolbar switch turns them on / off (off by default)
+- **Hotkeys** - type any key or combination (B, Shift+S, Ctrl+Shift+X, F2): buy / sell at market, close, break-even, partial close, collapse; **follow the pointer** - Shift+B / Shift+S place a Buy / Sell where you click (Limit or Stop by position), Shift+L / Shift+P move the stop loss / take profit with the mouse; Shift+T cycles the order type. A left click places, a right click cancels; only a refused action shows a note. The toolbar switch turns them on / off (off by default)
 - **Price box** at the right end of each order line: click to type a price, drag to move the line
+- **Second charts and layouts** - the toolbar's second-chart button opens real MT5 charts of this symbol in any timeframe and tiles them in 8 layouts (for example two small charts on the left, this chart large on the right); *Native dock* hands the windows back to MT5's own Window → Tile
+- **Templates** - the toolbar's template menu applies the factory OrderCanvas preset or your own templates; type a name and press Enter to save one
+- **Live spread** next to the toolbar (can be switched off) and a six-step **first-run guide** with a small task per step
 - **Symbol search** grouped by category and exchange, favourites, keyboard navigation
-- **Chart workflow** - wheel zoom, drag to pan, free vertical scale, candle countdown, dark theme, EMA 20 / ATR 14, a visible chart-shift handle on dark grids
+- **Chart workflow** - wheel zoom, drag to pan, free vertical scale, candle countdown, light / dark / auto theme (auto follows the chart background), EMA 20 / ATR 14, a visible chart-shift handle on dark grids
 - **Interface** in English or Chinese (follows the terminal by default)
 - **Accounts** - hedging, netting and exchange accounts (netting partial closes use an opposite deal)
 
