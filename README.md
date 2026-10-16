@@ -1,6 +1,10 @@
 <div align="center">
 
-<img src="assets/brand/logo-dark.png" alt="OrderCanvas for MT5 — approved OC logo" width="380">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark-transparent-6x.png">
+  <source media="(prefers-color-scheme: light)" srcset="assets/brand/logo-light-transparent-6x.png">
+  <img src="assets/brand/logo-light-transparent-6x.png" alt="OrderCanvas for MT5" width="320">
+</picture>
 
 # OrderCanvas
 
