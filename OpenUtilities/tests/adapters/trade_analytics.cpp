@@ -9,7 +9,9 @@
 #include <vector>
 using string=std::string;
 using datetime=long long;
-using ulong=unsigned long long;
+// glibc already declares ulong (unsigned long); MQL5 ulong is 64-bit everywhere.
+using oc_ulong=unsigned long long;
+#define ulong oc_ulong
 #define MathAbs std::fabs
 #define MathSqrt std::sqrt
 #define MathMax std::max
