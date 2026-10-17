@@ -20,7 +20,7 @@ Preview every order on the chart before it is sent · drag order lines to modify
 
 **English** · [中文](README.zh-CN.md)
 
-[Website & purchase](https://devspace-ntpa.tail545cd.ts.net/oc/shop) · [Download](https://github.com/lichunboa/OrderCanvas/releases/latest) · [Install guide](docs/INSTALL.md) · [All features](docs/FEATURES.md) · [Changelog](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
+[Official website](https://getordercanvas.com/oc/shop?lang=en) · [MQL5 Market](https://www.mql5.com/en/market/product/201771) · [Download](https://github.com/lichunboa/OrderCanvas/releases/latest) · [Install guide](docs/INSTALL.md) · [All features](docs/FEATURES.md) · [Changelog](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
 
 </div>
 
@@ -184,7 +184,7 @@ macOS / manual install and screenshots of each step: [docs/INSTALL.md](docs/INST
 | Yearly | 69 USDT | 2 |
 | Lifetime | 89 USDT | 2, including updates |
 
-Buy on the [website](https://devspace-ntpa.tail545cd.ts.net/oc/shop) or in Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot). Payment is USDT (TRC20); every order has unique cents (e.g. 19.37) so the payment is matched and the key delivered automatically. Keys are bound to the MT5 account number and verified offline. The **Strategy Tester runs every feature without a key** - try it before you buy. Invite a friend and get 15 days for every paid referral.
+For a separately licensed copy, visit the [official website](https://getordercanvas.com/oc/shop?lang=en) or Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot). Payment is USDT (TRC20); every order has unique cents (e.g. 19.37) so the payment is matched and the key delivered automatically. Keys are bound to the MT5 account number and verified offline. The **Strategy Tester runs every feature without a key** - try it before you buy. Invite a friend and get 15 days for every paid referral.
 
 ## FAQ
 
