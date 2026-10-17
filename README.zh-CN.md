@@ -20,7 +20,7 @@
 
 [English](README.md) · **中文**
 
-[官网与购买](https://devspace-ntpa.tail545cd.ts.net/oc/shop) · [下载](https://github.com/lichunboa/OrderCanvas/releases/latest) · [安装教程](docs/INSTALL.md) · [全部功能](docs/FEATURES.zh-CN.md) · [更新日志](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
+[正式官网](https://getordercanvas.com/oc/shop?lang=zh) · [MQL5 Market](https://www.mql5.com/en/market/product/201771) · [下载](https://github.com/lichunboa/OrderCanvas/releases/latest) · [安装教程](docs/INSTALL.md) · [全部功能](docs/FEATURES.zh-CN.md) · [更新日志](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
 
 </div>
 
@@ -184,7 +184,7 @@ Mac / 手动安装和每一步说明：[docs/INSTALL.md](docs/INSTALL.md)。
 | 年付 | 69 USDT | 2 |
 | 永久 | 89 USDT | 2，含后续更新 |
 
-在 [官网](https://devspace-ntpa.tail545cd.ts.net/oc/shop) 或 Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot) 购买。用 USDT（TRC20）付款，每个订单金额的小数尾数不同（如 19.37），到账后自动识别并发授权码。授权码绑定 MT5 账户号码、离线校验。**策略测试器里不需要授权码**，可以先回测体验。邀请好友付费购买，每单送你 15 天。
+独立授权版本可在 [正式官网](https://getordercanvas.com/oc/shop?lang=zh) 或 Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot) 购买。用 USDT（TRC20）付款，每个订单金额的小数尾数不同（如 19.37），到账后自动识别并发授权码。授权码绑定 MT5 账户号码、离线校验。**策略测试器里不需要授权码**，可以先回测体验。邀请好友付费购买，每单送你 15 天。
 
 ## 常见问题
 
