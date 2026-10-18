@@ -44,7 +44,7 @@ int SE_Calculate(const int n,const int prev,const datetime &time[],const double 
  {
   string roles[]={"H1","H2","L1","L2"};bool enabled[]={SE_ShowH1,SE_ShowH2,SE_ShowL1,SE_ShowL2};
   for(int i=MathMax(1,prev-1);i<n-1;i++)for(int k=0;k<4;k++)if(enabled[k] && (((int)SE_signals[i]&(1<<k))!=0))
-  {string message=_Symbol+" "+EnumToString(_Period)+" "+TimeToString(time[i])+" "+roles[k];StudyToast(message);if(SE_AlertNotifications)SendNotification(message);}
+  {string message=StudySignalMessage(time[i],roles[k],"");StudyToast(message);if(SE_AlertNotifications)SendNotification(message);}
  }
  return n;
 }

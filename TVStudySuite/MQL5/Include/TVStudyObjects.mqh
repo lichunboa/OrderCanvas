@@ -8,6 +8,11 @@ string studyKeys[];datetime studyTimes[];
 // One owned presentation record per registry slot; no synchronous chart reads.
 struct TVStudyPaintState{bool created;uint pointMask,intMask;datetime time[2];double price[2];long integers[6];string text;bool textKnown;};
 TVStudyPaintState studyPaint[];ulong studyCacheCommands=0,studyCacheSkips=0;
+// MT5 draws objects in the order they became visible: a bar count or H1 / L1 badge shown after the
+// OrderCanvas ticket covered it (Owner round 26 #6). When this suite shows objects it bumps a chart
+// global; the panel then lifts its own objects back on top (TVLiftOwnedObjects).
+bool studyRaisePending=false;
+void StudyPublishRaise(){if(!studyRaisePending)return;studyRaisePending=false;GlobalVariableSet("TVST.Raise."+IntegerToString(ChartID()),(double)GetTickCount64());}
 int StudyIntSlot(const ENUM_OBJECT_PROPERTY_INTEGER property)
 {return property==OBJPROP_COLOR?0:(property==OBJPROP_FONTSIZE?1:(property==OBJPROP_ANCHOR?2:(property==OBJPROP_STYLE?3:(property==OBJPROP_TIMEFRAMES?4:(property==OBJPROP_WIDTH?5:-1)))));}
 void StudySetInt(const int index,const string key,const ENUM_OBJECT_PROPERTY_INTEGER property,const long value)
@@ -15,6 +20,7 @@ void StudySetInt(const int index,const string key,const ENUM_OBJECT_PROPERTY_INT
  int slot=StudyIntSlot(property);uint bit=slot>=0?(uint)(1<<slot):0;
  if(slot>=0 && (studyPaint[index].intMask&bit)!=0 && studyPaint[index].integers[slot]==value){studyCacheSkips++;return;}
  studyCacheCommands++;if(ObjectSetInteger(0,key,property,value) && slot>=0){studyPaint[index].integers[slot]=value;studyPaint[index].intMask|=bit;}
+ if(property==OBJPROP_TIMEFRAMES && value!=OBJ_NO_PERIODS)studyRaisePending=true;
 }
 void StudyMoveCached(const int index,const string key,const int point,const datetime time,const double price)
 {
@@ -63,6 +69,7 @@ int StudyEnsure(const string key,const datetime a,const ENUM_OBJECT type,const d
 {
  StudyNew(key,a);int index=StudyIndex(key);if(index<0)return -1;if(studyPaint[index].created)return index;
  studyCacheCommands++;bool created=type==OBJ_TEXT?ObjectCreate(0,key,type,0,a,p0):ObjectCreate(0,key,type,0,a,p0,b,p1);if(!created)return -1;
+ if(type==OBJ_TEXT)studyRaisePending=true;   // zones and lines are drawn behind the candles
  studyPaint[index].created=true;studyPaint[index].time[0]=a;studyPaint[index].price[0]=p0;studyPaint[index].pointMask=1;
  if(type!=OBJ_TEXT){studyPaint[index].time[1]=b;studyPaint[index].price[1]=p1;studyPaint[index].pointMask=3;}
  // Labels (bar counts) in front of the grid; zones and lines stay behind the candles.
@@ -98,6 +105,34 @@ void StudyPrune(const string studyNamespace,const datetime oldest)
 // corner (sound + journal line kept) instead of MetaTrader's Alert window, which
 // takes the focus and covers the chart while trading. Toasts expire after 12 s.
 #ifdef TV_STUDY_HOST_TEST
+// The replay compares alerts with the Pine transcription's original wording.
+#define StudySignalMessage(t,event,source) (_Symbol+" "+EnumToString(_Period)+" "+TimeToString(t)+" "+(source)+(event))
+#else
+// Interface language: the OrderCanvas panel publishes it (1 Chinese, 0 English); a suite on its own
+// follows the terminal language. Signal texts are short and translated (Owner round 27: the toast
+// showed "BTCUSD PERIOD_M5 2026.10.18 07:35 PAIO: Gap Down(B…", cut off, English only).
+bool StudyChinese()
+{
+ const string key="TVST.Lang."+IntegerToString(ChartID());
+ if(GlobalVariableCheck(key))return GlobalVariableGet(key)!=0;
+ return StringFind(TerminalInfoString(TERMINAL_LANGUAGE),"Chinese")>=0;
+}
+string StudySignalText(const string event)
+{
+ const bool zh=StudyChinese();
+ string kind=StringFind(event,"(Open)")>0?(zh?"开盘缺口":"opening gap"):(StringFind(event,"(Wick)")>0?(zh?"影线缺口":"wick gap"):(StringFind(event,"(Body)")>0?(zh?"实体缺口":"body gap"):""));
+ if(kind!="")return StringFind(event,"Gap Up")==0?(zh?"向上":"Up ")+kind:(zh?"向下":"Down ")+kind;
+ if(event=="H1" || event=="H2")return event+(zh?" 买入信号":" buy signal");
+ if(event=="L1" || event=="L2")return event+(zh?" 卖出信号":" sell signal");
+ return event;
+}
+string StudySignalMessage(const datetime t,const string event,const string source)
+{
+ string tf=EnumToString(_Period);StringReplace(tf,"PERIOD_","");
+ return StudySignalText(event)+" · "+_Symbol+" "+tf+" · "+TimeToString(t,TIME_MINUTES);
+}
+#endif
+#ifdef TV_STUDY_HOST_TEST
 #ifndef STUDY_TOAST_HOST_SINK
 #define STUDY_TOAST_HOST_SINK(m)
 #endif
@@ -111,7 +146,7 @@ string StudyToastName(const int i){return "TVST_TOAST_"+IntegerToString(i);}
 void StudyToastPaint()
 {
  const double k=MathMax(1.0,TerminalInfoInteger(TERMINAL_SCREEN_DPI)/96.0);
- const int w=(int)MathRound(330*k),h=(int)MathRound(30*k),gap=(int)MathRound(6*k);
+ const int w=(int)MathRound(300*k),h=(int)MathRound(30*k),gap=(int)MathRound(6*k);
  for(int i=0;i<STUDY_TOAST_MAX;i++)
  {
   const string n=StudyToastName(i);

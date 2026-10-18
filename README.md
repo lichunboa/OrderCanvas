@@ -32,7 +32,7 @@ Preview every order on the chart before it is sent · drag order lines to modify
 |---|---|
 | **Trade with OrderCanvas** | [Features](docs/FEATURES.md) · [Installation](docs/INSTALL.md) · [Releases](https://github.com/lichunboa/OrderCanvas/releases) |
 | **Reuse open MQL5 code** | [Developer guide](docs/DEVELOPERS.md) · [MIT utilities](OpenUtilities/) · [MPL indicator source](TVStudySuite/) |
-| **Contribute or report a bug** | [Repository map](docs/PROJECT_STRUCTURE.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/lichunboa/OrderCanvas/issues) · [Security](SECURITY.md) · [Community channels](docs/COMMUNITY.md) |
+| **Contribute or report a bug** | [Repository map](docs/PROJECT_STRUCTURE.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/lichunboa/OrderCanvas/issues) · [Discussions](https://github.com/lichunboa/OrderCanvas/discussions) · [Security](SECURITY.md) · [Community channels](docs/COMMUNITY.md) |
 
 **Mixed-license repository:** commercial UI and trade execution remain proprietary. [Open-source policy](docs/OPEN_SOURCE.md).
 
@@ -76,15 +76,19 @@ Choose Buy or Sell and the order is drawn on the chart first - entry, take-profi
 Every position, pending order, TP and SL is a live line you can drag. Drag a TP/SL handle out of an order line to add protection. The position label carries its own actions:
 
 - **BE** - move the stop to break-even, optionally covering commission, swap and a slippage buffer (configurable in ticks)
-- **½** - partial close by a preset share (25 / 33 / 50 / 67 / 75 %)
+- **½** - partial close by a preset share (25 / 33 / 50 / 67 / 75 %); **drag it out** of the line for a staged level - towards profit a staged take profit, towards loss a staged stop loss (its tag shows the share and P/L; click it to change the share)
 - **Reverse** and **×** close - both confirmed next to the pointer by default
 
 ![Order lines](images/orderlines.png)
 
+Dragging a TP, SL or order line applies the new price when you let go (TradingView); a setting turns on a 放弃 / 确认 review instead. Clicking a line's P/L opens its editor right beside the line - SL / TP, quantity, staged levels.
+
+<p align="center"><img src="images/staged-lines.png" width="49%"> <img src="images/line-editor.png" width="40%"></p>
+
 ### 3. Professional order ticket
 - Market, Limit, Stop and Stop-Limit orders; expiry GTC / today / specific time (with a calendar)
 - **Five sizing modes**: lots, margin, % of balance, risk in money, risk in % - the lot size follows the stop distance
-- TP / SL in ticks, price, % of price, pips, money or % of balance; reward:risk shown live
+- TP / SL as P/L money by default, or in ticks, price, % of price, pips or % of balance; reward:risk shown live
 - Trade value, tick value and required margin from the broker, with the account currency
 - Up to five saved order presets (type, offset, protection, expiry)
 
@@ -113,8 +117,12 @@ Each module, colour and size is set in *Settings → page selector*. The workben
 ### 7. Risk caps and auto protection (off by default)
 - **Max spread** per symbol and **max risk per trade** (% of equity, from the stop distance): when a cap is exceeded the submit button says why and nothing is sent
 - **Auto break-even**: once a position is +0.5R / +1R / +1.5R / +2R in profit, its stop moves to break-even (fees included). R is the stop distance when the position was opened and is remembered across terminal restarts
-- **ATR trailing** after break-even: on each closed bar the stop follows close ∓ ATR(14) × 1.0-3.0 and only ever tightens
-- Both run while MT5 and this chart stay open (it is an EA, not a server-side stop) and act only on this panel's Magic number
+- **Trailing stop**: on each closed bar the stop follows ATR(14) × k, the low / high of the last N bars, or a fixed k × R, and only ever tightens; it can start at entry or after break-even
+- **Auto partial close**: once at +x R, close y % of the position
+- The three switches sit in the ticket under the exits, each showing its rule (BE +1R · Trail ATR×2 · Partial 1R·50%); 「Settings ›」 opens the details
+- They run while MT5 and this chart stay open (it is an EA, not a server-side stop) and act only on this panel's Magic number
+
+<p align="center"><img src="images/ticket-protect.png" width="38%"></p>
 
 ## Feature checklist
 
@@ -127,8 +135,8 @@ Features traders usually compare when choosing an MT5 trade panel, and where Ord
 | Preview before sending | ✅ draft lines, nothing is sent before you confirm |
 | One-click break-even (fees, swap, slippage buffer) | ✅ position line `BE` |
 | Auto break-even at a profit multiple | ✅ +0.5R to +2R |
-| ATR trailing stop | ✅ closed bars, tighten only |
-| Partial close / staged take-profit | ✅ 25-75 %, up to 3 extra TP levels |
+| Trailing stop | ✅ ATR, swing low / high or fixed R; closed bars, tighten only |
+| Partial close / staged TP & SL | ✅ 25-100 %, drag ½ out for up to 3 staged TPs and 3 staged SLs; auto partial close at x R |
 | One-click trading, close symbol / close all | ✅ |
 | Hotkeys, single-key buy / sell, click-to-place orders and stops at the mouse | ✅ typed bindings, follow-the-pointer mode |
 | Max spread / max risk per trade | ✅ |
@@ -139,11 +147,11 @@ Features traders usually compare when choosing an MT5 trade panel, and where Ord
 
 ## More
 
-- **Staged take-profit** - up to three extra TP levels per position, each closing its share automatically; kept across terminal restarts
+- **Staged take profit / stop loss** - drag ½ out of a position line (profit side = TP, losing side = SL), up to three of each per position, the tag showing the share and its P/L, each closing its share automatically; shown on sub charts too and kept across terminal restarts
 - **Hotkeys** - type any key or combination (B, Shift+S, Ctrl+Shift+X, F2): buy / sell at market, close, break-even, partial close, collapse; **follow the pointer** - Shift+B / Shift+S place a Buy / Sell where you click (Limit or Stop by position), Shift+L / Shift+P move the stop loss / take profit with the mouse; Shift+T cycles the order type. A left click places, a right click cancels; only a refused action shows a note. The toolbar switch turns them on / off (off by default)
 - **Price box** at the right end of each order line: click to type a price, drag to move the line
-- **Second charts and layouts** - the toolbar's second-chart button opens real MT5 charts of this symbol in any timeframe and tiles them in 8 layouts (for example two small charts on the left, this chart large on the right); *Native dock* hands the windows back to MT5's own Window → Tile
-- **Templates** - the toolbar's template menu applies the factory OrderCanvas preset or your own templates; type a name and press Enter to save one
+- **Second charts and layouts** - the toolbar's second-chart button opens real MT5 charts of this symbol in any timeframe and tiles them in 8 layouts (for example two small charts on the left, the trading chart large on the right); each sub chart shows only its symbol and timeframe, shades the span the trading chart shows and draws compact order lines. *One chart* closes the sub charts, *Back to MT5* keeps them in MT5's window (Alt+R tiles)
+- **Templates** - six presets (price action, clean, trend EMAs, Bollinger + RSI, MACD, volume) with TradingView-style 2 px indicators, or your own templates; type a name and press Enter to save one
 - **Live spread** next to the toolbar (can be switched off) and a six-step **first-run guide** with a small task per step
 - **Symbol search** grouped by category and exchange, favourites, keyboard navigation
 - **Chart workflow** - wheel zoom, drag to pan, free vertical scale, candle countdown, light / dark / auto theme (auto follows the chart background), EMA 20 / ATR 14, a visible chart-shift handle on dark grids
@@ -172,7 +180,7 @@ The package contains the program, the recommended chart template, the TVStudySui
 
 ## Install
 
-Download `OrderCanvas.zip`, unzip it and double-click **`Install.bat`** (Windows) - it installs the program and the recommended chart template into every MetaTrader 5 on the PC. Restart MT5, right-click a chart → *Templates* → **OrderCanvas**, then paste your key into the license card on the chart and click **Activate** (or F7 → *Inputs* → `LicenseKey`). The toolbar then shows the days left and the end date.
+Download `OrderCanvas.zip`, unzip it and double-click **`Install.bat`** (Windows) or run `Install-Mac.command` from Terminal (Mac) - it installs the program and the recommended chart template into every MetaTrader 5 on the PC. Restart MT5, right-click a chart → *Templates* → **OrderCanvas**, then paste your key into the license card on the chart and click **Activate** (or F7 → *Inputs* → `LicenseKey`). The toolbar then shows the days left and the end date.
 macOS / manual install and screenshots of each step: [docs/INSTALL.md](docs/INSTALL.md).
 
 ## License & pricing

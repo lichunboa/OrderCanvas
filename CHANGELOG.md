@@ -1,5 +1,60 @@
 # Changelog
 
+## 1.9 — 2026-10-17
+- **Leaner ticket**: no section titles; take profit / stop loss are always shown, and the rarely used rows (time in force, required margin) sit behind one small arrow at the bottom, closed by default. Only 「Settings ›」 opens the auto-protection settings, and that row has more room above the button.
+- **Reward:risk always shown**: the row stays in place before a side is picked, so a locked ratio stays visible and can be unlocked; switching TP or SL off releases the lock. The ratio box is rounded and turns blue while locked; the grey tick / USD text sits level with the field values.
+- **Sub charts open faster**: the template no longer carries the trading chart's ~460 panel and study objects, so the new chart starts clean (no drawings of the old timeframe for a second).
+- **Onboarding guide refreshed** for this release (typed ratio, error reasons above the fields, auto-protection switches, the price-box editor with size, the default keys incl. L / P, EMA 20 / 200, larger pane legends).
+- **Version numbers match the MQL5 Market**: from this release the version has two parts (1.9, 1.10, …), the same number the Market shows.
+- **Multi-chart layouts rebuilt**: the layout area is measured on a freshly opened chart, so layouts fill MetaTrader's chart area instead of coming out small; the trading chart takes 68 % in the "large + small" layouts. Leftover 副图 close instead of piling up behind the layout. After resizing MetaTrader, press 「原生停靠」 and pick the layout again.
+- **Order panel below the indicators**: positions, orders, history, account and analysis now sit in their own pane under ATR instead of covering the bottom of the price chart.
+- **Sub charts are minimal**: a chart opened by 「副图」 or a layout shows its symbol and one timeframe button only - no order panel, no badges - at the normal toolbar size, and may show another symbol. While a layout floats, the trading chart gets the same button: it opens M1 … MN plus chart shift, MetaTrader autoscroll and "back to the newest bar", because MetaTrader's own buttons do not work for floating windows.
+- **Follow the pointer**: moving the stop loss / take profit of a position or order shows the P/L at the pointer.
+- **Take profit / stop loss default to P/L** in the account currency, with ticks as the equivalent on the right. A ticket still on the old tick default switches once; order presets keep the unit you chose.
+- **Ticket header**: the ··· menu is replaced by a gear that opens Settings → Trading, which now holds the order-line display switches (positions and orders on the chart, draft lines for market orders, P/L amounts on the lines). The grid icon still opens the order presets.
+- **Collapsed ticket**: order type and size mode open a drop-down list instead of cycling on each click.
+- **Template presets**: the 模板 menu offers six starting points - price action (the default workbench), clean chart, trend EMAs 20/50/200, Bollinger + RSI, MACD and volume. They use MetaTrader's own indicators, which stay editable and deletable.
+- **Sub charts show where the trading chart is**: a shaded band marks the trading chart's visible time range on the other charts; sub charts start on auto scale, with a free-axis switch in the timeframe menu.
+- **Stronger colours**: warmer, more contrasted light theme, clearer on-states for switches, coloured Sell / Buy before a side is chosen, a darker chart grid, a finer spread capsule between the quotes.
+- **Spread warning**: the toolbar spread turns red when it is well above this symbol's usual spread (or above your cap); clicking it opens the spread-cap setting. Nothing is blocked unless you set a cap.
+- **TP / SL straight from the line**: press the TP or SL handle on an order line and drag - no click first.
+- **Staged take profit and stop loss**: drag 「半」 (partial close) out of a position line - towards profit for a take-profit level, towards loss for a stop-loss level - for the configured share; click a level's tag to change its share (25 … 100 %). A plain click on 「半」 still closes the share at once.
+- **Position editor beside its line**: clicking a position's P/L (or an order's tag) opens the editor right under that line; the ticket stays usable.
+- **Auto protection**: the trailing stop can follow ATR(14), the low / high of the last N bars, or a fixed multiple of R, and can start at entry instead of after break-even; an optional auto partial close takes a share off once at +x R.
+- **Dragging a line applies on release**, like TradingView: no editor pops up (a setting brings back a 放弃 / 确认 review on the line). Clicking a line's P/L opens its editor beside the line.
+- **TradingView-style preset indicators**: MACD with signal line and a four-colour histogram, RSI 70/50/30, Bollinger Bands, candle-coloured volume, EMAs and ATR - all 2 px; the price-action EMAs stay thin and dashed. Tick volume no longer shows under the candles unless you pick the volume preset.
+- **Auto protection in the ticket**: under the exits, 保本 / 追踪 / 分批 switches showing their rules, with 「设置 ›」 for the details.
+- **Toolbar icons by function** (ticket, order panel, templates, charts, hotkeys, help); 「还原单图」 closes the extra charts, 「放回 MT5 窗口」 keeps them.
+- **Ticket**: grows downward when you switch order type (the toolbar stays in place), a closer submit button, TP / SL captions in the colours of their lines.
+- Faster order panel: its window place is read once a second instead of on every repaint.
+- Fixed: TP / SL in money on a small crypto position (BTC 0.01 lot) showed 0 ticks and greyed out the submit button; a line drag on a short chart window was not applied.
+- **Compact order lines on sub charts**: size and P/L only; the line under the pointer opens into the full label (switchable in Settings → Trading).
+- **ⓘ help in Settings** for auto protection, break-even costs, partial close, risk caps and the order-line options: hover for the calculation and an example.
+- The factory template no longer shows tick volume and draws ATR 2 px, so a new installation looks the same everywhere.
+- **Economic calendar** (MetaTrader's own), TradingView style: a small icon per release along the bottom of the chart - hover for its time line and a short card (actual / forecast / previous), click for the details and the latest releases. The toolbar warns ahead of a high-impact release and shows the actual value for 3 minutes after it; an optional pause of new positions around releases (off by default).
+- Sub charts follow a template or preset applied on the trading chart; indicator panes keep a sensible height (the weights are rewritten, separators stay draggable).
+- Staged levels can be dragged again after they are placed; the Settings help opens as a readable card.
+- A first install on a 0.01-tick crypto symbol starts with exits of at least 0.1 % of the price (they were inside the broker's stop level).
+- Fixed (license card, English): the hints and the "key not valid" message were cut off.
+- **Staged levels**: the tag shows the share and what the level books (TP2 · 25% · +41.50 USD) instead of the lots twice; up to 3 staged take profits **and** 3 staged stop losses per position; the levels show on sub charts too, and only one chart per symbol executes them (no double closes with several charts open).
+- Thin dashed price-action EMAs again by default. A dashed or dotted style sets the width to 1 (MetaTrader draws wider lines solid), a wider line switches to solid - with an ⓘ note.
+- Fixed: a line style picked in Settings was switched back by the value in the width field; a dialog frame could stay on the chart as an empty box; bar counts and H1 / L1 badges could cover the ticket; 「还原单图」 could leave one sub chart open.
+- **Fixed a freeze of MetaTrader on the Mac** when workbench settings (e.g. the EMA style) were applied: the study suite read the chart colour while the panel replaced it, and the two waited on each other. The panel now hands the colour over.
+- Calendar: MetaQuotes' own verdict on each release (good / bad for the currency) colours the actual value, a revised previous value is shown, and a new actual value appears within about 2 seconds of MetaQuotes publishing it.
+- **Installers**: Windows `Install.bat` no longer uses PowerShell (security software blocked or redirected it) and explains an un-extracted zip, a missing MT5 and a portable MT5 (drag its folder onto it); new `Install-Mac.command` for MetaTrader 5 for Mac, broker Mac apps and CrossOver; package file names are plain ASCII.
+- **Official releases (GitHub / shop builds only)**: a calendar icon's details list the latest release titles of the matching central bank or statistics office (Fed, BEA, Census, ECB, BoE, BoJ, BoC, SNB, RBNZ) - their public RSS only: free, long-lived, no account. Allow the sites the card lists once under Tools → Options → Expert Advisors. The MQL5 Market build contains no network code.
+- **Lockable reward:risk**: click 「Lock」 beside Risk/Reward; then changing the TP or the SL (typed, dragged, or with L / P) sets the other by the ratio. The ratio itself can be typed (2 or 1:2): the take profit is set from the stop distance, and with the lock on it becomes the locked ratio.
+- **Larger pane legends**: ATR, RSI, MACD and Volume panes show their name and current value in the ticket font, values in their line colours (over MetaTrader's small caption). A lower pane that comes back at MetaTrader's default half height after a restart is made small again.
+- **Order editor**: Confirm right after typing a size is no longer taken as Discard; Confirm with nothing changed just closes; buttons light up under the pointer.
+- **Cancelling a pointer-follow restores the draft**: a right-click or Esc during Shift+E / Shift+B / Shift+S / L / P puts the entry and exits back.
+- The official-news sites must be added by hand (MetaTrader keeps the allowed list encrypted; no program can write it): Settings → Trading lists the ones for the chart, the package README lists them per currency.
+- **Change a pending order's size**: in the order editor, a new quantity places the order again at the same price, TP / SL and expiry (MetaTrader cannot change an order's volume); if the new size is refused the original comes back.
+- **Errors say why**: an invalid field shows its reason above it (e.g. "A buy limit goes below the price; to buy a breakout use Stop", "Too small: the minimum 0.01 lots needs 8.17 USD at this stop"), so does the "!" on the chart; rejected modifications are explained in plain words and stay up for less time.
+- **Follow-the-pointer TP / SL**: P (target) clicked on the other side of the entry sets the stop, L the other way round; the hint is just "Stop loss 81,623 · -1.18 USD" and MetaTrader's object tooltip is gone.
+- EMA defaults: EMA 20 and EMA 200 of the chart, all thin dashed; the preset EMAs are dashed too.
+- Signal alerts are short and translated: "Down body gap · BTCUSD M5 · 07:35".
+- Fixed: with the ticket hidden, calendar icons and staged tags did not react to clicks; Shift+E no longer turns a limit into a stop by itself.
+
 ## 1.0.8 — 2026-10-17
 - **Second charts and multi-chart layouts**: the toolbar 「副图」 button opens real MetaTrader charts of this symbol (any timeframe, from this chart's template, order panel hidden) and arranges them in 8 layouts, including two on the left with this chart large on the right. 「原生停靠」 docks every chart back so MetaTrader's own Window → Tile (Alt+R) works; other OrderCanvas charts can follow this chart's symbol.
 - **Templates in the toolbar**: 「模板」 lists the factory OrderCanvas preset and your own templates - apply, replace, rename, remove; type a name and press Enter to save.

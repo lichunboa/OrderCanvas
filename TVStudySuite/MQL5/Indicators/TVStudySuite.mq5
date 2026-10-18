@@ -2,7 +2,7 @@
 // Unified native workbench. Original module attribution: Indicators/THIRD_PARTY.md.
 #property strict
 #property copyright "Price Action Workbench; MPL-2.0 source acknowledgements in THIRD_PARTY.md"
-#property version "1.08" // = OrderCanvas OC_VERSION 1.0.8
+#property version "1.09" // = OrderCanvas OC_VERSION 1.9
 #property indicator_chart_window
 #property indicator_buffers 6
 #property indicator_plots 5
@@ -58,7 +58,7 @@ int OnInit()
  PlotIndexSetInteger(1,PLOT_DRAW_TYPE,EnablePriceAction && PA_ShowThirdEMA?DRAW_LINE:DRAW_NONE);
  return INIT_SUCCEEDED;
 }
-void OnTimer(){StudyToastTick();}
+void OnTimer(){StudyToastTick();StudyPublishRaise();}
 void OnDeinit(const int reason){EventKillTimer();StudyToastClear();PrintFormat("[STUDY_CACHE] commands=%I64u skipped=%I64u",studyCacheCommands,studyCacheSkips);PA_Deinit(reason);BC_Deinit(reason);SE_Deinit(reason);StudyReset();}
 void EmptyModuleBuffer(double &buffer[],const int n,const int prev)
 {for(int i=prev>0 && prev<=n?MathMax(0,prev-1):0;i<n;i++)buffer[i]=EMPTY_VALUE;}
@@ -66,7 +66,11 @@ int OnCalculate(const int n,const int prev,const datetime &time[],const double &
 {
  if(n<3)return 0;
  // The chart background decides the zone blend; a theme switch repaints everything once.
- {static ulong checked=0;const ulong now=GetTickCount64();if(prev==0 || now-checked>2000){checked=now;const color bg=(color)ChartGetInteger(0,CHART_COLOR_BACKGROUND);if(bg!=studyChartBg){const bool repaint=prev>0;studyChartBg=bg;if(repaint)return 0;}}}
+ // Never a synchronous chart read here (ChartGetInteger waits for the chart thread): while the panel EA
+ // replaced this indicator, that read deadlocked MetaTrader on the Mac (round 26). The panel publishes
+ // the background as a global; without a panel the dark default stays.
+ {static ulong checked=0;const ulong now=GetTickCount64();if(prev==0 || now-checked>2000){checked=now;const string key="TVST.Bg."+IntegerToString(ChartID());
+  if(GlobalVariableCheck(key)){const color bg=(color)(long)GlobalVariableGet(key);if(bg!=studyChartBg){const bool repaint=prev>0;studyChartBg=bg;if(repaint)return 0;}}}}
  ulong startUs=GetMicrosecondCount();if(prev==0)PrintFormat("[WORKBENCH_CALC] begin bars=%d",n);
  if(EnablePriceAction){if(PA_Calculate(n,prev,time,open,high,low,close,tick_volume,volume,spread)==0)return 0;}
  else{EmptyModuleBuffer(PA_ema,n,prev);EmptyModuleBuffer(PA_mtf,n,prev);EmptyModuleBuffer(PA_emaCalc,n,prev);}
