@@ -2,7 +2,7 @@
 // Unified native workbench. Original module attribution: Indicators/THIRD_PARTY.md.
 #property strict
 #property copyright "Price Action Workbench; MPL-2.0 source acknowledgements in THIRD_PARTY.md"
-#property version "1.09" // = OrderCanvas OC_VERSION 1.9
+#property version "1.10" // = OrderCanvas OC_VERSION 1.10
 #property indicator_chart_window
 #property indicator_buffers 6
 #property indicator_plots 5

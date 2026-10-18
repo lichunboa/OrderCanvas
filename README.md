@@ -43,7 +43,7 @@ Preview every order on the chart before it is sent · drag order lines to modify
 ## Quick start
 
 1. **[Download `OrderCanvas.zip`](https://github.com/lichunboa/OrderCanvas/releases/latest)**, unzip it and double-click **`Install.bat`**.
-2. Restart MetaTrader 5, right-click a chart → *Templates* → **OrderCanvas**, allow *Algo Trading*.
+2. Restart MetaTrader 5, drag **OrderCanvas** from the Navigator onto a chart and allow *Algo Trading* - your chart stays as it is; the toolbar *Templates* menu applies our look and studies when you want them.
 3. Paste your key into the license card on the chart and click **Activate** - or run everything in the **Strategy Tester without a key** first.
 
 ## Why OrderCanvas
@@ -95,7 +95,7 @@ Dragging a TP, SL or order line applies the new price when you let go (TradingVi
 <p align="center"><img src="images/ticket-limit.png" width="38%"> <img src="images/oneclick.png" width="38%"></p>
 
 ### 4. One-click trading
-Turn on *1-click* in the ticket header: the Sell / Buy quotes become instant market buttons and the bottom action becomes *Close all* for this symbol (right-hand screenshot above). With 1-click on, close, cancel, partial close and reverse from the order lines and the order panel act at once, without a confirmation.
+Turn on *1-click* in the ticket header: a click on the Sell / Buy quote places the selected order type at once - a market order on the Market tab, a limit / stop order at the ticket's price on the other tabs - and on the Market tab the bottom action becomes *Close all* for this symbol (right-hand screenshot above). With 1-click on, close, cancel, partial close and reverse from the order lines and the order panel act at once, without a confirmation.
 
 ### 5. Order panel and trade analytics
 A dock under the chart with **Positions, Orders, History, Account and Analytics**. History shows open/close times, holding time, commission, swap and net P&L; hovering a row highlights its lines on the chart. **Analytics** reads like a strategy report: a KPI strip (net P&L, max drawdown, trades, win rate, profit factor, costs), the equity curve with drawdown and a hover card per trade, then chart cards - profit structure, win / loss, P&L distribution, long vs short, by weekday, holding time and close hour - and the performance, risk and per-symbol tables. Today / 7 days / 30 days / all, this symbol or all symbols; maximise the panel to use the whole chart. Each closed trade also shows its **actual risk** - the largest floating loss while it was open (MAE) - next to the risk planned by its stop.

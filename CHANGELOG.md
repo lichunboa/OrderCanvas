@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.10 — 2026-10-19
+- **Your chart stays yours**: a new installation adds only the ticket and order lines - no recolouring, no ATR / EMA, no workbench. OrderCanvas's look and studies are one click away in the toolbar's *Templates* menu (the guide shows it). Upgrades keep the chart as it was. Install: drag OrderCanvas from the Navigator onto a chart.
+- **Faster, lighter**: a timeframe switch no longer reads every chart object and keeps the workbench it already has (one calculation instead of two) - on a Mac 0.2-1 s instead of 2-7 s; sub charts open without the main chart's objects; per-second work cut (order panel, pane captions, text measuring, chart-shift marker), so MetaTrader's own windows drag more smoothly under Wine.
+- **One-click** places the selected order type: market on the Market tab, limit / stop at the ticket's price on the other tabs; *Close all* is the bottom action on the Market tab only.
+- **Hotkeys with several orders**: L / P act on the order nearest the pointer; its line is drawn thick and the floating text names it. Hotkeys also work while a drawing is selected.
+- **Position / order editor**: Confirm stays grey until something changes; a click on the empty chart closes an unchanged editor; Discard and Confirm share one row.
+- **Bar count per timeframe**: on M5 only by default; Settings → Bar count → Visibility picks the timeframes.
+- **Drawings**: inside a Fibonacci or channel the chart pans (only its lines and handles move it); a press near a selected drawing's handle never moves the chart as well.
+- **Order lines**: a label stacked away from its line has a thin leader to it; labels re-align after the price scale is dragged; 2 px lines in the light theme.
+- **Reward:risk** always shown (lock visible and unlockable, rounded box); the field side text sits level with the values; only 「Settings ›」 opens the auto-protection settings.
+- Signal alerts follow the chart theme with a colour bar (buy / sell / gap); the bar countdown ticks every second; the 锁定 label no longer stays on the chart with the ticket collapsed; the price-action badges no longer cover the ticket after a restart.
+
 ## 1.9 — 2026-10-17
 - **Leaner ticket**: no section titles; take profit / stop loss are always shown, and the rarely used rows (time in force, required margin) sit behind one small arrow at the bottom, closed by default. Only 「Settings ›」 opens the auto-protection settings, and that row has more room above the button.
 - **Reward:risk always shown**: the row stays in place before a side is picked, so a locked ratio stays visible and can be unlocked; switching TP or SL off releases the lock. The ratio box is rounded and turns blue while locked; the grey tick / USD text sits level with the field values.

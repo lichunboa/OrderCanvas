@@ -36,13 +36,13 @@
 
 ## 3. 加载并激活
 
-1. 打开任意图表 → 右键 → **模板 → OrderCanvas**：一次加载面板、推荐配色、EMA 20 和 ATR 14 副图（也可以直接把 OrderCanvas 从导航器拖到图表）；
+1. 把 OrderCanvas 从「导航器 → EA 交易」**拖到图表**：只加上交易面板和订单线，你原来的配色、指标和副图都不变。想要 OrderCanvas 的深色样式、EMA 20 / ATR 14 和价格行为工作台，点面板工具栏「模板」→「价格行为」（新手引导里也有说明）；
 2. 勾选 **允许算法交易**，并确认 MT5 工具栏的「算法交易」按钮是绿色；
 3. 图表中间会出现授权卡片：把授权码粘贴进输入框（Ctrl+V），点 **激活**。也可以按 **F7 → 输入参数 → `LicenseKey`** 粘贴。
 
 安装没反应？先确认已经把压缩包**完整解压**到一个文件夹再双击 `Install.bat`；安装窗口会列出每个 MT5 的结果，可以截图发给卖家。
 
-模板只是起点：配色、周期、指标都可以随意改，改完右键 → 模板 → 保存模板即可。ATR 副图可以拖动分隔线调高度，不需要时直接删掉，之后不会再自动加回来。面板默认每次加载会套用深色配色，想完全用自己的配色，把输入参数 `MatchTradingViewChartStyle` 设为 `false`。
+套用的模板只是起点：配色、周期、指标都可以随意改，改完在工具栏「模板」里保存，或右键 → 模板 → 保存模板。ATR 副图可以拖动分隔线调高度，不需要时直接删掉，之后不会再自动加回来。从旧版本升级的电脑保持原来的 OrderCanvas 样式；想完全用自己的配色，把输入参数 `MatchTradingViewChartStyle` 设为 `false`。
 
 激活成功后面板立即出现。同一台电脑上输入一次后会自动记住，其他图表和重启 MT5 都不用再输。
 
@@ -65,5 +65,5 @@
 
 1. Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot): `/start` → choose a plan → send your MT5 account number → pay the USDT (TRC20) amount shown (2 decimals; the cents identify your order) → key and `OrderCanvas.zip` arrive automatically. `/mykeys` shows your current keys.
 2. Windows: right-click the zip → *Extract All*, then double-click `Install.bat` (plain copy into every MT5 on the PC, no network, no system changes; "Windows protected your PC" → *More info* → *Run anyway*; a portable MT5: drag its folder onto `Install.bat`). Mac: unzip, open Terminal, type `bash ` and drag `Install-Mac.command` into the window, press Enter (double-clicking it makes macOS ask for approval because it was downloaded). Manual: copy `OrderCanvas.ex5` to `MQL5\Experts`, `OrderCanvas.tpl` to `MQL5\Profiles\Templates`, `TVStudySuite.ex5` to `MQL5\Indicators`.
-3. Restart MT5, right-click a chart → Templates → OrderCanvas, allow algo trading, paste the key into the license card and click Activate (or F7 → Inputs → `LicenseKey`). Each computer asks only once. If nothing happens, make sure the zip was fully extracted first; the installer window lists the result for every MT5.
+3. Restart MT5, drag OrderCanvas from the Navigator onto a chart (it adds the panel and order lines and keeps your colours and indicators; for our dark look, EMA / ATR and the price-action studies use the toolbar Templates menu → Price action), allow algo trading, paste the key into the license card and click Activate (or F7 → Inputs → `LicenseKey`). Each computer asks only once. If nothing happens, make sure the zip was fully extracted first; the installer window lists the result for every MT5.
 4. Optional official news: a calendar icon's details can list the latest releases of the Fed, ECB and others. The card names the sites to allow under Tools → Options → Expert Advisors → Allow WebRequest for listed URL. Only their public RSS is read; nothing is sent. Not in the MQL5 Market build.

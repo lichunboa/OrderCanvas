@@ -143,26 +143,41 @@ void StudyToastClear(){}
 #define STUDY_TOAST_MAX 3
 string studyToastText[STUDY_TOAST_MAX];ulong studyToastUntil[STUDY_TOAST_MAX];bool studyToastMade[STUDY_TOAST_MAX];
 string StudyToastName(const int i){return "TVST_TOAST_"+IntegerToString(i);}
+// One look with OrderCanvas's notes (Owner 2026-10-19): the chart theme's colours (it was always dark),
+// a subtle frame and a bar on the left in the signal's colour - blue buy, red sell, amber gap.
+color StudyToastAccent(const string text)
+{
+ if(StringFind(text,"买入")>=0 || StringFind(text,"buy")>=0)return C'41,98,255';
+ if(StringFind(text,"卖出")>=0 || StringFind(text,"sell")>=0)return C'242,54,69';
+ return C'255,152,0';
+}
 void StudyToastPaint()
 {
  const double k=MathMax(1.0,TerminalInfoInteger(TERMINAL_SCREEN_DPI)/96.0);
- const int w=(int)MathRound(300*k),h=(int)MathRound(30*k),gap=(int)MathRound(6*k);
+ const int w=(int)MathRound(300*k),h=(int)MathRound(30*k),gap=(int)MathRound(6*k),bar=(int)MathMax(2,MathRound(3*k));
+ const color bg=(color)ChartGetInteger(0,CHART_COLOR_BACKGROUND);
+ const bool light=0.299*((int)bg&255)+0.587*(((int)bg>>8)&255)+0.114*(((int)bg>>16)&255)>128;
  for(int i=0;i<STUDY_TOAST_MAX;i++)
  {
-  const string n=StudyToastName(i);
+  const string n=StudyToastName(i),nb=n+"_BAR";
   if(StringLen(studyToastText[i])==0){   // NULL until first use: == "" does not match NULL
- if(studyToastMade[i]){ObjectDelete(0,n);studyToastMade[i]=false;}continue;}
+ if(studyToastMade[i]){ObjectDelete(0,n);ObjectDelete(0,nb);studyToastMade[i]=false;}continue;}
   if(!studyToastMade[i])
   {
    studyToastMade[i]=ObjectCreate(0,n,OBJ_EDIT,0,0,0);if(!studyToastMade[i])continue;
    ObjectSetInteger(0,n,OBJPROP_CORNER,CORNER_RIGHT_UPPER);ObjectSetInteger(0,n,OBJPROP_READONLY,true);
    ObjectSetInteger(0,n,OBJPROP_SELECTABLE,false);ObjectSetInteger(0,n,OBJPROP_HIDDEN,true);ObjectSetInteger(0,n,OBJPROP_ZORDER,90);
-   ObjectSetInteger(0,n,OBJPROP_BGCOLOR,C'30,34,45');ObjectSetInteger(0,n,OBJPROP_BORDER_COLOR,C'41,98,255');ObjectSetInteger(0,n,OBJPROP_COLOR,C'219,219,219');
    ObjectSetInteger(0,n,OBJPROP_FONTSIZE,9);ObjectSetString(0,n,OBJPROP_FONT,"Microsoft YaHei UI");ObjectSetInteger(0,n,OBJPROP_ALIGN,ALIGN_LEFT);
    ObjectSetInteger(0,n,OBJPROP_XSIZE,w);ObjectSetInteger(0,n,OBJPROP_YSIZE,h);ObjectSetInteger(0,n,OBJPROP_XDISTANCE,w+(int)MathRound(10*k));
+   ObjectCreate(0,nb,OBJ_RECTANGLE_LABEL,0,0,0);ObjectSetInteger(0,nb,OBJPROP_CORNER,CORNER_RIGHT_UPPER);ObjectSetInteger(0,nb,OBJPROP_BORDER_TYPE,BORDER_FLAT);
+   ObjectSetInteger(0,nb,OBJPROP_SELECTABLE,false);ObjectSetInteger(0,nb,OBJPROP_HIDDEN,true);ObjectSetInteger(0,nb,OBJPROP_ZORDER,91);
+   ObjectSetInteger(0,nb,OBJPROP_XSIZE,bar);ObjectSetInteger(0,nb,OBJPROP_YSIZE,h-(int)MathRound(12*k));ObjectSetInteger(0,nb,OBJPROP_XDISTANCE,w+(int)MathRound(10*k)-(int)MathRound(6*k));
   }
-  ObjectSetInteger(0,n,OBJPROP_YDISTANCE,(int)MathRound(36*k)+i*(h+gap));
-  ObjectSetString(0,n,OBJPROP_TEXT," "+studyToastText[i]);ObjectSetString(0,n,OBJPROP_TOOLTIP,studyToastText[i]);
+  const int y=(int)MathRound(36*k)+i*(h+gap);const color accent=StudyToastAccent(studyToastText[i]);
+  ObjectSetInteger(0,n,OBJPROP_BGCOLOR,light?C'255,255,255':C'30,34,45');ObjectSetInteger(0,n,OBJPROP_BORDER_COLOR,light?C'209,212,220':C'54,58,69');ObjectSetInteger(0,n,OBJPROP_COLOR,light?C'19,23,34':C'219,219,219');
+  ObjectSetInteger(0,n,OBJPROP_YDISTANCE,y);
+  ObjectSetString(0,n,OBJPROP_TEXT,"   "+studyToastText[i]);ObjectSetString(0,n,OBJPROP_TOOLTIP,studyToastText[i]);
+  ObjectSetInteger(0,nb,OBJPROP_YDISTANCE,y+(int)MathRound(6*k));ObjectSetInteger(0,nb,OBJPROP_BGCOLOR,accent);ObjectSetInteger(0,nb,OBJPROP_COLOR,accent);
  }
  ChartRedraw();
 }
@@ -179,7 +194,7 @@ void StudyToastTick()
  {for(int j=i;j<STUDY_TOAST_MAX-1;j++){studyToastText[j]=studyToastText[j+1];studyToastUntil[j]=studyToastUntil[j+1];}studyToastText[STUDY_TOAST_MAX-1]="";changed=true;}
  if(changed)StudyToastPaint();
 }
-void StudyToastClear(){for(int i=0;i<STUDY_TOAST_MAX;i++){studyToastText[i]="";if(studyToastMade[i])ObjectDelete(0,StudyToastName(i));studyToastMade[i]=false;}}
+void StudyToastClear(){for(int i=0;i<STUDY_TOAST_MAX;i++){studyToastText[i]="";if(studyToastMade[i]){ObjectDelete(0,StudyToastName(i));ObjectDelete(0,StudyToastName(i)+"_BAR");}studyToastMade[i]=false;}}
 #endif
 // Zone fills are opaque: blend them toward the chart background (dark or light theme), not a
 // fixed dark grey - on a white chart the old blend drew near-black boxes (Owner 2026-10-16).
