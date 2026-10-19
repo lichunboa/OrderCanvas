@@ -122,7 +122,7 @@ OrderCanvas 自带 **TVStudySuite** 价格行为工作台，直接画在 MT5 图
 - 三个开关就在下单面板止盈止损下面，并直接写出规则（保本 +1R · 追踪 ATR×2 · 分批 1R·50%），「设置 ›」进入详细参数
 - 需要 MT5 和这张图表保持打开（这是 EA，不是券商服务器上的止损），只管理本面板魔术号的单
 
-<p align="center"><img src="images/ticket-protect.png" width="38%"></p>
+<p align="center"><img src="images/ticket-protect.png" width="38%"> <img src="images/auto-protection.png" width="45%"></p>
 
 ## 功能清单
 

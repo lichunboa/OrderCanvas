@@ -122,7 +122,7 @@ Each module, colour and size is set in *Settings → page selector*. The workben
 - The three switches sit in the ticket under the exits, each showing its rule (BE +1R · Trail ATR×2 · Partial 1R·50%); 「Settings ›」 opens the details
 - They run while MT5 and this chart stay open (it is an EA, not a server-side stop) and act only on this panel's Magic number
 
-<p align="center"><img src="images/ticket-protect.png" width="38%"></p>
+<p align="center"><img src="images/ticket-protect.png" width="38%"> <img src="images/auto-protection.png" width="45%"></p>
 
 ## Feature checklist
 
