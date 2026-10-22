@@ -1,7 +1,7 @@
 # Changelog
 
 ## 1.12.1 — 2026-10-23
-- **Windows installer**: the package now has `OrderCanvas-Installer.exe`. It lists the MetaTrader 5 terminals on the PC (running ones in bold, those with OrderCanvas already ticked); tick and click Install, and each terminal shows its result and the next steps. Running portable terminals are listed too, others via "Add MT5 folder…". It only copies the program and template - no PowerShell, MT5 is not closed and no setting is changed. `Install.bat` stays for PCs whose security software blocks the EXE.
+- **Windows installer**: the package now has `OrderCanvas-Installer.exe`. It lists the MetaTrader 5 terminals on the PC (running ones in bold, those with OrderCanvas already ticked); tick and click Install, and each terminal shows its result and the next steps. Portable terminals are listed too (or add one with "Add MT5 folder…"). It only copies the program and template - no PowerShell, MT5 is not closed and no setting is changed. `Install.bat` stays for PCs whose security software blocks the EXE.
 - **Session and economic-event markers**: an outline with text in the same colour on the chart background instead of a coloured fill; volume bars and grid lines no longer cross the text.
 
 ## 1.12 — 2026-10-22
