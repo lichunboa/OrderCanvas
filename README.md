@@ -6,11 +6,11 @@
   <img src="assets/brand/logo-light-transparent-6x.png" alt="OrderCanvas for MT5" width="320">
 </picture>
 
-# OrderCanvas
+# OrderCanvas — MT5 Visual Trading Panel
 
-**A modern chart-trading panel for MetaTrader 5**
+**A visual trading panel and manual trade manager for MetaTrader 5 (MT5).**
 
-Preview every order on the chart before it is sent · drag order lines to modify · break-even, partial close and reverse right on the position line · strategy-report analytics · built-in open-source price-action workbench
+Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (TP) draft lines; calculate risk-based lot size from the stop distance; manage break-even and partial closes on position lines; and review trading performance, equity and drawdown in the same chart workspace. Optional one-click execution is separate from the normal order-preview workflow. OrderCanvas also includes an open-source price-action workbench.
 
 [![Release](https://img.shields.io/github/v/release/lichunboa/OrderCanvas?label=release)](https://github.com/lichunboa/OrderCanvas/releases/latest)
 ![Platform](https://img.shields.io/badge/MetaTrader-5-1f6feb)

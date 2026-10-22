@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.12 — 2026-10-22
+- **Online activation**: allow `https://getordercanvas.com` in MetaTrader's WebRequest list and click *Online activation* on the license card - no key to copy. The offline activation key still works without any network. Expiry follows the broker's server date; after it, new positions are blocked while existing positions and orders stay manageable until they are closed.
+- **Much smoother on a new installation**: nothing in the panel waits for MetaTrader's downloads any more. The economic calendar, the order panel's analysis and timeframe switches used to freeze the panel while history or calendar data arrived (3-25 s after installing, up to 2 minutes when first opening D1 / H4); they now load in the background.
+- **MetaTrader's own dialogs stay open**: adding an indicator no longer closes the indicator or chart-properties dialog; the order panel moves back to the bottom with your next click on the chart.
+- **Economic events**: MetaTrader's calendar, high + moderate impact by default, from 14 days back to 90 days ahead (moderate within 30 days); meetings and speeches are square icons. Official central-bank / statistics headlines load only when you open an event's details.
+- **Trading sessions**: Asia / Europe / US opens and closes along the chart bottom (Tokyo 09:00-18:00, London and New York 08:00-17:00 local time, daylight saving included) and a toolbar reminder 5 minutes before. Settings → Trading → Economic events.
+- **Sub charts**: order lines no longer turn blank after a theme or timeframe change; the onboarding guide shows on the trading chart only.
+- **Diagnostics**: Settings → General → Diagnostics → *Send* sends the log straight to us (no passwords, positions or prices); after a severe freeze it is sent automatically (switchable there).
+- Chart hints sit at the top right instead of over the ticket and stay readable with a light panel on a dark chart (so do the spread and license days); the drawing hover hint is gone. The package installs a single `OrderCanvas.ex5`; install notes are four short steps.
+
 ## 1.10 — 2026-10-19
 - **Your chart stays yours**: a new installation adds only the ticket and order lines - no recolouring, no ATR / EMA, no workbench. OrderCanvas's look and studies are one click away in the toolbar's *Templates* menu (the guide shows it). Upgrades keep the chart as it was. Install: drag OrderCanvas from the Navigator onto a chart.
 - **Faster, lighter**: a timeframe switch no longer reads every chart object and keeps the workbench it already has (one calculation instead of two) - on a Mac 0.2-1 s instead of 2-7 s; sub charts open without the main chart's objects; per-second work cut (order panel, pane captions, text measuring, chart-shift marker), so MetaTrader's own windows drag more smoothly under Wine.

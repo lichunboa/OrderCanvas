@@ -15,7 +15,7 @@
 
 **Windows（一键）**
 1. 右键 `OrderCanvas.zip` → **全部解压**（不要在压缩包里直接双击，那样 Windows 只取出一个文件）；
-2. 双击解压出来的 `Install.bat`：把程序（`OrderCanvas.ex5`）、推荐模板（`OrderCanvas.tpl`）和工作台指标装进这台电脑上**所有**的 MT5，并列出装到了哪几个。它只复制文件，不联网、不改系统设置；
+2. 双击解压出来的 `Install.bat`：把 `OrderCanvas.ex5` 和推荐模板装进这台电脑上的 MT5；
 3. 重启 MT5。
 
 - 出现「Windows 已保护你的电脑」：点 **更多信息 → 仍要运行**；
@@ -31,7 +31,7 @@
 
 **手动（任何电脑）**
 1. MT5 菜单 **文件 → 打开数据文件夹**；
-2. `OrderCanvas.ex5` 复制到 `MQL5\Experts`，`OrderCanvas.tpl` 复制到 `MQL5\Profiles\Templates`，`TVStudySuite.ex5` 复制到 `MQL5\Indicators`；
+2. `OrderCanvas.ex5` 复制到 `MQL5\Experts`，`OrderCanvas.tpl` 复制到 `MQL5\Profiles\Templates`；工作台已嵌入 OrderCanvas，不需要额外安装指标文件；
 3. 重启 MT5。
 
 ## 3. 加载并激活
@@ -48,9 +48,11 @@
 
 未激活时图表中央会显示授权卡片，上面有你的账户号码和原因（未输入 / 无效 / 属于其他账户 / 已到期）。
 
-## 4. 官方新闻（可选）
+## 4. 经济事件与官方发布
 
-点开图表底部的日历图标，详情里可以显示美联储、欧洲央行等机构最近的官方发布。第一次使用时卡片会列出需要允许的网址：MT5 **工具 → 选项 → EA 交易**，勾选「允许 WebRequest 访问下列 URL」，把卡片里的网址逐个添加。只读这些机构公开的 RSS，不上传任何数据。MQL5 市场版没有这个功能。
+图表底部的经济事件来自 MT5 / MetaQuotes 自带经济日历，**不需要 WebRequest**。默认显示「高 + 中等影响」，低影响过滤；也可以改成只显示高影响。
+
+不添加任何新闻网址，也能查看事件名称、实际 / 预期 / 前值、历史公布和来源。只有额外显示央行 / 统计局最近的**官方发布标题**时，才需要 WebRequest；OrderCanvas 会按当前品种列出需要的网址。USD 的 BEA 地址为 `https://apps.bea.gov`。
 
 ## 5. 常见问题
 
@@ -58,12 +60,14 @@
 - **换了 MT5 账户**：新账户需要自己的授权码（在机器人里用同一订单续期或补绑）。
 - **到期前 7 天**启动时会提醒；到期后面板会关闭，已设置的分批止盈在本次运行中继续执行完。
 - **字体**：默认自动选择（Windows：微软雅黑 UI；Mac：苹方），也可在 `InterfaceFont` 里指定。
+- **卡顿或出错，需要我们排查**：面板设置 → 常规 → 诊断 →「发送」（需要允许联网激活用的 https://getordercanvas.com；严重卡顿时也会自动发送，可在同一处关闭）。也可以 MT5「文件 → 打开数据文件夹」，手动发送 `MQL5\Files\OrderCanvas\diagnostics.log`（电脑配置和慢操作记录，不含账户、持仓或价格）和 `MQL5\Logs` 里当天的日志（例如 `20261022.log`）。
 
 ---
 
 ## English
 
 1. Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot): `/start` → choose a plan → send your MT5 account number → pay the USDT (TRC20) amount shown (2 decimals; the cents identify your order) → key and `OrderCanvas.zip` arrive automatically. `/mykeys` shows your current keys.
-2. Windows: right-click the zip → *Extract All*, then double-click `Install.bat` (plain copy into every MT5 on the PC, no network, no system changes; "Windows protected your PC" → *More info* → *Run anyway*; a portable MT5: drag its folder onto `Install.bat`). Mac: unzip, open Terminal, type `bash ` and drag `Install-Mac.command` into the window, press Enter (double-clicking it makes macOS ask for approval because it was downloaded). Manual: copy `OrderCanvas.ex5` to `MQL5\Experts`, `OrderCanvas.tpl` to `MQL5\Profiles\Templates`, `TVStudySuite.ex5` to `MQL5\Indicators`.
+2. Windows: extract the zip and run `Install.bat`. Mac: extract it and run `Install-Mac.command` from Terminal. Manual: copy `OrderCanvas.ex5` to `MQL5\Experts` and `OrderCanvas.tpl` to `MQL5\Profiles\Templates`; the workbench is embedded.
 3. Restart MT5, drag OrderCanvas from the Navigator onto a chart (it adds the panel and order lines and keeps your colours and indicators; for our dark look, EMA / ATR and the price-action studies use the toolbar Templates menu → Price action), allow algo trading, paste the key into the license card and click Activate (or F7 → Inputs → `LicenseKey`). Each computer asks only once. If nothing happens, make sure the zip was fully extracted first; the installer window lists the result for every MT5.
-4. Optional official news: a calendar icon's details can list the latest releases of the Fed, ECB and others. The card names the sites to allow under Tools → Options → Expert Advisors → Allow WebRequest for listed URL. Only their public RSS is read; nothing is sent. Not in the MQL5 Market build.
+4. Economic events use MetaTrader's built-in calendar and need no WebRequest. High + moderate impact is the default; low impact is filtered. Event name, actual / forecast / previous values, history and source remain available without any news sites. Optional official-release headlines need the matching sites listed by OrderCanvas. For BEA use `https://apps.bea.gov`.
+5. Slow or something failed? Panel settings → General → Diagnostics → Send (uses the online-activation site https://getordercanvas.com; a severe freeze also sends it automatically, switchable there). Or MT5 File → Open Data Folder and send `MQL5\Files\OrderCanvas\diagnostics.log` (machine summary and slow events; no account, positions or prices) and that day's log from `MQL5\Logs` (e.g. `20261022.log`).

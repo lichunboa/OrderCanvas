@@ -6,11 +6,11 @@
   <img src="assets/brand/logo-light-transparent-6x.png" alt="OrderCanvas for MT5" width="320">
 </picture>
 
-# OrderCanvas
+# OrderCanvas — MT5 可视化交易面板
 
-**MetaTrader 5 现代化图表交易面板**
+**适用于 MetaTrader 5（MT5）的图表下单与持仓管理工具。**
 
-先在图上预览订单再发送 · 拖动订单线改价 · 持仓线一键保本 / 部分平仓 / 反手 · 策略报告式交易分析 · 内置开源价格行为工作台
+通过可拖动的入场价、止损（SL）和止盈（TP）草稿线规划订单；按止损距离估算风险手数；在持仓线上操作保本、部分平仓；并在同一图表工作区查看资金曲线、回撤和交易复盘。可选的一键下单与默认的下单前预览属于不同模式。另含开源价格行为指标工作台。
 
 [![Release](https://img.shields.io/github/v/release/lichunboa/OrderCanvas?label=release)](https://github.com/lichunboa/OrderCanvas/releases/latest)
 ![Platform](https://img.shields.io/badge/MetaTrader-5-1f6feb)
