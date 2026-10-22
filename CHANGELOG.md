@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.12.2 — 2026-10-23
+- **New-version notice**: when a newer version is out, the toolbar shows "New version x.y.z"; click it for what's new and how to update. Checked at most once a day on the online-activation site (`https://getordercanvas.com`, nothing extra to allow); only the version record is read - no license key or account is sent. No pop-up, no effect on trading, and nothing is shown if the check fails.
+- **Sessions and economic events in one row**: the Asia / Europe / US markers and the economic-event icons along the chart bottom now share one row to save space; markers that would meet step aside, and both keep their hover text.
+- **Market holidays**: on the main Tokyo, London and New York holidays (Christmas, New Year's Day, Thanksgiving, Japan's Golden Week...) the row shows "H" (休) for that market, with no open / close markers and no 5-minute reminder that day. Holidays are calculated by rule for every year.
+
 ## 1.12.1 — 2026-10-23
 - **Windows installer**: the package now has `OrderCanvas-Installer.exe`. It lists the MetaTrader 5 terminals on the PC (running ones in bold, those with OrderCanvas already ticked); tick and click Install, and each terminal shows its result and the next steps. Portable terminals are listed too (or add one with "Add MT5 folder…"). It only copies the program and template - no PowerShell, MT5 is not closed and no setting is changed. `Install.bat` stays for PCs whose security software blocks the EXE.
 - **Session and economic-event markers**: an outline with text in the same colour on the chart background instead of a coloured fill; volume bars and grid lines no longer cross the text.
