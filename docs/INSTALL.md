@@ -13,14 +13,16 @@
 
 ## 2. 安装
 
-**Windows（一键）**
-1. 右键 `OrderCanvas.zip` → **全部解压**（不要在压缩包里直接双击，那样 Windows 只取出一个文件）；
-2. 双击解压出来的 `Install.bat`：把 `OrderCanvas.ex5` 和推荐模板装进这台电脑上的 MT5；
-3. 重启 MT5。
+**Windows（安装程序）**
+1. 打开 `OrderCanvas.zip`，双击里面的 `OrderCanvas-Installer.exe`（不解压也可以）；
+2. 安装程序列出这台电脑上的 MT5（正在运行的加粗，已装过 OrderCanvas 的已勾选），勾选要装的，点 **安装**；
+3. 按窗口里的「下一步」：重启 MT5，把 OrderCanvas 拖到图表。
 
 - 出现「Windows 已保护你的电脑」：点 **更多信息 → 仍要运行**；
-- 安全软件（360、火绒等）拦截：选 **允许**，或用下面的手动安装；
-- 便携版 MT5（单独文件夹、`/portable` 启动）：把 MT5 文件夹（里面有 `MQL5`）**拖到** `Install.bat` 上。
+- 便携版 MT5（单独文件夹、`/portable` 启动）：正在运行时会自动列出；没运行时点 **添加 MT5 文件夹…** 选它的文件夹；
+- MT5 装在需要管理员权限的位置时，安装程序会提示以管理员身份重新安装；
+- 安装程序只复制文件，不关闭 MT5、不改设置、不碰账户和交易；
+- 安全软件（360、火绒等）拦下安装程序时：把压缩包**全部解压**，双击 `Install.bat`（装进所有 MT5），或用下面的手动安装。
 
 **Mac（MetaTrader 5 for Mac，也支持券商的 Mac 版和 CrossOver）**
 1. 双击 `OrderCanvas.zip` 解压；
@@ -40,7 +42,7 @@
 2. 勾选 **允许算法交易**，并确认 MT5 工具栏的「算法交易」按钮是绿色；
 3. 图表中间会出现授权卡片：把授权码粘贴进输入框（Ctrl+V），点 **激活**。也可以按 **F7 → 输入参数 → `LicenseKey`** 粘贴。
 
-安装没反应？先确认已经把压缩包**完整解压**到一个文件夹再双击 `Install.bat`；安装窗口会列出每个 MT5 的结果，可以截图发给卖家。
+安装没反应？安装程序的列表会写明每个 MT5 的结果（✓ 已安装 / ✗ 原因），可以截图发给卖家；用 `Install.bat` 时先把压缩包完整解压。
 
 套用的模板只是起点：配色、周期、指标都可以随意改，改完在工具栏「模板」里保存，或右键 → 模板 → 保存模板。ATR 副图可以拖动分隔线调高度，不需要时直接删掉，之后不会再自动加回来。从旧版本升级的电脑保持原来的 OrderCanvas 样式；想完全用自己的配色，把输入参数 `MatchTradingViewChartStyle` 设为 `false`。
 
@@ -67,7 +69,7 @@
 ## English
 
 1. Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot): `/start` → choose a plan → send your MT5 account number → pay the USDT (TRC20) amount shown (2 decimals; the cents identify your order) → key and `OrderCanvas.zip` arrive automatically. `/mykeys` shows your current keys.
-2. Windows: extract the zip and run `Install.bat`. Mac: extract it and run `Install-Mac.command` from Terminal. Manual: copy `OrderCanvas.ex5` to `MQL5\Experts` and `OrderCanvas.tpl` to `MQL5\Profiles\Templates`; the workbench is embedded.
-3. Restart MT5, drag OrderCanvas from the Navigator onto a chart (it adds the panel and order lines and keeps your colours and indicators; for our dark look, EMA / ATR and the price-action studies use the toolbar Templates menu → Price action), allow algo trading, paste the key into the license card and click Activate (or F7 → Inputs → `LicenseKey`). Each computer asks only once. If nothing happens, make sure the zip was fully extracted first; the installer window lists the result for every MT5.
+2. Windows: run `OrderCanvas-Installer.exe` from the zip, tick the terminals (running ones are bold, those with OrderCanvas already ticked; portable MT5: *Add MT5 folder…*) and click Install; if security software blocks it, extract the zip and run `Install.bat`. Mac: extract it and run `Install-Mac.command` from Terminal. Manual: copy `OrderCanvas.ex5` to `MQL5\Experts` and `OrderCanvas.tpl` to `MQL5\Profiles\Templates`; the workbench is embedded.
+3. Restart MT5, drag OrderCanvas from the Navigator onto a chart (it adds the panel and order lines and keeps your colours and indicators; for our dark look, EMA / ATR and the price-action studies use the toolbar Templates menu → Price action), allow algo trading, paste the key into the license card and click Activate (or F7 → Inputs → `LicenseKey`). Each computer asks only once. The installer lists the result for every MT5 (send a screenshot to the seller if one fails).
 4. Economic events use MetaTrader's built-in calendar and need no WebRequest. High + moderate impact is the default; low impact is filtered. Event name, actual / forecast / previous values, history and source remain available without any news sites. Optional official-release headlines need the matching sites listed by OrderCanvas. For BEA use `https://apps.bea.gov`.
 5. Slow or something failed? Panel settings → General → Diagnostics → Send (uses the online-activation site https://getordercanvas.com; a severe freeze also sends it automatically, switchable there). Or MT5 File → Open Data Folder and send `MQL5\Files\OrderCanvas\diagnostics.log` (machine summary and slow events; no account, positions or prices) and that day's log from `MQL5\Logs` (e.g. `20261022.log`).

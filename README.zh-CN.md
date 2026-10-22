@@ -42,7 +42,7 @@
 
 ## 三步上手
 
-1. **[下载 `OrderCanvas.zip`](https://github.com/lichunboa/OrderCanvas/releases/latest)**，解压后双击 **`Install.bat`**。
+1. **[下载 `OrderCanvas.zip`](https://github.com/lichunboa/OrderCanvas/releases/latest)**，打开后双击 **`OrderCanvas-Installer.exe`**（Windows）。
 2. 重启 MT5，把 **OrderCanvas** 从导航器拖到图表，打开「算法交易」。你原来的图表不变；想要我们的样式和指标，用面板工具栏「模板」一键套用。
 3. 在图表上的授权卡片里粘贴授权码，点 **激活**；也可以先在**策略测试器里免授权**体验全部功能。
 
@@ -180,7 +180,7 @@ OrderCanvas 自带 **TVStudySuite** 价格行为工作台，直接画在 MT5 图
 
 ## 安装
 
-下载 `OrderCanvas.zip`，解压后双击 **`Install.bat`**（Windows），或在终端运行 `Install-Mac.command`（Mac），程序和推荐图表模板会装进这台电脑上所有的 MT5。重启 MT5，图表右键 → 模板 → **OrderCanvas**，在图表上弹出的授权卡片里粘贴授权码，点 **激活**（也可以 F7 → 输入参数 → `LicenseKey`）。之后工具栏会显示剩余天数和到期日。
+下载 `OrderCanvas.zip`，运行 **`OrderCanvas-Installer.exe`**（Windows：勾选 MT5，点「安装」；被拦时用 `Install.bat`），或在终端运行 `Install-Mac.command`（Mac），装入程序和推荐图表模板。重启 MT5，图表右键 → 模板 → **OrderCanvas**，在图表上弹出的授权卡片里粘贴授权码，点 **激活**（也可以 F7 → 输入参数 → `LicenseKey`）。之后工具栏会显示剩余天数和到期日。
 Mac、便携版、手动安装和每一步说明：[docs/INSTALL.md](docs/INSTALL.md)。
 
 ## 授权与价格
