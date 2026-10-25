@@ -24,7 +24,29 @@
 
 </div>
 
-![OrderCanvas](images/panel.png)
+![OrderCanvas 1.12.3](images/1.12.3/panel.png)
+
+## 1.12.3 更新
+
+工作台设置按界面、订单、自动保护、事件、指标、快捷键和账户分组，支持搜索、重置本组与高级选项；指标提供参数、样式和可见性设置。改进常规字重、报价大小、Mac 标记和主题切换，减少订单面板重复字体测量的开销。界面仍为中英文。
+
+**已知限制：**连续订单操作或长时间运行后仍可能变慢，性能优化继续进行。截图来自 Owner 的 Demo 账户，图中结果仅作功能示例，不代表收益承诺。
+
+[![Workbench settings](images/1.12.3/settings-interface.png)](images/1.12.3/settings-interface.png)
+
+<details><summary>更多 1.12.3 截图</summary>
+
+![Events](images/1.12.3/settings-events.png)
+
+![Hotkeys](images/1.12.3/settings-hotkeys.png)
+
+![Account](images/1.12.3/account.png)
+
+![Dark workspace](images/1.12.3/workspace-dark.png)
+
+![Multi-chart and guide](images/1.12.3/multichart-guide.png)
+
+</details>
 
 ## 你想从哪里开始？
 
@@ -100,8 +122,8 @@ MT5 执行很稳，但手动下单和管理很慢：每次下单都弹窗、手�
 ### 5. 订单面板 + 交易分析
 图表下方的面板：**持仓 / 订单 / 历史 / 账户 / 分析**。历史含开平仓时间、持仓时长、手续费、库存费和净盈亏，悬停某行图上对应订单线高亮。**分析页**像一份策略报告：顶部关键指标（净盈亏、最大回撤、交易数、胜率、利润因子、费用），资金曲线 + 回撤（悬停查看每笔），然后是盈亏结构、胜负比例、盈亏分布、多空对比、按星期、持有时长、按平仓小时的图表，以及绩效、风险、品种表。可选今天 / 7 天 / 30 天 / 全部、本品种或全部品种；最大化后占满整个图表。每笔已平仓交易还显示**实际风险**——持仓期间的最大浮亏（MAE），和止损计划的风险并列。
 
-![历史](images/history.png)
-![分析](images/analysis.png)
+![历史](images/1.12.3/history.png)
+![分析](images/1.12.3/analysis.png)
 
 ### 6. 价格行为工作台（内置、开源）
 OrderCanvas 自带 **TVStudySuite** 价格行为工作台，直接画在 MT5 图表上：
@@ -110,9 +132,9 @@ OrderCanvas 自带 **TVStudySuite** 价格行为工作台，直接画在 MT5 图
 - **K线计数**：带时段过滤和特殊数字颜色的 K 线编号
 - **入场信号**：H1 / H2 / L1 / L2 二次入场标签，可选收盘提醒
 
-每个模块、颜色和大小都在「工作台设置 → 下拉选择页面」里设置。工作台是三个开源 TradingView 脚本的 MT5 移植，按 **MPL-2.0** 开源，完整源码、许可和来源说明见 [`TVStudySuite/`](TVStudySuite)；安装时也会作为独立指标放进「指标」，可以单独加到任意图表。
+每个模块、颜色和大小都在「设置 → 研究指标 → 模块选择」的输入参数、样式、可见范围小节里设置。工作台是三个开源 TradingView 脚本的 MT5 移植，按 **MPL-2.0** 开源，完整源码、许可和来源说明见 [`TVStudySuite/`](TVStudySuite)；完整指标源码随包提供，自行编译后也可作为独立指标添加到其他图表。
 
-![价格行为工作台](images/workbench.png)
+![价格行为工作台](images/1.12.3/settings-studies.png)
 
 ### 7. 风险上限与自动保护（默认关闭）
 - **点差上限**（按品种）和**单笔风险上限**（占净值 %，按止损距离计算）：超过上限时下单按钮直接写明原因，不会发单
@@ -122,7 +144,7 @@ OrderCanvas 自带 **TVStudySuite** 价格行为工作台，直接画在 MT5 图
 - 三个开关就在下单面板止盈止损下面，并直接写出规则（保本 +1R · 追踪 ATR×2 · 分批 1R·50%），「设置 ›」进入详细参数
 - 需要 MT5 和这张图表保持打开（这是 EA，不是券商服务器上的止损），只管理本面板魔术号的单
 
-<p align="center"><img src="images/ticket-protect.png" width="38%"> <img src="images/auto-protection.png" width="45%"></p>
+<p align="center"><img src="images/ticket-protect.png" width="38%"> <img src="images/1.12.3/settings-automation.png" width="45%"></p>
 
 ## 功能清单
 

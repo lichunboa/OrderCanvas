@@ -24,7 +24,29 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 </div>
 
-![OrderCanvas](images/panel.png)
+![OrderCanvas 1.12.3](images/1.12.3/panel.png)
+
+## Version 1.12.3
+
+A searchable Workbench settings window groups Interface, Orders, Automation, Events, Studies, Hotkeys and Account. Study modules have Inputs, Style and Visibility controls. Regular-weight labels, quote sizing, Mac markers and theme changes have been refined; repeated font measurements in the order panel have been reduced. The interface remains English/Chinese.
+
+**Known limitation:** repeated order changes or long sessions can still slow the interface; performance work is continuing. These screenshots are from the Owner’s Demo account; the displayed results are examples, not performance promises.
+
+[![Workbench settings](images/1.12.3/settings-interface.png)](images/1.12.3/settings-interface.png)
+
+<details><summary>More 1.12.3 screenshots</summary>
+
+![Events](images/1.12.3/settings-events.png)
+
+![Hotkeys](images/1.12.3/settings-hotkeys.png)
+
+![Account](images/1.12.3/account.png)
+
+![Dark workspace](images/1.12.3/workspace-dark.png)
+
+![Multi-chart and guide](images/1.12.3/multichart-guide.png)
+
+</details>
 
 ## Choose your path
 
@@ -100,8 +122,8 @@ Turn on *1-click* in the ticket header: a click on the Sell / Buy quote places t
 ### 5. Order panel and trade analytics
 A dock under the chart with **Positions, Orders, History, Account and Analytics**. History shows open/close times, holding time, commission, swap and net P&L; hovering a row highlights its lines on the chart. **Analytics** reads like a strategy report: a KPI strip (net P&L, max drawdown, trades, win rate, profit factor, costs), the equity curve with drawdown and a hover card per trade, then chart cards - profit structure, win / loss, P&L distribution, long vs short, by weekday, holding time and close hour - and the performance, risk and per-symbol tables. Today / 7 days / 30 days / all, this symbol or all symbols; maximise the panel to use the whole chart. Each closed trade also shows its **actual risk** - the largest floating loss while it was open (MAE) - next to the risk planned by its stop.
 
-![History](images/history.png)
-![Analytics](images/analysis.png)
+![History](images/1.12.3/history.png)
+![Analytics](images/1.12.3/analysis.png)
 
 ### 6. Price-action workbench (built in, open source)
 OrderCanvas carries **TVStudySuite**, a price-action study workbench drawn natively on the MT5 chart:
@@ -110,9 +132,9 @@ OrderCanvas carries **TVStudySuite**, a price-action study workbench drawn nativ
 - **Bar count** - numbered bars with session filter and special-number colours
 - **Entry signals** - H1 / H2 / L1 / L2 second-entry labels with optional bar-close alerts
 
-Each module, colour and size is set in *Settings → page selector*. The workbench is a MetaTrader 5 translation of three open-source TradingView scripts and is published under **MPL-2.0** - full source, license and notices in [`TVStudySuite/`](TVStudySuite). It is also installed as a standalone indicator you can add to any chart.
+Each module, colour and size is set in *Settings → Studies → module selector*, with Inputs, Style and Visibility sections. The workbench is a MetaTrader 5 translation of three open-source TradingView scripts and is published under **MPL-2.0** - full source, license and notices in [`TVStudySuite/`](TVStudySuite). The complete indicator source ships in the package; compile it to use the workbench as a standalone indicator on another chart.
 
-![Price-action workbench](images/workbench.png)
+![Price-action workbench](images/1.12.3/settings-studies.png)
 
 ### 7. Risk caps and auto protection (off by default)
 - **Max spread** per symbol and **max risk per trade** (% of equity, from the stop distance): when a cap is exceeded the submit button says why and nothing is sent
@@ -122,7 +144,7 @@ Each module, colour and size is set in *Settings → page selector*. The workben
 - The three switches sit in the ticket under the exits, each showing its rule (BE +1R · Trail ATR×2 · Partial 1R·50%); 「Settings ›」 opens the details
 - They run while MT5 and this chart stay open (it is an EA, not a server-side stop) and act only on this panel's Magic number
 
-<p align="center"><img src="images/ticket-protect.png" width="38%"> <img src="images/auto-protection.png" width="45%"></p>
+<p align="center"><img src="images/ticket-protect.png" width="38%"> <img src="images/1.12.3/settings-automation.png" width="45%"></p>
 
 ## Feature checklist
 
@@ -167,7 +189,7 @@ OrderCanvas is written in pure MQL5 - no DLLs, no external services, no network 
 - **Broker-authoritative state.** Chart lines are rebuilt from the terminal's positions and orders after every trade transaction; the panel never keeps a shadow copy that could drift from what the broker holds.
 - **Exact identity for every action.** A modify, close or reverse is bound to the ticket, account, symbol and magic number it was created for; a click that arrives after the book has changed is rejected instead of acting on another order.
 - **Only its own orders.** By default the panel manages orders with its own magic number and leaves other EAs and manual trades alone.
-- **Fast rendering.** The ticket is drawn on a Canvas with dirty-region scheduling; order-line labels are rounded Canvas skins over native click targets. Measured on the EA side: about 1.3 ms per drag frame and 0.5 ms per hover.
+- **Fast rendering.** The ticket is drawn on a Canvas with dirty-region scheduling; order-line labels are rounded Canvas skins over native click targets. Earlier focused measurements are scenario-specific; long-session performance remains an open item, as described above.
 - **DPI-aware.** Text and layout scale with the screen DPI and the interface font is chosen per platform (Microsoft YaHei UI on Windows, PingFang on macOS), so the panel looks the same on a 96-DPI Windows desktop and a Retina Mac.
 - **Safety defaults.** Live accounts show a one-time risk confirmation; close and reverse confirm by default.
 - **Tested.** Unit and contract tests for the domain logic, plus Strategy Tester runs on Windows and macOS across gold, FX, indices and crypto with every tick model - including visual mode.
@@ -176,7 +198,7 @@ OrderCanvas is written in pure MQL5 - no DLLs, no external services, no network 
 
 **[⬇ Download the latest release (OrderCanvas.zip)](https://github.com/lichunboa/OrderCanvas/releases/latest)** · [All versions](https://github.com/lichunboa/OrderCanvas/releases)
 
-The package contains the program, the recommended chart template, the TVStudySuite workbench (compiled + MPL-2.0 source) and a one-click Windows installer. It runs in the Strategy Tester without a key; on a live or demo chart it needs a license key (free 7-day trial available). Every earlier version stays available under [Releases](https://github.com/lichunboa/OrderCanvas/releases).
+The package contains the program, the recommended chart template, the embedded TVStudySuite workbench and its complete MPL-2.0 source and a one-click Windows installer. It runs in the Strategy Tester without a key; on a live or demo chart it needs a license key (free 7-day trial available). Every earlier version stays available under [Releases](https://github.com/lichunboa/OrderCanvas/releases).
 
 ## Install
 

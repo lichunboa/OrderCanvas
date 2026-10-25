@@ -2,7 +2,7 @@
 // Unified native workbench. Original module attribution: Indicators/THIRD_PARTY.md.
 #property strict
 #property copyright "Price Action Workbench; MPL-2.0 source acknowledgements in THIRD_PARTY.md"
-#property version "1.122" // = OrderCanvas OC_VERSION 1.12.2
+#property version "1.123" // = OrderCanvas OC_VERSION 1.12.3
 #property indicator_chart_window
 #property indicator_buffers 6
 #property indicator_plots 5
@@ -58,19 +58,26 @@ int OnInit()
  PlotIndexSetInteger(1,PLOT_DRAW_TYPE,EnablePriceAction && PA_ShowThirdEMA?DRAW_LINE:DRAW_NONE);
  return INIT_SUCCEEDED;
 }
-void OnTimer(){StudyToastTick();StudyPublishRaise();}
+// A theme switch changes the chart background: recolour at once. The check used to live only in OnCalculate, which
+// needs a tick - on a quiet market the gap zones kept the old theme's blend (Owner 2026-10-25). The refresh makes
+// MetaTrader call OnCalculate, which then repaints everything (studyForceFull).
+bool studyForceFull=false;
+bool StudyBackgroundChanged()
+{const string key="TVST.Bg."+IntegerToString(ChartID());if(!GlobalVariableCheck(key))return false;const color bg=(color)(long)GlobalVariableGet(key);if(bg==studyChartBg)return false;studyChartBg=bg;return true;}
+void OnTimer(){StudyToastTick();StudyPublishRaise();if(StudyBackgroundChanged()){studyForceFull=true;ChartSetSymbolPeriod(0,_Symbol,_Period);}}
 void OnDeinit(const int reason){EventKillTimer();StudyToastClear();PrintFormat("[STUDY_CACHE] commands=%I64u skipped=%I64u",studyCacheCommands,studyCacheSkips);PA_Deinit(reason);BC_Deinit(reason);SE_Deinit(reason);StudyReset();}
 void EmptyModuleBuffer(double &buffer[],const int n,const int prev)
 {for(int i=prev>0 && prev<=n?MathMax(0,prev-1):0;i<n;i++)buffer[i]=EMPTY_VALUE;}
-int OnCalculate(const int n,const int prev,const datetime &time[],const double &open[],const double &high[],const double &low[],const double &close[],const long &tick_volume[],const long &volume[],const int &spread[])
+int OnCalculate(const int n,const int prevCalculated,const datetime &time[],const double &open[],const double &high[],const double &low[],const double &close[],const long &tick_volume[],const long &volume[],const int &spread[])
 {
  if(n<3)return 0;
  // The chart background decides the zone blend; a theme switch repaints everything once.
  // Never a synchronous chart read here (ChartGetInteger waits for the chart thread): while the panel EA
  // replaced this indicator, that read deadlocked MetaTrader on the Mac (round 26). The panel publishes
  // the background as a global; without a panel the dark default stays.
- {static ulong checked=0;const ulong now=GetTickCount64();if(prev==0 || now-checked>2000){checked=now;const string key="TVST.Bg."+IntegerToString(ChartID());
-  if(GlobalVariableCheck(key)){const color bg=(color)(long)GlobalVariableGet(key);if(bg!=studyChartBg){const bool repaint=prev>0;studyChartBg=bg;if(repaint)return 0;}}}}
+ {static ulong checked=0;const ulong now=GetTickCount64();if(prevCalculated==0 || now-checked>2000){checked=now;const string key="TVST.Bg."+IntegerToString(ChartID());
+  if(GlobalVariableCheck(key)){const color bg=(color)(long)GlobalVariableGet(key);if(bg!=studyChartBg){studyChartBg=bg;studyForceFull=true;}}}}
+ const int prev=studyForceFull?0:prevCalculated;studyForceFull=false;   // a new background: everything again, now
  ulong startUs=GetMicrosecondCount();if(prev==0)PrintFormat("[WORKBENCH_CALC] begin bars=%d",n);
  if(EnablePriceAction){if(PA_Calculate(n,prev,time,open,high,low,close,tick_volume,volume,spread)==0)return 0;}
  else{EmptyModuleBuffer(PA_ema,n,prev);EmptyModuleBuffer(PA_mtf,n,prev);EmptyModuleBuffer(PA_emaCalc,n,prev);}

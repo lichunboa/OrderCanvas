@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.12.3 — 2026-10-25
+- **Text and Mac markers**: regular font weight and the earlier quote size keep the ticket compact; the letters inside session and economic-event markers fit their boxes on Retina displays.
+- **Theme changes**: the study workbench recolours gap zones while the market is idle, without waiting for a new quote. Study group names and descriptions follow the interface language.
+- **Rendering cost**: reuse text line-height measurements and remove redundant font changes in the order panel.
+- **Trading panel and order panel redesign**: each analysis figure in its own rounded card, the account strip shows names and values apart, taller table rows with dividers; quote blocks, TP / SL captions and the auto-protection chips use one colour set. Dark and light themes.
+- **History shows a close at once**: a close filled after the last quote used to appear only after the next trade.
+- **Larger text no longer overflows**: the order panel's tabs, filters, table head, rows and totals, and the order-line labels on the chart, grow with the text size.
+- **No more "see-through" panels**: with MetaTrader's "Chart on foreground" on, bars were drawn over the panels; the panel now switches it off.
+- **Settings**: Orders, Automation, Events, Hotkeys and Account each show only their own settings, with a short explanation and scope; every group has "Reset this group" (that group only); an open list closes when you click elsewhere; the search box types from the left and is readable on the light theme.
+- **Your own colours**: Settings → Interface → Advanced → Colours: accent / buy, sell / loss, profit / take-profit and stop-loss (saved per theme).
+- **Trading panel**: the gear in the panel's header is now the collapse / expand icon (Settings stays on the toolbar); menus share one look and highlight under the pointer, fields no longer show through them; the auto-protection chips react to the pointer; switches slide.
+- The order panel's column help is a small box under its column; help that only repeated the column name is gone. The installer no longer lists one MetaTrader twice.
+
+**Known limitation:** repeated order changes or long sessions can still make the interface slower. Further work on session state and object-cache lifetime is pending. If a slowdown persists, use Settings → Account → Send diagnostics to help reproduce it.
+
 ## 1.12.2 — 2026-10-23
 - **New-version notice**: when a newer version is out, the toolbar shows "New version x.y.z"; click it for what's new and how to update. Checked at most once a day on the online-activation site (`https://getordercanvas.com`, nothing extra to allow); only the version record is read - no license key or account is sent. No pop-up, no effect on trading, and nothing is shown if the check fails.
 - **Sessions and economic events in one row**: the Asia / Europe / US markers and the economic-event icons along the chart bottom now share one row to save space; markers that would meet step aside, and both keep their hover text.
