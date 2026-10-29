@@ -24,6 +24,22 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 </div>
 
+![OrderCanvas 1.13.0 replay](images/1.13.0/replay-trading.png)
+
+## Version 1.13.0
+
+**Replay mode**: pick a date and the current chart plays the broker's history back - by tick, second, minute or 5 minutes - while the ticket and order panel trade a simulated account (starting balance, leverage and commission under Settings → Account & replay). Tick playback uses the broker's real tick history where the broker provides it. Settings now keep each automatic rule's options under its switch, and floating P/L follows the quote.
+
+**Known limitations:** replay fills at bid/ask without slippage or liquidity modelling; periods without broker ticks replay by minute. Long sessions can still slow the interface. Screenshots are from the Owner's Demo account; results shown are examples, not performance promises.
+
+<details><summary>More 1.13.0 screenshots</summary>
+
+![Replay account settings](images/1.13.0/replay-account.png)
+
+![Automation settings](images/1.13.0/settings-automation.png)
+
+</details>
+
 ![OrderCanvas 1.12.3](images/1.12.3/panel.png)
 
 ## Version 1.12.3

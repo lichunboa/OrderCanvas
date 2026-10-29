@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.13.0 — 2026-10-30
+- **Replay mode (new)**: toolbar 「Replay」 → pick a date and the current chart plays history in place - no extra window. The broker's M1 history for the period is downloaded and checked first; the symbol keeps its name. Update every tick, second, minute or 5 minutes at nine speeds; tick and second playback use the broker's real ticks, downloaded in the background without freezing the chart. ✕ returns to the live chart.
+- **Simulated trading in replay**: the ticket trades as usual (market, limit, stop, stop-limit, TP/SL, break-even, partial close, reverse) and the order panel shows the simulated account's positions, orders, history and statistics. Gaps fill at the open; below 50 % margin level positions are stopped out. Settings → Account & replay sets the starting balance, leverage and commission per lot, or resets the account. The real account is untouched.
+- **Settings hierarchy**: each automatic rule's options sit indented under its switch and open when it is on; Automation is grouped into Break-even, Trailing stop and Partial close. Event alerts, order-line display and hotkeys follow the same pattern. Manual and automatic partial-close shares are named apart.
+- **Floating P/L follows the quote**: order-line P/L and the order panel's positions, balance and equity refresh with the price (about every 0.25 s) instead of the once-a-second timer.
+- **History refresh**: changed history rows redraw promptly.
+- With 「Toolbar icons only」 the Replay button is an icon too; the Market build's settings text no longer mentions the own channel.
+
+**Known limitations:** tick playback depends on the broker's tick history; periods without ticks replay by minute. Replay fills at bid/ask without slippage or liquidity modelling. Repeated order changes or long sessions can still slow the interface; that work continues.
+
 ## 1.12.3 — 2026-10-25
 - **Text and Mac markers**: regular font weight and the earlier quote size keep the ticket compact; the letters inside session and economic-event markers fit their boxes on Retina displays.
 - **Theme changes**: the study workbench recolours gap zones while the market is idle, without waiting for a new quote. Study group names and descriptions follow the interface language.
