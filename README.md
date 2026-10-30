@@ -24,7 +24,7 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 </div>
 
-![OrderCanvas 1.13.1 replay](images/1.13.1/replay-player.png)
+![OrderCanvas 1.13.1 replay](images/1.13.1/en/replay-player.png)
 
 ## Version 1.13.1
 
@@ -34,11 +34,13 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 <details><summary>More 1.13.1 screenshots</summary>
 
-![Replay settings](images/1.13.1/settings-replay.png)
+![Replay: pick a date](images/1.13.1/en/replay-date.png)
 
-![Automation settings](images/1.13.1/settings-automation.png)
+![Replay settings](images/1.13.1/en/settings-replay.png)
 
-![Guide: replay step](images/1.13.1/guide-replay.png)
+![Automation settings](images/1.13.1/en/settings-automation.png)
+
+![Guide: replay step](images/1.13.1/en/guide-replay.png)
 
 </details>
 
