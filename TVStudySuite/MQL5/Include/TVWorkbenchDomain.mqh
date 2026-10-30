@@ -1,6 +1,7 @@
 #ifndef TV_WORKBENCH_DOMAIN_MQH
 #define TV_WORKBENCH_DOMAIN_MQH
 const int TV_WORKBENCH_READY_EVENT=6761;
+const int TV_WORKBENCH_RAISE_EVENT=6762;
 const string TV_WORKBENCH_NAME="交易工作台";
 enum TVWorkbenchBuffer {WB_EMA20=0,WB_EMA_MTF=1,WB_BAR_COUNT=2,WB_ENTRY_EMA=3,WB_ENTRY_MASK=4,WB_EMA_CALC=5};
 int WorkbenchInputOffset(const int module){return module==0?4:(module==1?46:60);}

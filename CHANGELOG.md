@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.13.1 — 2026-10-31
+- **No freeze on trade actions**: market and pending orders from the ticket, and modify, break-even, partial close, close and cancel on a single order or position, are sent without waiting on the chart; the result shows when the broker answers (about half a second on a Demo account), and a second click on the same order while it is in flight is refused. Reverse, close-all and automatic management stay sequential.
+- **Replay player**: Replay sits after Hotkeys in the toolbar; the player is a centred floating card; the chart keeps a manual pan during playback; a historical candle countdown follows the replay clock (second by second in 1 second mode).
+- **Linked charts in replay**: sub-charts of the same symbol show the main chart's range band and leave replay with it, keeping their own timeframe.
+- **Settings**: eight groups - Account and Replay are separate; a rule's options stay visible under its switch (muted while it is off) so values can be set before turning it on.
+- **Onboarding**: a seventh guide step introduces replay mode and the virtual account.
+- **Wheel zoom**: queued zoom steps are applied by the timer as well, so zooming stays responsive in live and replay charts.
+- **Order panel and drafts**: the folded order panel's equity and floating P/L follow the quote; a limit or stop draft you have not typed, dragged or saved follows the market instead of ending up on the wrong side.
+- **License check**: the online check runs at most every five minutes per key and account, and never on the replay chart, so entering or leaving replay does not wait on the network; license dates use the broker clock, also in replay.
+
 ## 1.13.0 — 2026-10-30
 - **Replay mode (new)**: toolbar 「Replay」 → pick a date and the current chart plays history in place - no extra window. The broker's M1 history for the period is downloaded and checked first; the symbol keeps its name. Update every tick, second, minute or 5 minutes at nine speeds; tick and second playback use the broker's real ticks, downloaded in the background without freezing the chart. ✕ returns to the live chart.
 - **Simulated trading in replay**: the ticket trades as usual (market, limit, stop, stop-limit, TP/SL, break-even, partial close, reverse) and the order panel shows the simulated account's positions, orders, history and statistics. Gaps fill at the open; below 50 % margin level positions are stopped out. Settings → Account & replay sets the starting balance, leverage and commission per lot, or resets the account. The real account is untouched.

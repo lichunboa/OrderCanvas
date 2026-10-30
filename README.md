@@ -24,6 +24,24 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 </div>
 
+![OrderCanvas 1.13.1 replay](images/1.13.1/replay-player.png)
+
+## Version 1.13.1
+
+**Replay, refined**: the player is a centred floating bar that shows the replay time; you can pan the chart while it plays; the candle countdown follows replay time. Linked sub-charts of the same symbol show the main chart's range and leave replay with it. **Settings** come in eight groups — Account and Replay are separate — and a rule's options stay visible under its switch so they can be set before it is turned on. Trade actions no longer freeze the chart while the broker answers. The first-run guide gains a replay step; the folded order panel's equity and floating P/L follow the quote; a limit or stop draft you have not touched follows the market.
+
+**Known limitations:** replay fills at bid/ask without slippage or liquidity modelling; periods without broker ticks replay by minute. Long sessions can still slow the interface. Screenshots are from the Owner's Demo account; results shown are examples, not performance promises.
+
+<details><summary>More 1.13.1 screenshots</summary>
+
+![Replay settings](images/1.13.1/settings-replay.png)
+
+![Automation settings](images/1.13.1/settings-automation.png)
+
+![Guide: replay step](images/1.13.1/guide-replay.png)
+
+</details>
+
 ![OrderCanvas 1.13.0 replay](images/1.13.0/replay-trading.png)
 
 ## Version 1.13.0
@@ -37,30 +55,6 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 ![Replay account settings](images/1.13.0/replay-account.png)
 
 ![Automation settings](images/1.13.0/settings-automation.png)
-
-</details>
-
-![OrderCanvas 1.12.3](images/1.12.3/panel.png)
-
-## Version 1.12.3
-
-A searchable Workbench settings window groups Interface, Orders, Automation, Events, Studies, Hotkeys and Account. Study modules have Inputs, Style and Visibility controls. Regular-weight labels, quote sizing, Mac markers and theme changes have been refined; repeated font measurements in the order panel have been reduced. The interface remains English/Chinese.
-
-**Known limitation:** repeated order changes or long sessions can still slow the interface; performance work is continuing. These screenshots are from the Owner’s Demo account; the displayed results are examples, not performance promises.
-
-[![Workbench settings](images/1.12.3/settings-interface.png)](images/1.12.3/settings-interface.png)
-
-<details><summary>More 1.12.3 screenshots</summary>
-
-![Events](images/1.12.3/settings-events.png)
-
-![Hotkeys](images/1.12.3/settings-hotkeys.png)
-
-![Account](images/1.12.3/account.png)
-
-![Dark workspace](images/1.12.3/workspace-dark.png)
-
-![Multi-chart and guide](images/1.12.3/multichart-guide.png)
 
 </details>
 

@@ -2,7 +2,7 @@
 // Unified native workbench. Original module attribution: Indicators/THIRD_PARTY.md.
 #property strict
 #property copyright "Price Action Workbench; MPL-2.0 source acknowledgements in THIRD_PARTY.md"
-#property version "1.130" // = OrderCanvas OC_VERSION 1.13.0
+#property version "1.131" // = OrderCanvas OC_VERSION 1.13.1
 #property indicator_chart_window
 #property indicator_buffers 6
 #property indicator_plots 5
@@ -17,6 +17,7 @@
 #property indicator_type5 DRAW_NONE
 #property indicator_label5 "入场信号 H1=1 H2=2 L1=4 L2=8"
 #include "../Include/TVWorkbenchDomain.mqh"
+#include "../Include/OCReplayModeDomain.mqh"
 input group "工作台模块"
 input bool EnablePriceAction=true;
 input bool EnableBarCount=true;
@@ -64,7 +65,14 @@ int OnInit()
 bool studyForceFull=false;
 bool StudyBackgroundChanged()
 {const string key="TVST.Bg."+IntegerToString(ChartID());if(!GlobalVariableCheck(key))return false;const color bg=(color)(long)GlobalVariableGet(key);if(bg==studyChartBg)return false;studyChartBg=bg;return true;}
-void OnTimer(){StudyToastTick();StudyPublishRaise();if(StudyBackgroundChanged()){studyForceFull=true;ChartSetSymbolPeriod(0,_Symbol,_Period);}}
+void PublishStudyLayers()
+{
+ if(!studyRaisePending)return;
+ StudyPublishRaise();
+ // The drawing batch is queued first, then the panel restores its own foreground layer.
+ if(OCIsReplaySeriesName(_Symbol))EventChartCustom(0,(ushort)TV_WORKBENCH_RAISE_EVENT,0,0.0,"");
+}
+void OnTimer(){StudyToastTick();PublishStudyLayers();if(StudyBackgroundChanged()){studyForceFull=true;ChartSetSymbolPeriod(0,_Symbol,_Period);}}
 void OnDeinit(const int reason){EventKillTimer();StudyToastClear();PrintFormat("[STUDY_CACHE] commands=%I64u skipped=%I64u",studyCacheCommands,studyCacheSkips);PA_Deinit(reason);BC_Deinit(reason);SE_Deinit(reason);StudyReset();}
 void EmptyModuleBuffer(double &buffer[],const int n,const int prev)
 {for(int i=prev>0 && prev<=n?MathMax(0,prev-1):0;i<n;i++)buffer[i]=EMPTY_VALUE;}
@@ -86,5 +94,6 @@ int OnCalculate(const int n,const int prevCalculated,const datetime &time[],cons
  if(prev==0)PrintFormat("[WORKBENCH_CALC] bar_count_us=%I64u",GetMicrosecondCount()-startUs);
  if(EnableEntrySignals)SE_Calculate(n,prev,time,open,high,low,close,tick_volume,volume,spread);
  else{EmptyModuleBuffer(SE_ema,n,prev);EmptyModuleBuffer(SE_signals,n,prev);}
+ if(OCIsReplaySeriesName(_Symbol))PublishStudyLayers();
  if(prev==0)PrintFormat("[WORKBENCH_CALC] ready bars=%d elapsed_us=%I64u",n,GetMicrosecondCount()-startUs);return n;
 }

@@ -24,6 +24,24 @@
 
 </div>
 
+![OrderCanvas 1.13.1 回测](images/1.13.1/replay-player.png)
+
+## 1.13.1 更新
+
+**回测打磨**：播放条改为居中悬浮卡片，直接显示回放时间；播放中可以拖动图表；K 线倒计时按回放时间走。同品种副图显示主图的时间范围，并随主图一起退出回测。**设置**分为 8 组，「账户」与「回测」分开；规则的子参数在开关关闭时也显示，可以先设好再开启。下单、改单、平仓等操作不再等待券商回执卡住图表。新手引导新增回测一步；订单面板折叠时净值和浮动盈亏也随报价刷新；没动过的限价 / 止损草稿会跟随行情。
+
+**已知限制：**回测按 bid/ask 成交，不模拟滑点和流动性；经纪商没有逐笔数据的时段按分钟回放。长时间运行后界面仍可能变慢。截图来自 Owner 的模拟账户，所示结果仅为示例，不代表收益承诺。
+
+<details><summary>更多 1.13.1 截图</summary>
+
+![回测设置](images/1.13.1/settings-replay.png)
+
+![自动管理设置](images/1.13.1/settings-automation.png)
+
+![新手引导：回测](images/1.13.1/guide-replay.png)
+
+</details>
+
 ![OrderCanvas 1.13.0 回测](images/1.13.0/replay-trading.png)
 
 ## 1.13.0 更新
@@ -37,30 +55,6 @@
 ![回测账户设置](images/1.13.0/replay-account.png)
 
 ![自动管理设置](images/1.13.0/settings-automation.png)
-
-</details>
-
-![OrderCanvas 1.12.3](images/1.12.3/panel.png)
-
-## 1.12.3 更新
-
-工作台设置按界面、订单、自动保护、事件、指标、快捷键和账户分组，支持搜索、重置本组与高级选项；指标提供参数、样式和可见性设置。改进常规字重、报价大小、Mac 标记和主题切换，减少订单面板重复字体测量的开销。界面仍为中英文。
-
-**已知限制：**连续订单操作或长时间运行后仍可能变慢，性能优化继续进行。截图来自 Owner 的 Demo 账户，图中结果仅作功能示例，不代表收益承诺。
-
-[![Workbench settings](images/1.12.3/settings-interface.png)](images/1.12.3/settings-interface.png)
-
-<details><summary>更多 1.12.3 截图</summary>
-
-![Events](images/1.12.3/settings-events.png)
-
-![Hotkeys](images/1.12.3/settings-hotkeys.png)
-
-![Account](images/1.12.3/account.png)
-
-![Dark workspace](images/1.12.3/workspace-dark.png)
-
-![Multi-chart and guide](images/1.12.3/multichart-guide.png)
 
 </details>
 
