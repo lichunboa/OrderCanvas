@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.14.0 — 2026-10-31
+- **Look**: drop-down menus get a soft shadow, rounded corners and a clear accent on the chosen row; the 1-click switch is a rounded pill, solid blue when on.
+- **Faster start**: drawings left by an earlier study workbench are removed by name instead of reading every object on the chart (about 2 s less per start on a Mac; the rest of a cold start is MetaTrader loading the chart).
+- **No 1.5 s freeze every few minutes**: on a PC with several saved license keys, a key that belongs to another account was asked online at every 5-minute check; a denied key is now asked hourly, and once one key is valid the others stay offline.
+- **Interface languages**: the language setting offers 12 languages; beyond Chinese and English they are Beta - common words are translated and everything else stays in English.
+- **English ticket**: the 1-click switch no longer shows a stray square on its left.
+- **Remote Desktop**: when the screen changes under a running panel (connecting with Remote Desktop), the panel rebuilds itself instead of drawing value fields above their frames.
+- **Windows installer**: lists charts that still run another OrderCanvas program (for example a test copy) - those are not updated by the install; a support log is written to %LOCALAPPDATA%\OrderCanvas\installer.log.
+- **Diagnostics**: each start logs how long each start-up step took, and a timer run of 80 ms or more names its slowest part.
+
 ## 1.13.1 — 2026-10-31
 - **No freeze on trade actions**: market and pending orders from the ticket, and modify, break-even, partial close, close and cancel on a single order or position, are sent without waiting on the chart; the result shows when the broker answers (about half a second on a Demo account), and a second click on the same order while it is in flight is refused. Reverse, close-all and automatic management stay sequential.
 - **Replay player**: Replay sits after Hotkeys in the toolbar; the player is a centred floating card; the chart keeps a manual pan during playback; a historical candle countdown follows the replay clock (second by second in 1 second mode).

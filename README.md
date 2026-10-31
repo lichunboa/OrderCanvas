@@ -26,6 +26,10 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 ![OrderCanvas 1.13.1 replay](images/1.13.1/en/replay-player.png)
 
+## Version 1.14.0
+
+**Smoother**: on a PC with several saved license keys the chart no longer stalls for 1.5 s every few minutes (a key of another account was checked online each time); a Mac start is about 2 s faster. **Look**: drop-down menus and the 1-click switch were redrawn. **Languages**: the interface language setting offers 12 languages (Beta beyond Chinese and English). **Windows installer**: names charts that still run another OrderCanvas program, which an install does not update.
+
 ## Version 1.13.1
 
 **Replay, refined**: the player is a centred floating bar that shows the replay time; you can pan the chart while it plays; the candle countdown follows replay time. Linked sub-charts of the same symbol show the main chart's range and leave replay with it. **Settings** come in eight groups — Account and Replay are separate — and a rule's options stay visible under its switch so they can be set before it is turned on. Trade actions no longer freeze the chart while the broker answers. The first-run guide gains a replay step; the folded order panel's equity and floating P/L follow the quote; a limit or stop draft you have not touched follows the market.
