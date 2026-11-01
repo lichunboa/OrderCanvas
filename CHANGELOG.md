@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.14.1 — 2026-11-01
+- **Average-cost line**: with two or more positions on one side, a dashed line at their combined break-even price, labelled like a position line ([lots | P/L | BE], price on the scale). BE (or its hotkey, Shift+X by default and changeable in Settings) sets every position to exit there; with 1-click off it asks first. Its colour is a setting.
+- **Pending orders**: a clock button on the order line changes its time in force (good till cancelled, today, 1 / 4 / 24 hours) where the broker allows it.
+- **Order lines**: line width 1-4 px; the BE, partial-close and reverse buttons can each be hidden; the partial button shows its percentage (50%); reverse is an ⇅ icon; staged TP / SL tags sit next to the position labels.
+- **Drop-downs**: every list on the ticket is the same component: it opens under the control you clicked (above it when there is no room), as wide as its words, and a second click closes it; equivalent lists show each unit's value. The caption you click lights up only around itself.
+- **Break-even**: the button is a lock, green when the stop can move to break-even. Before price has covered entry and costs, it sets the take profit at break-even instead (asks first while 1-click is off); the same for the hotkeys. Swap now counts in the break-even price by default.
+- **1-click**: × on a TP / SL line removes it at once.
+- **Order types**: switching between Limit, Stop and Stop Limit keeps the line where it is; from Market (or with no side yet) the line appears at the market.
+- **Guard**: an entry price nowhere near the market (a BTC stop line once landed at 679.86) is refused and the line put back at the market; the event is written to the diagnostics log. Dragging an order line past the edge of the price chart stops at the edge.
+- **New-user guide**: the lock / 50% / ⇅ buttons, the cost line, the pending-order clock, Shift+X and the order panel's jump to the chart.
+- **Order panel**: clicking a position, order or history row brings that trade to the chart-shift line (where the newest bar sits).
+- **Chart**: » also returns the price scale to automatic; the mouse wheel over the price scale is reversed (up stretches).
+- **Settings**: Replay sits above Account; no "Advanced" fold - every row is shown; the ⓘ appears only where it explains how a setting acts.
+- **Korean**: the interface uses a font with Hangul (Malgun Gothic on Windows); without one, the language list names it "Korean" instead of drawing blank space.
+
 ## 1.14.0 — 2026-10-31
 - **Look**: drop-down menus get a soft shadow, rounded corners and a clear accent on the chosen row; the 1-click switch is a rounded pill, solid blue when on.
 - **Faster start**: drawings left by an earlier study workbench are removed by name instead of reading every object on the chart (about 2 s less per start on a Mac; the rest of a cold start is MetaTrader loading the chart).

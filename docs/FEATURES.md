@@ -1,8 +1,19 @@
-# OrderCanvas feature list (1.9)
+# OrderCanvas feature list (1.14.1)
 
 **English** · [中文](FEATURES.zh-CN.md)
 
-OrderCanvas is a MetaTrader 5 chart-trading panel (an EA, "Utilities" category): order entry, order lines, position management and trade analytics in the style of modern trading platforms, on the MT5 chart. Pure MQL5 - no DLL, no network access - on Windows and macOS.
+OrderCanvas is a MetaTrader 5 chart-trading panel (an EA, "Utilities" category): order entry, order lines, position management and trade analytics in the style of modern trading platforms, on the MT5 chart. Pure MQL5 - no DLL - on Windows and macOS.
+
+## What's new in 1.14
+
+| Area | Changes |
+|---|---|
+| Break-even | The position line's **lock** moves the stop to break-even (entry + commission and swap, both counted by default) and turns green when it can; before price has got there it sets the take profit at break-even instead |
+| Cost line | With two or more positions on one side, a purple dashed line at their **average break-even**, labelled like a position line; its lock takes them all out there (Shift+X by default, rebindable; its colour is a setting); asks first while one-click is off |
+| Order lines | **Clock** on a pending order: change its time in force (GTC / today / 1 / 4 / 24 h, as the broker allows); line width 1–4 px; break-even, partial (shows its %) and reverse (⇅) buttons can each be hidden; with one-click on, × removes a TP / SL at once |
+| Ticket | Every list opens under its own control, as wide as its words, closes on a second click; equivalent lists show each unit's value; switching Limit / Stop / Stop Limit keeps the line; an entry far from the market is refused and logged |
+| Chart & order pane | Clicking a row takes the chart to that trade; » also resets the price scale; wheel over the price scale reversed |
+| Interface | 12 languages (Beta beyond Chinese and English); Korean draws with a Hangul font; settings show every row, Replay above Account; ⓘ only where it explains something; the guide covers the new buttons |
 
 ## What's new in 1.9
 
@@ -39,7 +50,7 @@ OrderCanvas is a MetaTrader 5 chart-trading panel (an EA, "Utilities" category):
 | Preview before sending | Choosing a side draws entry / TP / SL draft lines (dashed); nothing is sent until you confirm |
 | Drag to modify | Drag entry, TP and SL lines; **applies on release** (TradingView). Settings can switch to a Discard / Confirm review on the line |
 | Pull out TP / SL | Press the TP / SL handle on an order line and drag - no click first |
-| Position label | `[size | P/L | BE | ½ | Rev | ×]`: break-even (optionally covering commission ×2, swap, an extra offset), partial close, reverse, close; confirmed next to the pointer unless switched off |
+| Position label | `[size | P/L | lock | 50% | ⇅ | ×]`: break-even (commission ×2 and swap by default, an extra offset optional; take profit at break-even before price gets there), partial close, reverse, close; each button can be hidden; close / partial / reverse confirm next to the pointer unless one-click or "skip confirmation" is on |
 | Staged TP / SL | **Drag ½ out**: towards profit a staged take profit, towards loss a staged stop loss; the tag shows the share and the P/L at that price (e.g. TP2 · 25% · +41.50 USD); drag the tag to move it, click it for 25 / 33 / 50 / 67 / 75 / 100 %, × removes it. **Up to 3 of each** per position; shown on every chart (sub charts too), executed by one chart per symbol; kept across restarts |
 | Editor beside the line | Click a position's P/L or an order's tag: SL, TP, break-even, quantity (positions: lower = partial close, higher = add; orders: placed again at the same price with the new size), staged levels - right next to the line; the ticket stays usable |
 | Price box | At the right end of each line: click to type a price, drag to move the line |

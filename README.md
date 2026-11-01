@@ -24,7 +24,27 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 </div>
 
-![OrderCanvas 1.13.1 replay](images/1.13.1/en/replay-player.png)
+![OrderCanvas 1.14.1 order lines, cost line and expiry](images/1.14.1/en/01-order-lines-cost-line-expiry.png)
+
+## Version 1.14.1
+
+**Out at break-even in one click**: the lock on a position line moves the stop to break-even (entry plus commission and swap) — green when it can; before price has got there it puts the take profit at break-even instead. With two or more positions on one side, a **cost line** marks their average break-even and takes them all out there (Shift+X by default). **Order lines**: a clock on a pending order changes its time in force; line width and each button are settings; with one-click on, × removes a take profit or stop loss at once. **Ticket**: every list opens under its own control, as wide as its words, and closes on a second click; switching between Limit, Stop and Stop Limit keeps the line where you placed it. Clicking a row in the order pane takes the chart to that trade. The guide covers the new buttons; Korean now draws with a Hangul font.
+
+Order-line screenshots are from a Demo account; the analytics and history screenshots are from the Owner's live account. Results shown are examples, not performance promises.
+
+<details><summary>More 1.14.1 screenshots</summary>
+
+![Ticket: take-profit units with values](images/1.14.1/en/02-ticket-dropdown.png)
+
+![Two positions: lock, 50%, reverse and the cost line](images/1.14.1/en/03-positions-lock-cost-line.png)
+
+![Analysis (live account)](images/1.14.1/en/04-analysis-live-account.png)
+
+![History (live account)](images/1.14.1/en/05-history-live-account.png)
+
+![Settings: order lines](images/1.14.1/en/06-settings-order-lines.png)
+
+</details>
 
 ## Version 1.14.0
 
