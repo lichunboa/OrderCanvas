@@ -24,7 +24,7 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 </div>
 
-![OrderCanvas 1.14.1 order lines, cost line and expiry](images/1.14.1/en/01-order-lines-cost-line-expiry.png)
+![OrderCanvas on Mac: order ticket, cost line, position controls and order panel](images/1.14.1/mac-overview.png)
 
 ## Version 1.14.1
 
@@ -32,17 +32,21 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 Order-line screenshots are from a Demo account; the analytics and history screenshots are from the Owner's live account. Results shown are examples, not performance promises.
 
-<details><summary>More 1.14.1 screenshots</summary>
+<details><summary>Mac Retina screenshots · dark and light themes</summary>
 
-![Ticket: take-profit units with values](images/1.14.1/en/02-ticket-dropdown.png)
+![Position controls and the cost line: lock, 50%, reverse and pending-order expiry](images/1.14.1/mac-order-lines.png)
 
-![Two positions: lock, 50%, reverse and the cost line](images/1.14.1/en/03-positions-lock-cost-line.png)
+![Ticket: take-profit units with values](images/1.14.1/mac-ticket-menu.png)
 
-![Analysis (live account)](images/1.14.1/en/04-analysis-live-account.png)
+![Pending order: change time in force on the line](images/1.14.1/mac-expiry-menu.png)
 
-![History (live account)](images/1.14.1/en/05-history-live-account.png)
+![Settings search: cost-line colour and its keyboard shortcut](images/1.14.1/mac-settings-search.png)
 
-![Settings: order lines](images/1.14.1/en/06-settings-order-lines.png)
+![Analysis (live account; account identifier cropped out)](images/1.14.1/mac-analysis.png)
+
+![Light theme: position controls and the cost line](images/1.14.1/mac-light-order-lines.png)
+
+![Light theme: the complete MT5 workspace](images/1.14.1/mac-light-overview.png)
 
 </details>
 

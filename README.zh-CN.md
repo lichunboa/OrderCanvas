@@ -24,7 +24,7 @@
 
 </div>
 
-![OrderCanvas 1.14.1 订单线、成本线与有效时间](images/1.14.1/en/01-order-lines-cost-line-expiry.png)
+![Mac 实机：下单票据、成本线、持仓操作与底部订单面板](images/1.14.1/mac-overview.png)
 
 ## 1.14.1 更新
 
@@ -32,17 +32,21 @@
 
 订单线截图来自模拟账户，分析和历史截图来自作者的真实账户；所示结果仅为示例，不代表收益承诺。
 
-<details><summary>更多 1.14.1 截图</summary>
+<details><summary>Mac Retina 实机截图 · 深色与浅色主题</summary>
 
-![下单面板：止盈单位列表显示各单位数值](images/1.14.1/en/02-ticket-dropdown.png)
+![持仓操作与成本线：锁、50%、反手和挂单有效期](images/1.14.1/mac-order-lines.png)
 
-![两笔持仓：锁、50%、反手与成本线](images/1.14.1/en/03-positions-lock-cost-line.png)
+![下单票据：止盈单位列表显示各单位数值](images/1.14.1/mac-ticket-menu.png)
 
-![分析（真实账户）](images/1.14.1/en/04-analysis-live-account.png)
+![挂单线上的时钟：修改有效时间](images/1.14.1/mac-expiry-menu.png)
 
-![历史（真实账户）](images/1.14.1/en/05-history-live-account.png)
+![设置搜索：成本线颜色与快捷键](images/1.14.1/mac-settings-search.png)
 
-![设置：订单线](images/1.14.1/en/06-settings-order-lines.png)
+![分析（真实账户，已裁去账户标识）](images/1.14.1/mac-analysis.png)
+
+![浅色主题：持仓操作与成本线](images/1.14.1/mac-light-order-lines.png)
+
+![浅色主题：完整 MT5 工作区](images/1.14.1/mac-light-overview.png)
 
 </details>
 
