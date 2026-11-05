@@ -20,11 +20,40 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 **English** · [中文](README.zh-CN.md)
 
-[Official website](https://getordercanvas.com/oc/shop?lang=en) · [MQL5 Market](https://www.mql5.com/en/market/product/201771) · [Download](https://github.com/lichunboa/OrderCanvas/releases/latest) · [Install guide](docs/INSTALL.md) · [All features](docs/FEATURES.md) · [Changelog](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
+[Official website](https://getordercanvas.com/oc/shop?lang=en) · [MQL5 Market](https://www.mql5.com/en/market/product/201771) · [Download](https://github.com/lichunboa/OrderCanvas/releases/latest) · [**User guide**](docs/USER_GUIDE.md) · [Install guide](docs/INSTALL.md) · [All features](docs/FEATURES.md) · [Changelog](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
 
 </div>
 
-![OrderCanvas on Mac: order ticket, cost line, position controls and order panel](images/1.14.1/mac-overview.png)
+![OrderCanvas 1.15.2: Bento Settings with instant live preview, fixed-risk sizing and chart order lines](images/1.15.2/workbench-bento-dark.png)
+
+## Version 1.15.2
+
+- **Resizable Bento Settings with instant live preview**: Settings now use an obsidian 2-column Bento Grid with parent-child `Automation` cards, drag-resizable edges/corners and stepless 1 px smooth scrolling. Every switch, Light / Dark theme toggle, 16-color palette / `#HEX` pick, preset or inline `Studies` accordion adjustment **previews live on the chart, ticket, order lines and dock immediately on click** — `OK` saves, `Cancel` cleanly rolls back.
+- **Three-state TP / SL & persistent gray reference lines**: turning off the ticket TP or SL switch keeps a clean gray dashed reference line (`[-2.82 USD | Enable | ×]`) — no broker TP/SL is sent, `Risk %` and `Risk USD` still calculate valid lots from the reference stop distance, and gray reference lines stay attached to filled positions and pending orders so you can drag them or click `Enable` anytime.
+- **Cross-source order management, `···` compact chips & History SL / TP**: manage MT5 mobile, web, desktop (`Magic 0`) and external EA trades right on chart lines and in the order panel (while automated break-even, trailing, partial close and the cost line safely act only on this panel's and manual trades). Multiple trades share a single focus and fold secondary buttons on unfocused lines into `···`; Positions/Orders cells support inline SL/TP editing, and History adds `Source` plus closing `SL` / `TP` hit highlights.
+- **Mirrored ticket side vs. same-price `⇅` reverse & comprehensive User Guide**: ticket `Buy` / `Sell` mirrors pending offsets across Bid/Ask while keeping the order type, whereas on-line `⇅` flips at the exact same price (`Limit <-> Stop`); pressing `L` / `P` on unseeded pending modes seeds the draft at market. See the new illustrated **[User Guide](docs/USER_GUIDE.md)**.
+
+<details><summary>1.15.2 screenshots · instant live preview, gray reference exits, multi-source orders & inline studies</summary>
+
+![Instant Light theme live preview across chart, ticket and order dock](images/1.15.2/workbench-live-light.png)
+
+![5 custom theme color roles with 16-color palette and #HEX / RGB live preview](images/1.15.2/workbench-custom-colors.png)
+
+![Live position retaining gray dashed reference SL & TP with one-click Enable](images/1.15.2/gray-ref-brackets.png)
+
+![Stop-Limit draft: separate Trigger + Limit lines and gray reference stop](images/1.15.2/stop-limit-trigger.png)
+
+![Multi-order focus sync, external EA Source tag and auto-compact ··· chips](images/1.15.2/multi-order-sources.png)
+
+![History tab: Source column, closing SL/TP hit highlights and MAE](images/1.15.2/history-source-sltp.png)
+
+![Settings — Automation parent-child Bento cards and presets](images/1.15.2/settings-auto-bento.png)
+
+![Settings — Studies inline accordion configuration](images/1.15.2/settings-studies-inline.png)
+
+![Settings — Events & Sessions with selectable copyable WebRequest URLs](images/1.15.2/settings-events-urls.png)
+
+</details>
 
 ## Version 1.14.1
 
@@ -92,7 +121,7 @@ Order-line screenshots are from a Demo account; the analytics and history screen
 
 | I want to... | Start here |
 |---|---|
-| **Trade with OrderCanvas** | [Features](docs/FEATURES.md) · [Installation](docs/INSTALL.md) · [Releases](https://github.com/lichunboa/OrderCanvas/releases) |
+| **Trade with OrderCanvas** | [**User guide**](docs/USER_GUIDE.md) · [Features](docs/FEATURES.md) · [Installation](docs/INSTALL.md) · [Releases](https://github.com/lichunboa/OrderCanvas/releases) |
 | **Reuse open MQL5 code** | [Developer guide](docs/DEVELOPERS.md) · [MIT utilities](OpenUtilities/) · [MPL indicator source](TVStudySuite/) |
 | **Contribute or report a bug** | [Repository map](docs/PROJECT_STRUCTURE.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/lichunboa/OrderCanvas/issues) · [Discussions](https://github.com/lichunboa/OrderCanvas/discussions) · [Security](SECURITY.md) · [Community channels](docs/COMMUNITY.md) |
 
@@ -149,8 +178,8 @@ Dragging a TP, SL or order line applies the new price when you let go (TradingVi
 
 ### 3. Professional order ticket
 - Market, Limit, Stop and Stop-Limit orders; expiry GTC / today / specific time (with a calendar)
-- **Five sizing modes**: lots, margin, % of balance, risk in money, risk in % - the lot size follows the stop distance
-- TP / SL as P/L money by default, or in ticks, price, % of price, pips or % of balance; reward:risk shown live
+- **Five sizing modes**: lots, margin, % of equity, risk in money, risk in % - the lot size follows the stop distance
+- TP / SL as P/L money by default, or in ticks, price, % of price, pips or % of equity; reward:risk shown live
 - Trade value, tick value and required margin from the broker, with the account currency
 - Up to five saved order presets (type, offset, protection, expiry)
 
@@ -192,7 +221,7 @@ Features traders usually compare when choosing an MT5 trade panel, and where Ord
 
 | Feature | OrderCanvas |
 |---|---|
-| Lot size from risk % / risk amount / balance % / margin | ✅ ticket, follows the stop distance |
+| Lot size from risk % / risk amount / equity % / margin | ✅ ticket, follows the stop distance |
 | Drag entry / SL / TP lines; pull new SL / TP out of an order line | ✅ |
 | Preview before sending | ✅ draft lines, nothing is sent before you confirm |
 | One-click break-even (fees, swap, slippage buffer) | ✅ position line `BE` |
@@ -228,7 +257,7 @@ OrderCanvas is written in pure MQL5 - no DLLs, no external services, no network 
 
 - **Broker-authoritative state.** Chart lines are rebuilt from the terminal's positions and orders after every trade transaction; the panel never keeps a shadow copy that could drift from what the broker holds.
 - **Exact identity for every action.** A modify, close or reverse is bound to the ticket, account, symbol and magic number it was created for; a click that arrives after the book has changed is rejected instead of acting on another order.
-- **Only its own orders.** By default the panel manages orders with its own magic number and leaves other EAs and manual trades alone.
+- **Safe cross-source boundaries.** External and manual trades carry a clear `Source` tag and can be managed manually on chart lines and in the dock, while automated break-even, trailing stops, auto partial closes and the cost line never mutate another EA's orders.
 - **Fast rendering.** The ticket is drawn on a Canvas with dirty-region scheduling; order-line labels are rounded Canvas skins over native click targets. Earlier focused measurements are scenario-specific; long-session performance remains an open item, as described above.
 - **DPI-aware.** Text and layout scale with the screen DPI and the interface font is chosen per platform (Microsoft YaHei UI on Windows, PingFang on macOS), so the panel looks the same on a 96-DPI Windows desktop and a Retina Mac.
 - **Safety defaults.** Live accounts show a one-time risk confirmation; close and reverse confirm by default.
@@ -260,7 +289,7 @@ For a separately licensed copy, visit the [official website](https://getordercan
 
 **Does it work on macOS?** Yes - MetaTrader 5 for Mac (Wine) and Windows are both tested; layout and fonts adapt to the screen DPI.
 
-**Will it touch my other EAs or manual trades?** No. By default it manages only orders with its own magic number; other positions are shown read-only.
+**Will it touch my other EAs or manual trades?** Automated break-even, trailing stops, auto partial closes and the cost line never alter another EA's trades. External and manual orders are labeled with their `Source` for optional manual management (switchable in Settings → Orders).
 
 **Hedging or netting?** Both, plus exchange accounts. Partial closes on netting accounts use an opposite deal.
 

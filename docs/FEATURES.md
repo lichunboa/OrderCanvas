@@ -1,8 +1,18 @@
-# OrderCanvas feature list (1.14.1)
+# OrderCanvas feature list (1.15.2)
 
-**English** · [中文](FEATURES.zh-CN.md)
+**English** · [中文](FEATURES.zh-CN.md) · [User Guide](USER_GUIDE.md)
 
 OrderCanvas is a MetaTrader 5 chart-trading panel (an EA, "Utilities" category): order entry, order lines, position management and trade analytics in the style of modern trading platforms, on the MT5 chart. Pure MQL5 - no DLL - on Windows and macOS.
+
+## What's new in 1.15
+
+| Area | Changes |
+|---|---|
+| Resizable Bento Settings & Live Preview | Obsidian 2-column Bento Grid with parent-child `Automation` cards, drag-resizable edges/corners (`840×520` up to full chart) and 1 px smooth wheel scrolling; every switch, theme toggle, color pick, preset and study input **previews live on the chart immediately on click** — `OK` saves, `Cancel` reverts |
+| Three-state TP / SL | Turning off the ticket TP/SL switch keeps a **gray dashed reference line** (`[-1.65 USD \| Enable \| ×]`): no broker TP/SL is sent, `Risk %` and `Risk USD` still size lots from the stop distance, and gray reference lines persist onto filled positions/orders with one-click `Enable` |
+| Cross-source trades & History SL/TP | Manage MT5 mobile, web, desktop (`Magic 0`) and external EA trades on chart lines and in the dock (automated rules never touch another EA's orders); added `Source` across tabs, closing `SL` / `TP` hit highlights in History, and inline SL/TP cell editing across all symbols |
+| Mirrored side & `···` compact chips | Ticket `Buy` / `Sell` mirrors pending offsets across Bid/Ask keeping the order type, while on-line `⇅` flips at the exact same price (`Limit <-> Stop`); direct `L`/`P` seeds unpriced pending drafts; unfocused lines fold secondary buttons into `···` |
+| Inline Studies & `#HEX` colors | `Studies` cards expand `Inputs / Style / Visibility` inline; 5 customizable theme color roles (incl. `Surface background`) with 16-color palette + `#HEX / RGB`; 2-stage 12 s auto-retracting event toasts (`T-1m` final reminder) and selectable copyable `WebRequest` URLs |
 
 ## What's new in 1.14
 
@@ -32,8 +42,8 @@ OrderCanvas is a MetaTrader 5 chart-trading panel (an EA, "Utilities" category):
 | Feature | Details |
 |---|---|
 | Order types | Market, Limit, Stop, Stop Limit; pending expiry GTC / today / specific time (calendar) |
-| Five sizing modes | Lots, margin, % of balance, risk in money, risk in % (lot size from the stop distance); equivalents on the right |
-| TP / SL | Each with its own switch; P/L money by default (account currency), or ticks, price, % of price, pips, % of balance; ticks shown alongside; live reward:risk that can be **locked** (change one, the other follows) |
+| Five sizing modes | Lots, margin, % of equity, risk in money, risk in % of equity (lot size from the stop distance); equivalents on the right |
+| TP / SL | Each with its own switch; P/L money by default (account currency), or ticks, price, % of price, pips (forex), % of equity; ticks shown alongside; live reward:risk that can be **locked** (change one, the other follows) |
 | Errors | An invalid field shows the reason right above it (side, broker minimum distance, money needed for the minimum lot); the chart "!" shows it on hover |
 | Colours match the lines | TP caption and amount in green, SL in amber, like their chart lines; Buy blue, Sell red |
 | Auto-protection switches | One row under the exits: BE +1R · Trail ATR×2 · Partial 1R·50% (your settings), click to switch, 「Settings ›」 for details |

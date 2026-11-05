@@ -20,11 +20,40 @@
 
 [English](README.md) · **中文**
 
-[正式官网](https://getordercanvas.com/oc/shop?lang=zh) · [MQL5 Market](https://www.mql5.com/en/market/product/201771) · [下载](https://github.com/lichunboa/OrderCanvas/releases/latest) · [安装教程](docs/INSTALL.md) · [全部功能](docs/FEATURES.zh-CN.md) · [更新日志](CHANGELOG.md) · [Telegram](https://t.me/OrderCanvasbot)
+[正式官网](https://getordercanvas.com/oc/shop?lang=zh) · [MQL5 Market](https://www.mql5.com/en/market/product/201771) · [下载](https://github.com/lichunboa/OrderCanvas/releases/latest) · [**使用说明书**](docs/USER_GUIDE.zh-CN.md) · [安装教程](docs/INSTALL.md) · [全部功能](docs/FEATURES.zh-CN.md) · [更新日志](CHANGELOG.zh-CN.md) · [Telegram](https://t.me/OrderCanvasbot)
 
 </div>
 
-![Mac 实机：下单票据、成本线、持仓操作与底部订单面板](images/1.14.1/mac-overview.png)
+![OrderCanvas 1.15.2：交易工作台小方块卡片、点击即实时预览、以损定仓与图表订单线](images/1.15.2/workbench-bento-dark.png)
+
+## 1.15.2 更新
+
+- **交易工作台重构与点击即实时预览**：设置中心升级为曜石黑双列小方块卡片与父子策略容器，支持窗口四边/四角自由拖拽缩放及 1 px 无极平滑滚轮；点击任意开关、深浅主题、16 色板 / `#HEX` 自定义颜色、预设方案或「研究指标」内联手风琴参数均**立即在背后图表、票据、订单线与底部面板实时预览**，点「确认」落盘保存，点「取消」一键完整还原。
+- **三态止盈 / 止损与灰色参考线持续保留**：关闭票据止盈或止损开关时，图表保留灰色虚线参考（`[-2.82 USD | 启用 | ×]`）——发单不向券商提交真实 TP/SL，但 `%风险` 与 `风险USD` 仍按灰色止损距离精确算仓；成交后灰色参考线自动保留在真实持仓/挂单上，随时拖动或点「启用」即可转为真实券商止盈止损。
+- **跨来源订单接管、多单 `···` 精简与历史止损 / 止盈对账**：默认支持在图表订单线和底部面板中管理手机 MT5、网页端及其他 EA 的订单（自动保本/追踪/分批仅作用于本面板和手动单 Magic 0，绝不乱动其他 EA 订单）；多笔订单共享同一焦点，非焦点订单线自动折叠为 `···`；底部持仓/订单表格支持直接点击单元格改止盈止损，历史页新增「来源」与关联「止损 / 止盈」触发高亮列。
+- **挂单镜像 vs 同价反向 & 快捷交互升级**：面板顶部「买入 / 卖出」按买卖价镜像偏移保持订单类型不变，图表订单线 `⇅` 则原位同价反向（限价 ↔ 止损）；未设价挂单直接按 `L` / `P` 自动在现价播种并开启保护跟随；新增完整图文 **[使用说明书](docs/USER_GUIDE.zh-CN.md)**。
+
+<details><summary>1.15.2 实机截图 · 即点即预览、三态参考线、多来源订单与内联指标设置</summary>
+
+![点击「浅色」瞬间全工作台实时预览切换为浅色主题](images/1.15.2/workbench-live-light.png)
+
+![5 大色彩角色支持 16 色板与 #HEX / RGB 自定义实时换色](images/1.15.2/workbench-custom-colors.png)
+
+![真实持仓保留灰色虚线参考止损与止盈，点「启用」一键转正](images/1.15.2/gray-ref-brackets.png)
+
+![停损限价单：触发价 + 限价双线联动与灰色参考止损](images/1.15.2/stop-limit-trigger.png)
+
+![多笔订单焦点同步、外部 EA 来源识别与 ··· 自动精简](images/1.15.2/multi-order-sources.png)
+
+![底部历史页：来源列、关联止损/止盈触发高亮与 MAE](images/1.15.2/history-source-sltp.png)
+
+![自动管理分组：父子策略小方块卡片与预设方案](images/1.15.2/settings-auto-bento.png)
+
+![研究指标分组：点击卡片直接内联展开参数、样式与可见范围](images/1.15.2/settings-studies-inline.png)
+
+![事件与时段分组：原生财经日历与可直接 Ctrl+C 复制的官方网址](images/1.15.2/settings-events-urls.png)
+
+</details>
 
 ## 1.14.1 更新
 
@@ -90,7 +119,7 @@
 
 | 目的 | 快速入口 |
 |---|---|
-| **安装并使用交易面板** | [功能介绍](docs/FEATURES.zh-CN.md) · [安装说明](docs/INSTALL.md) · [发布版本](https://github.com/lichunboa/OrderCanvas/releases) |
+| **安装并使用交易面板** | [**使用说明书**](docs/USER_GUIDE.zh-CN.md) · [功能介绍](docs/FEATURES.zh-CN.md) · [安装说明](docs/INSTALL.md) · [发布版本](https://github.com/lichunboa/OrderCanvas/releases) |
 | **学习或复用开源代码** | [开发者入门](docs/DEVELOPERS.zh-CN.md) · [MIT 基础工具](OpenUtilities/) · [MPL 指标源码](TVStudySuite/) |
 | **参与开发或反馈问题** | [仓库结构](docs/PROJECT_STRUCTURE.md) · [贡献指南](CONTRIBUTING.md) · [问题反馈](https://github.com/lichunboa/OrderCanvas/issues) · [讨论区](https://github.com/lichunboa/OrderCanvas/discussions) · [安全报告](SECURITY.md) · [社区与支持分流](docs/COMMUNITY.zh-CN.md) |
 
@@ -147,8 +176,8 @@ MT5 执行很稳，但手动下单和管理很慢：每次下单都弹窗、手�
 
 ### 3. 专业下单票据
 - 市价 / 限价 / 止损 / 停损限价；挂单有效期 GTC / 当日 / 指定时间（带日历）
-- **5 种算手数方式**：手数、保证金、余额 %、风险金额、风险 %，手数跟随止损距离
-- 止盈止损默认按盈亏金额，也可用 tick、价格、%、点数、余额 % 表示，实时显示盈亏比
+- **5 种算手数方式**：手数、保证金、净值 %、风险金额、风险 %，手数跟随止损距离
+- 止盈止损默认按盈亏金额，也可用 tick、价格、%、点数、净值 % 表示，实时显示盈亏比
 - 券商提供的交易额、刻度值、所需保证金
 - 最多 5 组订单预设（类型、偏移、止盈止损、有效期）
 
@@ -190,7 +219,7 @@ OrderCanvas 自带 **TVStudySuite** 价格行为工作台，直接画在 MT5 图
 
 | 功能 | OrderCanvas |
 |---|---|
-| 按风险 % / 风险金额 / 余额 % / 保证金算手数 | ✅ 票据里设置，随止损距离变化 |
+| 按风险 % / 风险金额 / 净值 % / 保证金算手数 | ✅ 票据里设置，随止损距离变化 |
 | 拖动入场 / 止损 / 止盈线，从订单线拉出新的止盈止损 | ✅ |
 | 下单前预览 | ✅ 草稿线，确认前不发单 |
 | 一键保本（计手续费、隔夜利息、滑点缓冲） | ✅ 持仓线「保」 |
@@ -226,7 +255,7 @@ OrderCanvas 自带 **TVStudySuite** 价格行为工作台，直接画在 MT5 图
 
 - **以券商为准**：每次交易事务后都从终端的持仓和挂单重建图上订单线，面板不保存可能与券商不一致的影子状态。
 - **每个操作都绑定精确身份**：修改、平仓、反手都绑定当时的订单号、账户、品种和魔术号；界面变化后到达的旧点击会被拒绝，不会误操作别的订单。
-- **只管自己的订单**：默认只管理本面板魔术号的订单，不动其他 EA 和手动单。
+- **跨来源清晰隔离**：支持在图表订单线和订单面板查看与管理手动单及其他 EA 订单（清晰标注来源），而自动保本、追踪止损、自动分批与成本线仅作用于本面板与手动单（Magic 0），绝不改动其他 EA 的订单。
 - **渲染快**：下单票据用 Canvas 绘制并按脏区刷新；订单线标签是圆角 Canvas 外观加原生点击区。EA 侧实测拖动每帧约 1.3 ms、悬停 0.5 ms。
 - **适配屏幕精度**：文字和布局随屏幕 DPI 缩放，界面字体按系统自动选择（Windows 微软雅黑 UI、macOS 苹方），96 DPI 的 Windows 和 Retina 的 Mac 显示一致。
 - **安全默认值**：真实账户首次使用弹出风险确认；平仓、反手默认二次确认。
@@ -258,7 +287,7 @@ Mac、便携版、手动安装和每一步说明：[docs/INSTALL.md](docs/INSTAL
 
 **Mac 能用吗？** 能。Mac 版 MT5（Wine）和 Windows 都测试过，布局和字体按屏幕 DPI 自适应。
 
-**会动我其他 EA 或手动单吗？** 不会。默认只管理本面板魔术号的订单，其他持仓只读显示。
+**会动我其他 EA 或手动单吗？** 自动保本、追踪止损、自动分批和成本线绝不会触碰其他 EA 的订单；图表订单线与订单面板支持查看和手动管理外部来源订单（也可在设置里一键关闭，只管本面板订单）。
 
 **对冲还是净额账户？** 都支持，也支持交易所账户；净额账户部分平仓用反向成交。
 
