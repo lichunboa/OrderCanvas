@@ -24,13 +24,33 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 </div>
 
-![OrderCanvas 1.15.3: Bento Settings with instant live preview, fixed-risk sizing and chart order lines](images/1.15.3/workbench-bento-dark.png)
+![OrderCanvas 1.15.4: Bento Settings with instant live preview, fixed-risk sizing and chart order lines](images/1.15.3/workbench-bento-dark.png)
 
-## Version 1.15.3
+## Version 1.15.4
 
-English interface polish: every caption, hint and tag that was cut off in English now fits (toolbar `Templates` / `2nd chart`, Settings hints, session tags, colour roles, study cards, ticket button); the reference TP / SL chip reads `Enable`. Details in the [changelog](CHANGELOG.md).
+Gray reference TP / SL now stay on the filled trade even when the broker's receipt is late (on Mac / Wine every receipt timed out and they were lost), and the remaining English texts that were cut now fit. 1.15.3 brought the English interface polish. Details in the [changelog](CHANGELOG.md).
 
-<p align="center"><img src="images/1.15.3/live-preview-theme.gif" width="70%" alt="Settings preview live on the chart: Light, then Dark"> <img src="images/1.15.3/gray-ref-enable.gif" width="28%" alt="A gray reference stop becomes a real broker stop loss with Enable"></p>
+### See it work
+
+**Nothing is sent until you press the button** — pick a side, adjust the draft lines, then send:
+
+![Pick Buy, drag the take profit and stop loss drafts, then press the order button](images/1.15.3/draft-adjust-send.gif)
+
+**Size from the stop** — set the risk in money, drag the stop line, the lot size follows (risk stays 20 USD):
+
+![Drag the stop-loss line and the lot size follows the fixed risk](images/1.15.3/risk-sizing-drag-stop.gif)
+
+**Break-even that counts the costs** — the lock moves the stop to entry plus commission and swap (+0.08 USD here); fills can still slip:
+
+![The lock moves the stop to entry plus commission](images/1.15.3/break-even-with-costs.gif)
+
+**Reference TP / SL** — keep a gray stop for sizing and send it to the broker later with Enable:
+
+![A gray reference stop becomes a real broker stop loss with Enable](images/1.15.3/gray-ref-enable.gif)
+
+**Settings preview live** — every group, theme and colour shows on the chart at once; OK keeps it, Cancel puts it back:
+
+![Settings tour with live Light / Dark preview across Interface, Automation, Studies and Events](images/1.15.3/settings-tour-live-preview.gif)
 
 ## Version 1.15.2
 

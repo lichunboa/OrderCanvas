@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.15.4 — 2026-11-06
+- **Reference TP / SL survive a late broker receipt**: when MetaTrader did not confirm a market or pending order within 10 s (seen on every order on Mac / Wine), the gray reference TP / SL were dropped and the filled position had none. They now stay on the new position or order, ready for Enable.
+- **English fits**: the break-even confirmation reads "Exit at break-even?" (it was cut) and "1 position"; the late-receipt note is shorter; a Limit / Stop button no longer repeats the symbol, so the risk percentage fits.
+
 ## 1.15.3 — 2026-11-06
 - **English interface fits**: the toolbar's `Templates` and `2nd chart` buttons widen to their caption (they read `Tem…` / `2nd …`); Settings texts that were cut now fit — the WebRequest hint, the session tags (`Tokyo` / `London` / `New York`), the colour roles (`Accent`, `Cost line`) — and study cards wrap between words; the pending-order expiry header, the cost-line confirmation and the order-type hints are shorter; the reference TP / SL chip reads `Enable` (it said `On`).
 - **Ticket button**: pending orders read `LMT` / `STP` like `MKT`, so the risk percentage stays on the line.
