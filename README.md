@@ -24,7 +24,13 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 </div>
 
-![OrderCanvas 1.15.2: Bento Settings with instant live preview, fixed-risk sizing and chart order lines](images/1.15.2/workbench-bento-dark.png)
+![OrderCanvas 1.15.3: Bento Settings with instant live preview, fixed-risk sizing and chart order lines](images/1.15.3/workbench-bento-dark.png)
+
+## Version 1.15.3
+
+English interface polish: every caption, hint and tag that was cut off in English now fits (toolbar `Templates` / `2nd chart`, Settings hints, session tags, colour roles, study cards, ticket button); the reference TP / SL chip reads `Enable`. Details in the [changelog](CHANGELOG.md).
+
+<p align="center"><img src="images/1.15.3/live-preview-theme.gif" width="70%" alt="Settings preview live on the chart: Light, then Dark"> <img src="images/1.15.3/gray-ref-enable.gif" width="28%" alt="A gray reference stop becomes a real broker stop loss with Enable"></p>
 
 ## Version 1.15.2
 
@@ -33,25 +39,27 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 - **Cross-source order management, `···` compact chips & History SL / TP**: manage MT5 mobile, web, desktop (`Magic 0`) and external EA trades right on chart lines and in the order panel (while automated break-even, trailing, partial close and the cost line safely act only on this panel's and manual trades). Multiple trades share a single focus and fold secondary buttons on unfocused lines into `···`; Positions/Orders cells support inline SL/TP editing, and History adds `Source` plus closing `SL` / `TP` hit highlights.
 - **Mirrored ticket side vs. same-price `⇅` reverse & comprehensive User Guide**: ticket `Buy` / `Sell` mirrors pending offsets across Bid/Ask while keeping the order type, whereas on-line `⇅` flips at the exact same price (`Limit <-> Stop`); pressing `L` / `P` on unseeded pending modes seeds the draft at market. See the new illustrated **[User Guide](docs/USER_GUIDE.md)**.
 
-<details><summary>1.15.2 screenshots · instant live preview, gray reference exits, multi-source orders & inline studies</summary>
+<details><summary>1.15.x screenshots · instant live preview, gray reference exits, multi-source orders & inline studies</summary>
 
-![Instant Light theme live preview across chart, ticket and order dock](images/1.15.2/workbench-live-light.png)
+![Instant Light theme live preview across chart, ticket and order dock](images/1.15.3/workbench-live-light.png)
 
-![5 custom theme color roles with 16-color palette and #HEX / RGB live preview](images/1.15.2/workbench-custom-colors.png)
+![5 custom theme color roles with 16-color palette and #HEX / RGB live preview](images/1.15.3/workbench-custom-colors.png)
 
-![Live position retaining gray dashed reference SL & TP with one-click Enable](images/1.15.2/gray-ref-brackets.png)
+![Live position retaining gray dashed reference SL & TP with one-click Enable](images/1.15.3/gray-ref-brackets.png)
 
-![Stop-Limit draft: separate Trigger + Limit lines and gray reference stop](images/1.15.2/stop-limit-trigger.png)
+![Stop-Limit draft: separate Trigger + Limit lines and gray reference stop](images/1.15.3/stop-limit-trigger.png)
 
-![Multi-order focus sync, external EA Source tag and auto-compact ··· chips](images/1.15.2/multi-order-sources.png)
+![Multi-order focus sync, external EA Source tag and auto-compact ··· chips](images/1.15.3/multi-order-sources.png)
 
-![History tab: Source column, closing SL/TP hit highlights and MAE](images/1.15.2/history-source-sltp.png)
+![History tab: Source column, closing SL/TP hit highlights and MAE](images/1.15.3/history-source-sltp.png)
 
-![Settings — Automation parent-child Bento cards and presets](images/1.15.2/settings-auto-bento.png)
+![Settings — Automation parent-child Bento cards and presets](images/1.15.3/settings-auto-bento.png)
 
-![Settings — Studies inline accordion configuration](images/1.15.2/settings-studies-inline.png)
+![Settings — Studies inline accordion configuration](images/1.15.3/settings-studies-inline.png)
 
-![Settings — Events & Sessions with selectable copyable WebRequest URLs](images/1.15.2/settings-events-urls.png)
+![Ticket set to Limit with fixed-risk sizing and the order panel](images/1.15.3/overview-workspace.png)
+
+![Settings — Events & Sessions with selectable copyable WebRequest URLs](images/1.15.3/settings-events-urls.png)
 
 </details>
 

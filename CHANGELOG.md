@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.15.3 — 2026-11-06
+- **English interface fits**: the toolbar's `Templates` and `2nd chart` buttons widen to their caption (they read `Tem…` / `2nd …`); Settings texts that were cut now fit — the WebRequest hint, the session tags (`Tokyo` / `London` / `New York`), the colour roles (`Accent`, `Cost line`) — and study cards wrap between words; the pending-order expiry header, the cost-line confirmation and the order-type hints are shorter; the reference TP / SL chip reads `Enable` (it said `On`).
+- **Ticket button**: pending orders read `LMT` / `STP` like `MKT`, so the risk percentage stays on the line.
+- **Order panel**: `P&L %` shows `0.00%` instead of `-0.00%` for a tiny loss.
+- **Studies**: the bar-count card and the classic preset describe what they do without naming a third-party author.
+
 ## 1.15.2 — 2026-11-05
 - **Resizable Bento Settings with instant live preview**: redesigned Settings into an obsidian-black 2-column Bento Grid with parent-child `Automation` cards, drag-resizable edges/corners (`840×520` up to full chart), and stepless 1 px wheel scrolling. Every switch, Light / Dark theme toggle, dropdown, color pick, preset, group reset and study parameter now **previews live on the chart, ticket, order lines and dock immediately upon click** (no separate Preview button); `OK` saves to disk while `Cancel` / `×` / `Esc` reverts cleanly without mutating live positions during preview.
 - **Three-state TP / SL & post-fill gray reference persistence**: turning off the TP or SL switch on the ticket keeps a clean gray dashed reference line (`[-1.65 USD | Enable | ×]`) — orders are sent without a broker TP / SL while `Risk %` and `Risk USD` still calculate valid lots from the reference stop distance; gray reference lines persist onto filled positions and pending orders (and across refused reverse rollbacks) so you can drag them or click `Enable` anytime to transmit a real broker SL / TP (`×` removes).

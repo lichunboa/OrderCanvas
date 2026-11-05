@@ -36,7 +36,7 @@ flowchart LR
     R <--> L
 ```
 
-![OrderCanvas Full Workspace Overview](../images/1.15.2/overview-workspace.png)
+![OrderCanvas Full Workspace Overview](../images/1.15.3/overview-workspace.png)
 
 | Zone | Name | Location | Primary Role |
 |---|---|---|---|
@@ -72,7 +72,7 @@ With **1-Click Trading** turned off, nothing is ever sent to your broker while y
 - **Stop**: places a breakout Buy Stop above market or Sell Stop below market.
 - **Stop Limit**: places a **Trigger** stop line and a separate **Limit** execution line — once price reaches the trigger level, a Limit order is placed at your specified limit price.
 
-![Stop-Limit Order Draft: Separate Trigger + Limit Lines with Gray Reference Stop](../images/1.15.2/stop-limit-trigger.png)
+![Stop-Limit Order Draft: Separate Trigger + Limit Lines with Gray Reference Stop](../images/1.15.3/stop-limit-trigger.png)
 
 > [!NOTE]
 > **Editing any field opens the chart draft automatically**: while neutral, clicking any order-type tab or editing size, entry, or TP/SL values immediately projects the dashed draft lines onto the chart.
@@ -117,7 +117,7 @@ Traders often want to **size lots accurately from a planned stop and keep visual
 | **② Gray Reference (Local Visual Guide)** | Turn OFF the ticket TP/SL switch while a level exists | Clean **gray dashed line** with `[-2.82 USD \| Enable \| ×]` | **No TP/SL is sent to the broker**, yet `Risk %` & `Risk Money` **still size lots from the gray stop distance** — and the gray reference lines **persist onto the live position or pending order after fill**! |
 | **③ Completely Hidden** | Click `×` on the TP or SL chip | Line is removed from the chart | No TP/SL sent; drag the `TP`/`SL` handle out of the main order chip or press `L`/`P` anytime to pull out a fresh active exit |
 
-![Live Position Retaining Gray Dashed Reference SL & TP with One-Click Enable](../images/1.15.2/gray-ref-brackets.png)
+![Live Position Retaining Gray Dashed Reference SL & TP with One-Click Enable](../images/1.15.3/gray-ref-brackets.png)
 
 > [!IMPORTANT]
 > **One-click promotion from Reference to Real SL/TP**: on any live position or pending order carrying a gray reference line, simply **drag the gray line** or click **`Enable` (`启用`)** on its chip to immediately transmit it to your broker as a live server-side SL/TP!
@@ -148,7 +148,7 @@ When two or more positions or pending orders appear on the same chart:
 - **Unified trade focus**: clicking a chart order line, selecting a row in the bottom dock, or aiming with hotkeys synchronizes the **focused order** across the entire workspace.
 - **Clutter-free `···` folding**: unfocused order lines automatically fold secondary action buttons into `···` so stacked orders never overlap; hovering, clicking `···`, or focusing the trade expands the full button bar immediately.
 
-![Multi-Order Focus Sync, External EA Source Tag & Auto-Compact ··· Chips](../images/1.15.2/multi-order-sources.png)
+![Multi-Order Focus Sync, External EA Source Tag & Auto-Compact ··· Chips](../images/1.15.3/multi-order-sources.png)
 
 ---
 
@@ -166,7 +166,7 @@ In `Settings → Orders`, **"Manage trades from other sources"** is enabled by d
 2. **Orders**: working pending orders with Source tags, inline SL/TP editing, and one-click cancellation.
 3. **History**: filter by `Today / 7d / 30d / All` and `All symbols / Current symbol`. Displays **Source**, **closing SL / TP levels** (highlighted when SL or TP triggered the exit), holding duration, **Max Adverse Excursion (MAE)**, gross P&L, commission, swap, and net P&L. Clicking any row scrolls the chart straight to that trade's bar!
 
-![Bottom History Tab: Source Column, Closing SL/TP Trigger Highlights, MAE & Net P&L](../images/1.15.2/history-source-sltp.png)
+![Bottom History Tab: Source Column, Closing SL/TP Trigger Highlights, MAE & Net P&L](../images/1.15.3/history-source-sltp.png)
 
 4. **Account**: clean breakdown of Balance, Equity, Margin, Free Margin, Margin Level, and Leverage.
 5. **Analytics**: built-in strategy report — **post-cost cumulative equity & drawdown curve**, win rate, profit factor, P&L distribution, Long vs. Short, net breakdown by weekday / close hour / holding time, and planned stop risk vs. actual MAE.
@@ -177,7 +177,7 @@ In `Settings → Orders`, **"Manage trades from other sources"** is enabled by d
 
 All automated rules are opt-in (off by default) and organized into clear parent-child Bento cards under `Settings → Automation` with curated one-click **Presets**:
 
-![Settings — Automation Parent-Child Bento Cards & Presets](../images/1.15.2/settings-auto-bento.png)
+![Settings — Automation Parent-Child Bento Cards & Presets](../images/1.15.3/settings-auto-bento.png)
 
 ### 5.1 Initial Risk Unit (`1R`)
 
@@ -219,7 +219,7 @@ Practice price action and execution right on your live chart layout without open
 
 In `Settings → Studies`, click **Configure ›** on any study card to expand its **Inputs / Style / Visibility** tabs **inline inside the card** with instant live chart preview:
 
-![Settings — Studies Inline Accordion Configuration](../images/1.15.2/settings-studies-inline.png)
+![Settings — Studies Inline Accordion Configuration](../images/1.15.3/settings-studies-inline.png)
 
 - **EMAs & Patterns**: dual EMAs (default EMA 20 + EMA 200), previous-day High / Low / Close lines, breakout & exhaustion gap zones, and inside / outside bar (`i`, `ii`, `ioi`) labels.
 - **Bar Count**: session bar numbering with highlighted interval multiples (shown on `M5` by default; customizable per timeframe under `Visibility`).
@@ -229,7 +229,7 @@ In `Settings → Studies`, click **Configure ›** on any study card to expand i
 
 In `Settings → Events`:
 
-![Settings — Events & Sessions with Selectable Official WebRequest URLs](../images/1.15.2/settings-events-urls.png)
+![Settings — Events & Sessions with Selectable Official WebRequest URLs](../images/1.15.3/settings-events-urls.png)
 
 - **Native MT5 Calendar (no WebRequest required)**: plots high- and medium-impact macro events for your symbol's currencies along the bottom timeline. Hover for Actual / Forecast / Previous values; click for full history.
 - **Tokyo / London / New York Sessions & Holidays**: automatic DST conversion plus holiday `H` (`休`) markers on major market closures.
@@ -248,15 +248,15 @@ Click **Subcharts** in the toolbar to open real MT5 companion charts in any time
 
 Open **Settings** (gear icon on the top-left toolbar):
 
-![Workbench Settings: Obsidian 2-Column Bento Grid with Instant Live Preview](../images/1.15.2/workbench-bento-dark.png)
+![Workbench Settings: Obsidian 2-Column Bento Grid with Instant Live Preview](../images/1.15.3/workbench-bento-dark.png)
 
 - **Instant Live Preview (no separate Preview button)**: flipping any switch, choosing **Auto / Light / Dark** theme, resizing order lines, tuning study parameters, or picking custom colors **applies live to the chart, ticket, order lines, and dock immediately on click**. Click **`OK` (`确认`)** to save permanently, or click **`Cancel` (`取消`)** / `×` / `Esc` to cleanly roll back every previewed change (previewing `Automation` rules never alters live open positions before `OK`).
 - **Drag-Resizable Edges & Corners**: drag any border or corner of the Settings window (`840×520` up to full chart size, remembered automatically) with stepless 1 px smooth wheel scrolling.
 - **5 Custom Theme Color Roles + 16-Color Palette & `#HEX / RGB`**: customize **Accent / Buy, Sell / Loss, Profit / Take-Profit, Stop-Loss, and Surface Background** independently for Dark and Light themes via the 16-swatch grid or any `#RRGGBB` / `R,G,B` value.
 
-![Instant Light Theme Live Preview Across Chart, Ticket & Order Dock](../images/1.15.2/workbench-live-light.png)
+![Instant Light Theme Live Preview Across Chart, Ticket & Order Dock](../images/1.15.3/workbench-live-light.png)
 
-![Custom #HEX Violet Accent Previewed Live on Ticket & Chart Order Lines](../images/1.15.2/workbench-custom-colors.png)
+![Five Colour Roles with #HEX / RGB, Previewed Live](../images/1.15.3/workbench-custom-colors.png)
 
 ### 8.2 Default Hotkeys Reference (Press-to-Bind)
 
