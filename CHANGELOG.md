@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.15.6 — 2026-11-06
+- **The panel no longer stops with many trades on the chart**: with about 25 positions and orders, a pending order filling could make MetaTrader stop OrderCanvas with "array out of range in 'Canvas.mqh'" — the panel stayed on the chart but no longer reacted (seen on two terminals on the same demo account at the same moment). Every panel canvas now checks its size: an impossible size (the likely cause: width × height overflowing) is refused — the previous picture stays and the log names the canvas — instead of stopping the panel.
+- **No freeze with many positions**: 一键平仓 / Close all sent one close at a time and waited for the broker after each one, so the whole chart stopped responding — 19 positions took about 18 s on a demo server, minutes when the server stalls. All close requests now go out at once and the panel keeps working (measured: 22 ms); the result line still counts closed, rejected and remaining positions, and a broker that never answers no longer locks the button (after 60 s it names what is unconfirmed).
+- **Automatic break-even and trailing stop no longer block**: they also waited for the broker on every position in turn; the requests are now sent asynchronously, one at a time per position, like the manual buttons.
+- **Automatic trailing with many positions reports every result**: moving ~25 stops on one bar filled the panel's table of requests awaiting the broker, and the overflow got a red "slow broker" note instead of OK. The table is 4× larger and automatic break-even / trailing leave room for your own clicks (the rest go half a second later).
+- **License card: the WebRequest address is copyable**: https://getordercanvas.com sits in a read-only box like the account number, with one line saying where it goes (Tools → Options → Expert Advisors → WebRequest).
+
+## 1.15.5 — 2026-11-06
+- **Slow broker confirmations are no longer lost**: when MetaTrader's confirmation of an order arrived after 10 s (seen on a Mac demo terminal at the market open, fills 4–14 s after sending), the panel showed a red "late" warning and ignored the answer. It now keeps waiting for a minute: the normal "OK" message appears and the reference TP / SL land on the exact trade; the waiting note is amber and says the broker is slow.
+- **Lighter at idle on Mac (Wine)**: the panel asks MetaTrader for the chart's docking state, size and price range far less often, and checks its own line labels every 10 s instead of every second.
+
 ## 1.15.4 — 2026-11-06
 - **Reference TP / SL survive a late broker receipt**: when MetaTrader did not confirm a market or pending order within 10 s (seen on every order on Mac / Wine), the gray reference TP / SL were dropped and the filled position had none. They now stay on the new position or order, ready for Enable.
 - **English fits**: the break-even confirmation reads "Exit at break-even?" (it was cut) and "1 position"; the late-receipt note is shorter; a Limit / Stop button no longer repeats the symbol, so the risk percentage fits.
