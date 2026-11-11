@@ -3,7 +3,7 @@
 ## 1.16.0 — 2026-11-11
 - **Unified MetaTrader 4 & MetaTrader 5 release**: `OrderCanvas-Installer.exe` and `OrderCanvas.zip` now ship both `OrderCanvas.ex5` (MT5) and `OrderCanvas.ex4` (MT4) on Windows and macOS, sharing the exact same online activation and license seats at no extra cost.
 - **Smooth wheel scrolling & chart zoom (MT4 & MT5 / Mac)**: fixed Settings dialog wheel scrolling, K-line horizontal wheel zoom, bottom time-scale vertical wheel zoom, stationary-click pointer release under Mac / Wine, and high-DPI trackpad fine-scroll accumulation.
-- **Symbol-switch stability & 100-trade fast redraws**: eliminated freezes when switching symbols rapidly; order-line property caching and adaptive P&L updates cut ~100-trade redraws from `200–540 ms` down to `13–17 ms`, with crisp centered order-line labels.
+- **Symbol-switch stability, 100-trade fast redraws & MT4 layout polish**: eliminated freezes when switching symbols rapidly; order-line property caching and adaptive P&L updates cut ~100-trade redraws from `200–540 ms` down to `13–17 ms`, with crisp centered order-line labels, unclipped right-edge price badges, and full bottom dock summary bars on MT4.
 - **Reliable reference TP / SL persistence & zero idle overhead**: gray dashed reference TP / SL lines stay attached to their exact trade across timeframe/symbol switches and terminal restarts, while memory-gated journal recovery removes idle background file checks.
 - **Trade execution markers (`Show trade markers`)**: preserves native buy/sell execution arrows and entry-to-exit connector lines on MT5 and renders matching trade execution markers on MT4, with an instant live-preview toggle under `Settings → Interface & Chart → Chart` (enabled by default).
 
