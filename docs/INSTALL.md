@@ -6,35 +6,36 @@
 
 你可以通过 **正式官网 [getordercanvas.com](https://getordercanvas.com/oc/shop?lang=zh)** 或 **Telegram 机器人 [@OrderCanvasbot](https://t.me/OrderCanvasbot)** 获取安装包与授权：
 
-1. 在官网页面直接领取 **免费试用** 或选购月付 / 年付 / 永久方案（支持 Google、Telegram 或邮箱登录管理买家中心），或在 `@OrderCanvasbot` 发送 `/start`；
-2. 输入你的 **MT5 账户号码**（纯数字，在 MT5 窗口标题栏或「导航器 → 账户」里查看，可添加账户备注方便区分实盘/模拟）；
-3. 付费方案按订单显示的精确 USDT（**TRC20** 网络，带两位小数尾数如 `69.24` 自动识别订单）转账，链上到账后 1–3 分钟自动开通会员并生成授权码；
-4. 付费方案最多可同时绑定 **2 个 MT5 账户**，换电脑、挂 VPS 或更换 MT5 账号可随时在官网「买家中心」自助换绑（机器人也可发送 `/mykeys` 查看）。
+1. 在官网页面直接领取 **免费试用** 或选购月付 / 季付 / 半年 / 年付 / 永久方案（支持 Google、Telegram 或邮箱登录管理买家中心），或在 `@OrderCanvasbot` 发送 `/start`；
+2. 输入你的 **MT5 或 MT4 账户号码**（纯数字，在窗口标题栏或「导航器 → 账户」里查看，可添加账户备注方便区分实盘/模拟）；
+3. 付费方案支持 **BSC (BEP20) / Arbitrum / Polygon / TRC20** 多链低手续费 USDT 转账（按订单精确两位小数尾数 1–3 分钟自动识别出码）或网页在线快捷支付；
+4. 付费方案最多可同时绑定 **2 个交易账户（MT5 与 MT4 共享通用）**，换电脑、挂 VPS 或更换账号可随时在官网「买家中心」自助换绑。
 
 ## 2. 安装
 
 **Windows（图形化安装器）**
-1. 下载 `OrderCanvas-1.15.2.zip`（或 `OrderCanvas.zip`），双击运行里面的 **`OrderCanvas-Installer.exe`**；
-2. 安装器自动扫描本机全部 MT5 与便携版目录（正在运行的加粗；顶部支持一键**全选 / 取消全选**，右上角可一键**复制官网**），勾选目标终端后点 **安装**（自动同步更新 `AppData` 与便携版 `MQL5` 目录并逐项校验写入结果）；
-3. 重启 MT5（或在导航器右键刷新），把 `OrderCanvas` 拖到图表。
+1. 下载 `OrderCanvas-1.16.0.zip`（或 `OrderCanvas.zip`），双击运行里面的 **`OrderCanvas-Installer.exe`**；
+2. 安装器自动扫描本机全部 MT5、MT4 与便携版目录（正在运行的加粗；顶部支持一键**全选 / 取消全选**，右上角可一键**复制官网**），勾选目标终端后点 **安装**（自动同步写入 `OrderCanvas.ex5` / `OrderCanvas.ex4` 与模板并逐项校验结果）；
+3. 重启 MT5 或 MT4（或在导航器右键刷新），把 `OrderCanvas` 拖到图表。
 
 - 出现「Windows 已保护你的电脑」：点 **更多信息 → 仍要运行**；
-- 便携版 MT5（单独文件夹、`/portable` 启动）：打开过的会自动列出；没列出时点 **添加 MT5 文件夹…** 选它的文件夹；
-- MT5 装在需要管理员权限的位置时，安装程序会提示以管理员身份重新安装；
-- 安装程序只复制文件，不关闭 MT5、不改设置、不碰账户和交易；
-- 安全软件（360、火绒等）拦下安装程序时：把压缩包**全部解压**，双击 `Install.bat`（装进所有 MT5），或用下面的手动安装。
+- 便携版终端（单独文件夹、`/portable` 启动）：打开过的会自动列出；没列出时点 **添加文件夹…** 选它的文件夹；
+- 装在需要管理员权限的位置时，安装程序会提示以管理员身份重新安装；
+- 安装程序只复制文件，不关闭终端、不改设置、不碰账户和交易；
+- 安全软件（360、火绒等）拦下安装程序时：把压缩包**全部解压**，双击 `Install.bat`（自动装进所有 MT5 / MT4），或用下面的手动安装。
 
-**Mac（MetaTrader 5 for Mac，也支持券商的 Mac 版和 CrossOver）**
+**Mac（MetaTrader 5 / 4 for Mac，也支持券商的 Mac 版和 CrossOver）**
 1. 双击 `OrderCanvas.zip` 解压；
 2. 打开「终端」（启动台 → 其他 → 终端），输入 `bash` 和一个空格，把 `Install-Mac.command` 拖进终端窗口，按回车；
-3. 重启 MT5。
+3. 重启 MT5 或 MT4。
 
 直接双击 `Install-Mac.command` 时，macOS 会提示「无法验证开发者」或要求去「系统设置 → 隐私与安全性」批准，这是系统对所有下载脚本的拦截；用终端运行不需要批准。
 
 **手动（任何电脑）**
-1. MT5 菜单 **文件 → 打开数据文件夹**；
-2. `OrderCanvas.ex5` 复制到 `MQL5\Experts`，`OrderCanvas.tpl` 复制到 `MQL5\Profiles\Templates`；工作台已嵌入 OrderCanvas，不需要额外安装指标文件；
-3. 重启 MT5。
+1. 菜单 **文件 → 打开数据文件夹**；
+2. **MT5**：`OrderCanvas.ex5` 复制到 `MQL5\Experts`，`OrderCanvas.tpl` 复制到 `MQL5\Profiles\Templates`；
+   **MT4**：`OrderCanvas.ex4` 复制到 `MQL4\Experts`，`OrderCanvas.tpl` 复制到 `templates`；
+3. 重启 MT5 或 MT4。
 
 ## 3. 加载并激活
 
@@ -70,8 +71,8 @@
 
 ## English
 
-1. Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot): `/start` → choose a plan → send your MT5 account number → pay the USDT (TRC20) amount shown (2 decimals; the cents identify your order) → key and `OrderCanvas.zip` arrive automatically. `/mykeys` shows your current keys.
-2. Windows: run `OrderCanvas-Installer.exe` from the zip, tick the terminals (running ones are bold, those with OrderCanvas already ticked; portable MT5: *Add MT5 folder…*) and click Install; if security software blocks it, extract the zip and run `Install.bat`. Mac: extract it and run `Install-Mac.command` from Terminal. Manual: copy `OrderCanvas.ex5` to `MQL5\Experts` and `OrderCanvas.tpl` to `MQL5\Profiles\Templates`; the workbench is embedded.
-3. Restart MT5, drag OrderCanvas from the Navigator onto a chart (it adds the panel and order lines and keeps your colours and indicators; for our dark look, EMA / ATR and the price-action studies use the toolbar Templates menu → Price action), allow algo trading, paste the key into the license card and click Activate (or F7 → Inputs → `LicenseKey`). Each computer asks only once. The installer lists the result for every MT5 (send a screenshot to the seller if one fails).
+1. Official website [getordercanvas.com](https://getordercanvas.com/oc/shop?lang=en) or Telegram [@OrderCanvasbot](https://t.me/OrderCanvasbot): claim a **7-day free trial** or choose a plan → enter your **MT5 or MT4 account number** → pay via low-gas USDT (`BSC / Arbitrum / Polygon / TRC20`, 2 decimals match your order automatically) or online checkout → your key and `OrderCanvas.zip` arrive automatically. Paid plans cover up to **2 trading accounts shared across MT5 & MT4**.
+2. Windows: run `OrderCanvas-Installer.exe` from the zip, tick your MT5 / MT4 terminals and click Install; if security software blocks it, extract the zip and run `Install.bat`. Mac: extract it and run `Install-Mac.command` from Terminal. Manual: for MT5 copy `OrderCanvas.ex5` to `MQL5\Experts` and `OrderCanvas.tpl` to `MQL5\Profiles\Templates`; for MT4 copy `OrderCanvas.ex4` to `MQL4\Experts` and `OrderCanvas.tpl` to `templates`.
+3. Restart MT5 or MT4, drag OrderCanvas from the Navigator onto a chart (it adds the panel and order lines and keeps your colours and indicators; for our dark look, EMA / ATR and the price-action studies use the toolbar Templates menu → Price action), allow Algo Trading / AutoTrading, and click **Online activation** (after allowing WebRequest to `https://getordercanvas.com`) or paste your offline key into the license card.
 4. Economic events use MetaTrader's built-in calendar and need no WebRequest. High + moderate impact is the default; low impact is filtered. Event name, actual / forecast / previous values, history and source remain available without any news sites. Optional official-release headlines need the matching sites listed by OrderCanvas. For BEA use `https://apps.bea.gov`.
 5. Slow or something failed? Panel settings → General → Diagnostics → Send (uses the online-activation site https://getordercanvas.com; a severe freeze also sends it automatically, switchable there). Or MT5 File → Open Data Folder and send `MQL5\Files\OrderCanvas\diagnostics.log` (machine summary and slow events; no account, positions or prices) and that day's log from `MQL5\Logs` (e.g. `20261022.log`).

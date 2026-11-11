@@ -1,8 +1,17 @@
-# OrderCanvas feature list (1.15.2)
+# OrderCanvas feature list (1.16.0)
 
 **English** · [中文](FEATURES.zh-CN.md) · [User Guide](USER_GUIDE.md)
 
-OrderCanvas is a MetaTrader 5 chart-trading panel (an EA, "Utilities" category): order entry, order lines, position management and trade analytics in the style of modern trading platforms, on the MT5 chart. Pure MQL5 - no DLL - on Windows and macOS.
+OrderCanvas is a chart-trading panel (an EA, "Utilities" category) for MetaTrader 5 (MT5) and MetaTrader 4 (MT4): order entry, order lines, position management and trade analytics in the style of modern trading platforms, right on the chart. Pure native MQL — no DLL — on Windows and macOS.
+
+## What's new in 1.16
+
+| Area | Changes |
+|---|---|
+| Unified MT5 & MT4 package | `OrderCanvas-Installer.exe` and `OrderCanvas.zip` ship both `OrderCanvas.ex5` (MT5) and `OrderCanvas.ex4` (MT4) with shared online activation and 2-account license seats |
+| Smooth wheel & Mac trackpad | Settings wheel scrolling, K-line horizontal wheel zoom and bottom time-scale vertical wheel zoom respond smoothly on Windows and Mac / Wine Retina trackpads |
+| 100-trade speed & symbol switching | Non-blocking Close all, auto break-even and trailing; order-line property caching cuts ~100-trade redraws from `200–540 ms` to `13–17 ms`, with instant symbol switching |
+| Exact reference TP / SL persistence | Gray dashed reference TP / SL lines stay attached across late broker receipts, timeframe/symbol switches and restarts with zero idle disk polling |
 
 ## What's new in 1.15
 

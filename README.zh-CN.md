@@ -3,17 +3,17 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark-transparent-6x.png">
   <source media="(prefers-color-scheme: light)" srcset="assets/brand/logo-light-transparent-6x.png">
-  <img src="assets/brand/logo-light-transparent-6x.png" alt="OrderCanvas for MT5" width="320">
+  <img src="assets/brand/logo-light-transparent-6x.png" alt="OrderCanvas for MT5 & MT4" width="320">
 </picture>
 
-# OrderCanvas — MT5 可视化交易面板
+# OrderCanvas — MT5 & MT4 可视化交易面板
 
-**适用于 MetaTrader 5（MT5）的图表下单与持仓管理工具。**
+**适用于 MetaTrader 5（MT5）与 MetaTrader 4（MT4）的图表下单与持仓管理工具。**
 
 通过可拖动的入场价、止损（SL）和止盈（TP）草稿线规划订单；按止损距离估算风险手数；在持仓线上操作保本、部分平仓；并在同一图表工作区查看资金曲线、回撤和交易复盘。可选的一键下单与默认的下单前预览属于不同模式。另含开源价格行为指标工作台。
 
 [![Release](https://img.shields.io/github/v/release/lichunboa/OrderCanvas?label=release)](https://github.com/lichunboa/OrderCanvas/releases/latest)
-![Platform](https://img.shields.io/badge/MetaTrader-5-1f6feb)
+![Platform](https://img.shields.io/badge/MetaTrader-5%20%26%204-1f6feb)
 ![OS](https://img.shields.io/badge/Windows%20%7C%20macOS-supported-555)
 ![No DLL](https://img.shields.io/badge/DLL-none-2ea44f)
 [![Workbench](https://img.shields.io/badge/workbench-MPL--2.0-orange)](TVStudySuite)
@@ -24,11 +24,18 @@
 
 </div>
 
-![OrderCanvas 1.15.2：交易工作台小方块卡片、点击即实时预览、以损定仓与图表订单线](images/1.15.2/workbench-bento-dark.png)
+![OrderCanvas 1.16.0：交易工作台小方块卡片、点击即实时预览、以损定仓与图表订单线](images/1.15.2/workbench-bento-dark.png)
 
-## 1.15.4 更新
+## 1.16.0 更新（MT5 & MT4 双端正式同包）
 
-券商回执迟到时（Mac / Wine 上每笔都会超时），灰色参考止盈止损也会留在成交后的持仓上；剩余被截断的英文现在完整显示。详见[更新日志](CHANGELOG.zh-CN.md)。
+- **MT4 与 MT5 双平台合并交付**：同一安装包（`OrderCanvas-Installer.exe` / `OrderCanvas.zip`）内置 `OrderCanvas.ex5` 与 `OrderCanvas.ex4`，Windows 与 macOS 共享同一份授权席位与联网激活流程。
+- **滚轮交互、品种切换与百单性能全面打磨**：设置页上下滚轮、K 线横轴滚轮缩放与底部时间轴纵轴滚轮缩放在 MT5 / MT4 / Mac Wine 下全部顺滑响应；修复连续切换品种卡顿，约 100 笔持仓/挂单同屏重绘降至 `13–17 ms`；灰色参考止盈止损跨周期/品种切换与重启均精确保留。详见[更新日志](CHANGELOG.zh-CN.md)。
+
+![OrderCanvas 1.16.0 在 MetaTrader 4 图表上的草稿订单线、灰色参考止盈止损与时段标记](images/1.16.0/mt4-workspace.png)
+
+## 1.15.4 – 1.15.6 更新
+
+一键平仓、自动保本与追踪止损全面改为非阻塞并发发送；券商回执迟到时灰色参考止盈止损依然保留在成交持仓上；多单画布增加尺寸防溢出保护。详见[更新日志](CHANGELOG.zh-CN.md)。
 
 **按下按钮前不发单**：选方向、调整草稿线，再下单：
 

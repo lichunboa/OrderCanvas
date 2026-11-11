@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.16.0 — 2026-11-11
+- **Unified MetaTrader 4 & MetaTrader 5 release**: `OrderCanvas-Installer.exe` and `OrderCanvas.zip` now ship both `OrderCanvas.ex5` (MT5) and `OrderCanvas.ex4` (MT4) on Windows and macOS, sharing the exact same online activation and license seats at no extra cost.
+- **Smooth wheel scrolling & chart zoom (MT4 & MT5 / Mac)**: fixed Settings dialog wheel scrolling, K-line horizontal wheel zoom, bottom time-scale vertical wheel zoom, stationary-click pointer release under Mac / Wine, and high-DPI trackpad fine-scroll accumulation.
+- **Symbol-switch stability & 100-trade fast redraws**: eliminated freezes when switching symbols rapidly; order-line property caching and adaptive P&L updates cut ~100-trade redraws from `200–540 ms` down to `13–17 ms`, with crisp centered order-line labels.
+- **Reliable reference TP / SL persistence & zero idle overhead**: gray dashed reference TP / SL lines stay attached to their exact trade across timeframe/symbol switches and terminal restarts, while memory-gated journal recovery removes idle background file checks.
+
 ## 1.15.6 — 2026-11-06
 - **The panel no longer stops with many trades on the chart**: with about 25 positions and orders, a pending order filling could make MetaTrader stop OrderCanvas with "array out of range in 'Canvas.mqh'" — the panel stayed on the chart but no longer reacted (seen on two terminals on the same demo account at the same moment). Every panel canvas now checks its size: an impossible size (the likely cause: width × height overflowing) is refused — the previous picture stays and the log names the canvas — instead of stopping the panel.
 - **No freeze with many positions**: 一键平仓 / Close all sent one close at a time and waited for the broker after each one, so the whole chart stopped responding — 19 positions took about 18 s on a demo server, minutes when the server stalls. All close requests now go out at once and the panel keeps working (measured: 22 ms); the result line still counts closed, rejected and remaining positions, and a broker that never answers no longer locks the button (after 60 s it names what is unconfirmed).

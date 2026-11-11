@@ -106,7 +106,7 @@ void StudyPrune(const string studyNamespace,const datetime oldest)
 // takes the focus and covers the chart while trading. Toasts expire after 12 s.
 #ifdef TV_STUDY_HOST_TEST
 // The replay compares alerts with the Pine transcription's original wording.
-#define StudySignalMessage(t,event,source) (_Symbol+" "+EnumToString(_Period)+" "+TimeToString(t)+" "+(source)+(event))
+#define StudySignalMessage(t,event,source) (_Symbol+" "+EnumToString((ENUM_TIMEFRAMES)_Period)+" "+TimeToString(t)+" "+(source)+(event))
 #else
 // Interface language: the OrderCanvas panel publishes it (1 Chinese, 0 English); a suite on its own
 // follows the terminal language. Signal texts are short and translated (Owner round 27: the toast
@@ -128,7 +128,7 @@ string StudySignalText(const string event)
 }
 string StudySignalMessage(const datetime t,const string event,const string source)
 {
- string tf=EnumToString(_Period);StringReplace(tf,"PERIOD_","");
+ string tf=EnumToString((ENUM_TIMEFRAMES)_Period);StringReplace(tf,"PERIOD_","");
  return StudySignalText(event)+" · "+_Symbol+" "+tf+" · "+TimeToString(t,TIME_MINUTES);
 }
 #endif

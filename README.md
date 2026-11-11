@@ -3,17 +3,17 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark-transparent-6x.png">
   <source media="(prefers-color-scheme: light)" srcset="assets/brand/logo-light-transparent-6x.png">
-  <img src="assets/brand/logo-light-transparent-6x.png" alt="OrderCanvas for MT5" width="320">
+  <img src="assets/brand/logo-light-transparent-6x.png" alt="OrderCanvas for MT5 & MT4" width="320">
 </picture>
 
-# OrderCanvas — MT5 Visual Trading Panel
+# OrderCanvas — MT5 & MT4 Visual Trading Panel
 
-**A visual trading panel and manual trade manager for MetaTrader 5 (MT5).**
+**A visual trading panel and manual trade manager for MetaTrader 5 (MT5) and MetaTrader 4 (MT4).**
 
 Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (TP) draft lines; calculate risk-based lot size from the stop distance; manage break-even and partial closes on position lines; and review trading performance, equity and drawdown in the same chart workspace. Optional one-click execution is separate from the normal order-preview workflow. OrderCanvas also includes an open-source price-action workbench.
 
 [![Release](https://img.shields.io/github/v/release/lichunboa/OrderCanvas?label=release)](https://github.com/lichunboa/OrderCanvas/releases/latest)
-![Platform](https://img.shields.io/badge/MetaTrader-5-1f6feb)
+![Platform](https://img.shields.io/badge/MetaTrader-5%20%26%204-1f6feb)
 ![OS](https://img.shields.io/badge/Windows%20%7C%20macOS-supported-555)
 ![No DLL](https://img.shields.io/badge/DLL-none-2ea44f)
 [![Workbench](https://img.shields.io/badge/workbench-MPL--2.0-orange)](TVStudySuite)
@@ -24,11 +24,18 @@ Plan chart-based orders using draggable Entry, Stop Loss (SL) and Take Profit (T
 
 </div>
 
-![OrderCanvas 1.15.4: Bento Settings with instant live preview, fixed-risk sizing and chart order lines](images/1.15.3/workbench-bento-dark.png)
+![OrderCanvas 1.16.0: Bento Settings with instant live preview, fixed-risk sizing and chart order lines](images/1.15.3/workbench-bento-dark.png)
 
-## Version 1.15.4
+## Version 1.16.0 (MT5 & MT4 Unified Release)
 
-Gray reference TP / SL now stay on the filled trade even when the broker's receipt is late (on Mac / Wine every receipt timed out and they were lost), and the remaining English texts that were cut now fit. 1.15.3 brought the English interface polish. Details in the [changelog](CHANGELOG.md).
+- **MetaTrader 4 & MetaTrader 5 in one package**: `OrderCanvas-Installer.exe` and `OrderCanvas.zip` now ship both `OrderCanvas.ex5` and `OrderCanvas.ex4` on Windows and macOS, sharing the same online activation and 2-account license seats.
+- **Smooth wheel zoom, symbol-switch stability & 100-trade speed**: Settings wheel scrolling, K-line horizontal wheel zoom and bottom time-scale vertical wheel zoom work smoothly across Windows and Mac / Wine; rapid symbol switches no longer stall the chart, ~100-trade redraws take just `13–17 ms`, and gray reference TP / SL lines persist across timeframe/symbol switches and restarts. Full details in the [changelog](CHANGELOG.md).
+
+![OrderCanvas 1.16.0 running natively on MetaTrader 4 with Stop draft, gray reference TP/SL and session markers](images/1.16.0/mt4-workspace.png)
+
+## Version 1.15.4 – 1.15.6
+
+Non-blocking Close all, automatic break-even and trailing stop; canvas size guards with many open orders; gray reference TP / SL surviving late broker receipts. Details in the [changelog](CHANGELOG.md).
 
 ### See it work
 

@@ -2,7 +2,7 @@
 // Unified native workbench. Original module attribution: Indicators/THIRD_PARTY.md.
 #property strict
 #property copyright "Price Action Workbench; MPL-2.0 source acknowledgements in THIRD_PARTY.md"
-#property version "1.156" // = OrderCanvas OC_VERSION 1.15.6
+#property version "1.160" // = OrderCanvas OC_VERSION 1.16.0
 #property indicator_chart_window
 #property indicator_buffers 6
 #property indicator_plots 5
@@ -45,6 +45,7 @@ void WorkbenchLoadExtension()
  PA_OpenUpColor=(color)v[11];PA_OpenDownColor=(color)v[12];PA_WickUpColor=(color)v[13];PA_WickDownColor=(color)v[14];PA_BodyUpColor=(color)v[15];PA_BodyDownColor=(color)v[16];
  SE_AlertNotifications=v[17]!=0;
 }
+bool StudyBackgroundChanged();
 int OnInit()
 {
  WorkbenchLoadExtension();
@@ -54,6 +55,7 @@ int OnInit()
  const string prefixes[]={PA_prefix,BC_prefix,SE_prefix};const string roots[]={"TVST_PAIO_","TVST_BC_","TVST_SE_"};
  for(int i=0;i<3;i++)GlobalVariableSet("TVST.Workbench.Active."+IntegerToString(ChartID())+"."+IntegerToString(i),(double)StringToInteger(StringSubstr(prefixes[i],StringLen(roots[i]))));
  IndicatorSetString(INDICATOR_SHORTNAME,TV_WORKBENCH_NAME);
+ StudyBackgroundChanged();   // seed studyChartBg so the first timer tick never fires a false theme-change reload
  EventSetTimer(1); // expires signal toasts (StudyToastTick)
  PlotIndexSetInteger(0,PLOT_DRAW_TYPE,EnablePriceAction && PA_ShowChartEMA?DRAW_LINE:DRAW_NONE);
  PlotIndexSetInteger(1,PLOT_DRAW_TYPE,EnablePriceAction && PA_ShowThirdEMA?DRAW_LINE:DRAW_NONE);
