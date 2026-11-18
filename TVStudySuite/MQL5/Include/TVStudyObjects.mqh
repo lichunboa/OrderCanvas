@@ -6,8 +6,10 @@
 // is waiting for iCustom/ChartIndicatorAdd. Own a bounded local object registry.
 string studyKeys[];datetime studyTimes[];
 // One owned presentation record per registry slot; no synchronous chart reads.
-struct TVStudyPaintState{bool created;uint pointMask,intMask;datetime time[2];double price[2];long integers[6];string text;bool textKnown;};
+struct TVStudyPaintState{bool created;uint pointMask,intMask,sweepEpoch;bool sweepHidden;datetime time[2];double price[2];long integers[6];string text;bool textKnown;};
 TVStudyPaintState studyPaint[];ulong studyCacheCommands=0,studyCacheSkips=0;
+bool studyForceReset=false,studyInSweep=false;uint studySweepEpoch=0;
+void StudyTouch(const int index){if(index>=0){studyPaint[index].sweepEpoch=studySweepEpoch;studyPaint[index].sweepHidden=false;}}
 // MT5 draws objects in the order they became visible: a bar count or H1 / L1 badge shown after the
 // OrderCanvas ticket covered it (Owner round 26 #6). When this suite shows objects it bumps a chart
 // global; the panel then lifts its own objects back on top (TVLiftOwnedObjects).
@@ -17,6 +19,7 @@ int StudyIntSlot(const ENUM_OBJECT_PROPERTY_INTEGER property)
 {return property==OBJPROP_COLOR?0:(property==OBJPROP_FONTSIZE?1:(property==OBJPROP_ANCHOR?2:(property==OBJPROP_STYLE?3:(property==OBJPROP_TIMEFRAMES?4:(property==OBJPROP_WIDTH?5:-1)))));}
 void StudySetInt(const int index,const string key,const ENUM_OBJECT_PROPERTY_INTEGER property,const long value)
 {
+ if(studyInSweep && property==OBJPROP_TIMEFRAMES){studyPaint[index].sweepEpoch=studySweepEpoch;studyPaint[index].sweepHidden=(value==OBJ_NO_PERIODS);return;}
  int slot=StudyIntSlot(property);uint bit=slot>=0?(uint)(1<<slot):0;
  if(slot>=0 && (studyPaint[index].intMask&bit)!=0 && studyPaint[index].integers[slot]==value){studyCacheSkips++;return;}
  studyCacheCommands++;if(ObjectSetInteger(0,key,property,value) && slot>=0){studyPaint[index].integers[slot]=value;studyPaint[index].intMask|=bit;}
@@ -54,6 +57,32 @@ void StudyResetPrefix(const string studyNamespace)
  {ObjectDelete(0,studyKeys[i]);ArrayRemove(studyKeys,i,1);ArrayRemove(studyTimes,i,1);ArrayRemove(studyPaint,i,1);removed=true;}
  if(removed)StudyReindex();
 }
+// Mark-and-sweep pass for full recalculations (prev==0): keeps existing unchanged chart objects in place
+// instead of deleting and recreating them (which forced MT5 to draw H1/H2/ioi/bar-counts on top of the
+// OrderCanvas ticket panel on every Replay step!).
+void StudyBeginSweep(const string studyNamespace)
+{
+ if(studyForceReset){StudyResetPrefix(studyNamespace);return;}
+ studySweepEpoch++;if(studySweepEpoch==0)studySweepEpoch=1;
+ studyInSweep=true;
+}
+void StudyEndSweep(const string studyNamespace)
+{
+ if(!studyInSweep)return;
+ studyInSweep=false;
+ bool removed=false;
+ for(int i=ArraySize(studyKeys)-1;i>=0;i--)
+ {
+  if(StringFind(studyKeys[i],studyNamespace)!=0)continue;
+  if(studyPaint[i].sweepEpoch!=studySweepEpoch)
+  {
+   ObjectDelete(0,studyKeys[i]);ArrayRemove(studyKeys,i,1);ArrayRemove(studyTimes,i,1);ArrayRemove(studyPaint,i,1);removed=true;
+   continue;
+  }
+  StudySetInt(i,studyKeys[i],OBJPROP_TIMEFRAMES,studyPaint[i].sweepHidden?OBJ_NO_PERIODS:OBJ_ALL_PERIODS);
+ }
+ if(removed)StudyReindex();
+}
 string StudyPrefix(const string name)
 {
  // Replacing an indicator can defer old OnDeinit until after new OnInit.
@@ -81,18 +110,18 @@ int StudyEnsure(const string key,const datetime a,const ENUM_OBJECT type,const d
 }
 void StudyText(const string key,const datetime t,const double price,const string text,const color ink,const int size,const ENUM_ANCHOR_POINT anchor)
 {
- int i=StudyEnsure(key,t,OBJ_TEXT,price);if(i<0)return;
+ int i=StudyEnsure(key,t,OBJ_TEXT,price);if(i<0)return;StudyTouch(i);
  StudyMoveCached(i,key,0,t,price);StudySetText(i,key,text);StudySetInt(i,key,OBJPROP_COLOR,ink);StudySetInt(i,key,OBJPROP_FONTSIZE,size);StudySetInt(i,key,OBJPROP_ANCHOR,anchor);StudySetInt(i,key,OBJPROP_TIMEFRAMES,OBJ_ALL_PERIODS);
 }
-void StudyHide(const string key){int i=StudyIndex(key);if(i>=0)StudySetInt(i,key,OBJPROP_TIMEFRAMES,OBJ_NO_PERIODS);}
+void StudyHide(const string key){int i=StudyIndex(key);if(i<0)return;if(studyInSweep){studyPaint[i].sweepHidden=true;return;}StudySetInt(i,key,OBJPROP_TIMEFRAMES,OBJ_NO_PERIODS);}
 void StudyBox(const string key,const datetime a,const datetime b,const double top,const double bottom,const color ink)
 {
- int i=StudyEnsure(key,a,OBJ_RECTANGLE,top,b,bottom);if(i<0)return;
+ int i=StudyEnsure(key,a,OBJ_RECTANGLE,top,b,bottom);if(i<0)return;StudyTouch(i);
  StudyMoveCached(i,key,0,a,top);StudyMoveCached(i,key,1,b,bottom);StudySetInt(i,key,OBJPROP_COLOR,ink);StudySetInt(i,key,OBJPROP_TIMEFRAMES,OBJ_ALL_PERIODS);
 }
 void StudyLine(const string key,const datetime a,const datetime b,const double price,const color ink,const ENUM_LINE_STYLE style=STYLE_DASH,const int width=1)
 {
- if(price==EMPTY_VALUE)return;int i=StudyEnsure(key,a,OBJ_TREND,price,b,price);if(i<0)return;
+ if(price==EMPTY_VALUE)return;int i=StudyEnsure(key,a,OBJ_TREND,price,b,price);if(i<0)return;StudyTouch(i);
  StudyMoveCached(i,key,0,a,price);StudyMoveCached(i,key,1,b,price);StudySetInt(i,key,OBJPROP_COLOR,ink);StudySetInt(i,key,OBJPROP_STYLE,style);if(width!=1 || (studyPaint[i].intMask&(1<<5))!=0)StudySetInt(i,key,OBJPROP_WIDTH,width);StudySetInt(i,key,OBJPROP_TIMEFRAMES,OBJ_ALL_PERIODS);
 }
 // Sweep only on a new bar/history reset; bounded by retained study history.

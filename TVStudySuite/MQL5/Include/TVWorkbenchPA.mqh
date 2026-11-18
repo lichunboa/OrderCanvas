@@ -104,7 +104,7 @@ int PA_Calculate(const int n,const int prev,const datetime &time[],const double 
  bool sameTF=PA_ThirdEMATimeframe==PERIOD_CURRENT || PA_ThirdEMATimeframe==_Period;
  if(PA_ShowThirdEMA && !sameTF && !PA_RefreshSource(reset))return 0;
  int start=reset?1:MathMax(1,prev-1),first=MathMax(0,n-PA_RetainedBars);
- if(start==1){StudyResetPrefix(PA_prefix);PA_emaCalc[0]=close[0];PA_ema[0]=PA_ShowChartEMA?close[0]:EMPTY_VALUE;PA_mtf[0]=PA_ShowThirdEMA?(sameTF?close[0]:PA_SourceValue(time[0],close[0],false)):EMPTY_VALUE;PA_PAIOState initial;initial.oo=-1;initial.ii=-1;initial.ioi=-1;initial.ooRun=0;initial.iiRun=0;initial.dayH=high[0];initial.dayL=low[0];initial.prevH=EMPTY_VALUE;initial.prevL=EMPTY_VALUE;initial.prevC=EMPTY_VALUE;initial.ooText="";initial.iiText="";initial.ioiText="";PA_states[0]=initial;}
+ if(start==1){StudyBeginSweep(PA_prefix);PA_emaCalc[0]=close[0];PA_ema[0]=PA_ShowChartEMA?close[0]:EMPTY_VALUE;PA_mtf[0]=PA_ShowThirdEMA?(sameTF?close[0]:PA_SourceValue(time[0],close[0],false)):EMPTY_VALUE;PA_PAIOState initial;initial.oo=-1;initial.ii=-1;initial.ioi=-1;initial.ooRun=0;initial.iiRun=0;initial.dayH=high[0];initial.dayL=low[0];initial.prevH=EMPTY_VALUE;initial.prevL=EMPTY_VALUE;initial.prevC=EMPTY_VALUE;initial.ooText="";initial.iiText="";initial.ioiText="";PA_states[0]=initial;}
  for(int i=start;i<n;i++)
  {
   PA_emaCalc[i]=PA_emaCalc[i-1]+2.0/(PA_ChartEMALength+1)*(close[i]-PA_emaCalc[i-1]);PA_ema[i]=PA_ShowChartEMA?PA_emaCalc[i]:EMPTY_VALUE;
@@ -157,6 +157,7 @@ int PA_Calculate(const int n,const int prev,const datetime &time[],const double 
    if(PA_AlertPatterns){if(oo)PA_Notify(time[i],"OO");if(ii)PA_Notify(time[i],"II");if(ioi)PA_Notify(time[i],"IOI");}
   }
  }
+ if(start==1)StudyEndSweep(PA_prefix);
  if(prev!=n)StudyPrune(PA_prefix,time[first]);return n;
 }
 

@@ -24,7 +24,7 @@ void BC_Deinit(const int reason){StudyResetPrefix(BC_prefix);}
 int BC_Calculate(const int n,const int prev,const datetime &time[],const double &open[],const double &high[],const double &low[],const double &close[],const long &tick_volume[],const long &volume[],const int &spread[])
 {
  if(n<1)return 0;ArraySetAsSeries(time,false);ArraySetAsSeries(low,false);ArraySetAsSeries(high,false);ArrayResize(BC_counting,n);
- int start=prev>0 && prev<=n?MathMax(0,prev-1):0,first=MathMax(0,n-BC_RetainedBars);if(start==0)StudyResetPrefix(BC_prefix);
+ int start=prev>0 && prev<=n?MathMax(0,prev-1):0,first=MathMax(0,n-BC_RetainedBars);if(start==0)StudyBeginSweep(BC_prefix);
  for(int i=start;i<n;i++)
  {
   bool active=i>0?BC_counting[i-1]:false;double value=i>0?BC_count[i-1]:1;
@@ -35,6 +35,7 @@ int BC_Calculate(const int n,const int prev,const datetime &time[],const double 
   BC_count[i]=value;BC_counting[i]=active;if(i<first)continue;string key=StudyKey(BC_prefix,"N",time[i]);int number=(int)value;
   if(active && (number==1 || number%BC_EveryXBars==0))StudyText(key,time[i],low[i]-MathMax((high[i]-low[i])*0.25,15*_Point),IntegerToString(number),BC_EnableSpecialNumbers && (number==BC_SpecialNumber1 || number==BC_SpecialNumber2)?BC_SpecialColor:(number%BC_SpecialMultiple==0?BC_MultipleColor:BC_TextColor),BC_LabelFontSize,ANCHOR_UPPER);else StudyHide(key);
  }
+ if(start==0)StudyEndSweep(BC_prefix);
  if(prev!=n)StudyPrune(BC_prefix,time[first]);return n;
 }
 

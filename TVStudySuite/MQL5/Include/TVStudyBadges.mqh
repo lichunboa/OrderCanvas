@@ -28,7 +28,7 @@ void StudyBadge(const string key,const datetime t,const double price,const int r
  {
   ObjectCreate(0,key,OBJ_BITMAP,0,t,price);studyRaisePending=true;ObjectSetString(0,key,OBJPROP_BMPFILE,studyBadges[role].ResourceName());ObjectSetInteger(0,key,OBJPROP_XSIZE,studyBadges[role].Width());ObjectSetInteger(0,key,OBJPROP_YSIZE,studyBadges[role].Height());ObjectSetInteger(0,key,OBJPROP_SELECTABLE,false);ObjectSetInteger(0,key,OBJPROP_HIDDEN,true);ObjectSetInteger(0,key,OBJPROP_BACK,false);   /* H1 / L1 badges in front of the grid (Owner 2026-10-16) */ObjectSetInteger(0,key,OBJPROP_ANCHOR,role<2?ANCHOR_UPPER:ANCHOR_LOWER);const string hints[]={"H1 · 入场信号","H2 · 入场信号","L1 · 入场信号","L2 · 入场信号"};ObjectSetString(0,key,OBJPROP_TOOLTIP,hints[role]);
  }
- int index=StudyIndex(key);if(index<0)return;
+ int index=StudyIndex(key);if(index<0)return;StudyTouch(index);
  StudyMoveCached(index,key,0,t,price);StudySetInt(index,key,OBJPROP_TIMEFRAMES,OBJ_ALL_PERIODS);
 }
 #endif

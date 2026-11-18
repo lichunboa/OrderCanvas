@@ -30,7 +30,7 @@ int SE_Calculate(const int n,const int prev,const datetime &time[],const double 
  if(prev==0)PrintFormat("[STUDY_CALC] %s begin bars=%d",MQLInfoString(MQL_PROGRAM_NAME),n);
  ArraySetAsSeries(time,false);ArraySetAsSeries(open,false);ArraySetAsSeries(high,false);ArraySetAsSeries(low,false);ArraySetAsSeries(close,false);
  if(n<2)return 0;ArrayResize(SE_states,n);int start=prev>0 && prev<=n?MathMax(1,prev-1):1;
- if(start==1){StudyResetPrefix(SE_prefix);SE_ema[0]=close[0];SE_states[0]=TVSEInitial();SE_states[0].bull=false;SE_states[0].bear=false;SE_signals[0]=0;}
+ if(start==1){StudyBeginSweep(SE_prefix);SE_ema[0]=close[0];SE_states[0]=TVSEInitial();SE_states[0].bull=false;SE_states[0].bear=false;SE_signals[0]=0;}
  double alpha=2.0/(SE_PrimaryEMALength+1);int first=MathMax(1,n-SE_RetainedBars);
  for(int i=start;i<n;i++)
  {
@@ -39,6 +39,7 @@ int SE_Calculate(const int n,const int prev,const datetime &time[],const double 
   if(i<first)continue;double pad=MathMax((high[i]-low[i])*0.15,10*_Point);string roles[]={"H1","H2","L1","L2"};color inks[]={SE_H1Color,SE_H2Color,SE_L1Color,SE_L2Color};bool enabled[]={SE_ShowH1,SE_ShowH2,SE_ShowL1,SE_ShowL2};
   for(int k=0;k<4;k++){string key=StudyKey(SE_prefix,roles[k],time[i]);if(enabled[k] && ((((int)SE_signals[i])&(1<<k))!=0)){double price=k<2?low[i]-pad:high[i]+pad;if(SE_SignalBadges)StudyBadge(key,time[i],price,k);else StudyText(key,time[i],price,roles[k],inks[k],SE_LabelFontSize,k<2?ANCHOR_UPPER:ANCHOR_LOWER);}else StudyHide(key);}
  }
+ if(start==1)StudyEndSweep(SE_prefix);
  if(prev!=n)StudyPrune(SE_prefix,time[first]);
  if(SE_ClosedSignalAlerts && prev>0 && n>prev)
  {

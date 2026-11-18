@@ -2,7 +2,7 @@
 // Unified native workbench. Original module attribution: Indicators/THIRD_PARTY.md.
 #property strict
 #property copyright "Price Action Workbench; MPL-2.0 source acknowledgements in THIRD_PARTY.md"
-#property version "1.160" // = OrderCanvas OC_VERSION 1.16.0
+#property version "1.170" // = OrderCanvas OC_VERSION 1.17.0
 #property indicator_chart_window
 #property indicator_buffers 6
 #property indicator_plots 5
@@ -75,7 +75,7 @@ void PublishStudyLayers()
  if(OCIsReplaySeriesName(_Symbol))EventChartCustom(0,(ushort)TV_WORKBENCH_RAISE_EVENT,0,0.0,"");
 }
 void OnTimer(){StudyToastTick();PublishStudyLayers();if(StudyBackgroundChanged()){studyForceFull=true;ChartSetSymbolPeriod(0,_Symbol,_Period);}}
-void OnDeinit(const int reason){EventKillTimer();StudyToastClear();PrintFormat("[STUDY_CACHE] commands=%I64u skipped=%I64u",studyCacheCommands,studyCacheSkips);PA_Deinit(reason);BC_Deinit(reason);SE_Deinit(reason);StudyReset();}
+void OnDeinit(const int reason){EventKillTimer();StudyToastClear();PrintFormat("[STUDY_CACHE] commands=%I64u skipped=%I64u",studyCacheCommands,studyCacheSkips);PA_Deinit(reason);BC_Deinit(reason);SE_Deinit(reason);StudyReset();const long paId=StringToInteger(StringSubstr(PA_prefix,StringLen("TVST_PAIO_"))),seId=StringToInteger(StringSubstr(SE_prefix,StringLen("TVST_SE_")));const string markKey="TVST.Workbench.Retired."+IntegerToString(ChartID());const long prevMark=GlobalVariableCheck(markKey)?(long)GlobalVariableGet(markKey):-1;if(paId>0 && seId>=paId && (prevMark<0 || prevMark==paId))GlobalVariableSet(markKey,(double)(seId+1));}
 void EmptyModuleBuffer(double &buffer[],const int n,const int prev)
 {for(int i=prev>0 && prev<=n?MathMax(0,prev-1):0;i<n;i++)buffer[i]=EMPTY_VALUE;}
 int OnCalculate(const int n,const int prevCalculated,const datetime &time[],const double &open[],const double &high[],const double &low[],const double &close[],const long &tick_volume[],const long &volume[],const int &spread[])
@@ -87,15 +87,16 @@ int OnCalculate(const int n,const int prevCalculated,const datetime &time[],cons
  // the background as a global; without a panel the dark default stays.
  {static ulong checked=0;const ulong now=GetTickCount64();if(prevCalculated==0 || now-checked>2000){checked=now;const string key="TVST.Bg."+IntegerToString(ChartID());
   if(GlobalVariableCheck(key)){const color bg=(color)(long)GlobalVariableGet(key);if(bg!=studyChartBg){studyChartBg=bg;studyForceFull=true;}}}}
- const int prev=studyForceFull?0:prevCalculated;studyForceFull=false;   // a new background: everything again, now
+ const bool forceReset=studyForceFull;const int prev=studyForceFull?0:prevCalculated;studyForceFull=false;studyForceReset=forceReset;   // a new background: everything again, now
  ulong startUs=GetMicrosecondCount();if(prev==0)PrintFormat("[WORKBENCH_CALC] begin bars=%d",n);
- if(EnablePriceAction){if(PA_Calculate(n,prev,time,open,high,low,close,tick_volume,volume,spread)==0)return 0;}
+ if(EnablePriceAction){if(PA_Calculate(n,prev,time,open,high,low,close,tick_volume,volume,spread)==0){studyForceReset=false;return 0;}}
  else{EmptyModuleBuffer(PA_ema,n,prev);EmptyModuleBuffer(PA_mtf,n,prev);EmptyModuleBuffer(PA_emaCalc,n,prev);}
  if(prev==0)PrintFormat("[WORKBENCH_CALC] price_action_us=%I64u",GetMicrosecondCount()-startUs);
  if(EnableBarCount)BC_Calculate(n,prev,time,open,high,low,close,tick_volume,volume,spread);else EmptyModuleBuffer(BC_count,n,prev);
  if(prev==0)PrintFormat("[WORKBENCH_CALC] bar_count_us=%I64u",GetMicrosecondCount()-startUs);
  if(EnableEntrySignals)SE_Calculate(n,prev,time,open,high,low,close,tick_volume,volume,spread);
  else{EmptyModuleBuffer(SE_ema,n,prev);EmptyModuleBuffer(SE_signals,n,prev);}
+ studyForceReset=false;
  if(OCIsReplaySeriesName(_Symbol))PublishStudyLayers();
  if(prev==0)PrintFormat("[WORKBENCH_CALC] ready bars=%d elapsed_us=%I64u",n,GetMicrosecondCount()-startUs);return n;
 }
