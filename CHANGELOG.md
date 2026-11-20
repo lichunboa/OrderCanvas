@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.17.1 — 2026-11-20
+- **Self-hosted One-Click Update & copyable download URL**: added a **One-click update (`一键更新`)** button directly inside the `New version` update notice card (`TVUpdateNotice.mqh`) for self-hosted builds (`TVP_LICENSED`), downloading the new binary over the existing `https://getordercanvas.com` WebRequest channel and hot-reloading the chart automatically; registered the download URL field in the pointer edit map so clicking or dragging inside the URL box selects and copies (`Ctrl+C`) cleanly without panning the chart.
+- **Replay simulated trading stability & history preservation**: fixed `TVSeriesReady()` and `TVViewportEnsure()` on Replay custom symbols so active playback and session gaps never park or hide simulated order lines and chips; preserved the virtual ledger (`.vledger`) and `History`/`Analysis` dock records across Replay date jumps, timeframe switches, and intra-minute `1 tick` / `1s` transitions without stuck closes or dropped trades.
+
 ## 1.17.0 — 2026-11-18
 - **Order-line Time-in-Force (`🕒`) & cleaner ticket**: removed the redundant bottom Time-in-Force section from the ticket panel; pending orders (both live/replay drafts and placed orders) now configure expiry directly from the `🕒` button on the order line (`GTC`, `Today`, `+1h`, `+4h`, `+1d`, or custom `YYYY-MM-DD HH:MM`) with a live badge on the chip.
 - **TradingView-style Replay start modes & interactive Scissors (`✂`) bar cutter**: the bottom Replay bar now combines the calendar icon, date/time readout, and mode selector (`[ 📅 Date | ⌄ ]`) without redundant symbol text, offering `Bar` (`K线`), `Date…` (`日期…`), `First available date` (`最早可用日期`), and `Random bar` (`随机K线`), complete with an interactive blue vertical cut-line, white `✂` icon, dimmed future-candle veil, and weekday/date/time pill.
